@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class ScoreManager : MonoBehaviour {
 
-    private ScoreManager instance;
-    public ScoreManager Instance
+    private static ScoreManager instance;
+    public static ScoreManager Instance
     {
         get
         {
