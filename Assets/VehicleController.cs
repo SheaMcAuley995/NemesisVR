@@ -10,6 +10,9 @@ public class VehicleController : MonoBehaviour {
     public float turnRotationAngle;
     public float turnRotationSeekSpeed;
 
+    public float hoverDistance;
+    public float hoverStrength;
+
     private float rotationVelocity;
     private float groundAngelVelocity;
 
@@ -21,34 +24,45 @@ public class VehicleController : MonoBehaviour {
 
     private void FixedUpdate()
     {
-        if(Physics.Raycast (transform.position, transform.up * -1, 3f))
-        {
-            rb.drag = 1;
+        vehicleHover();
+        vehicleMove();
+    }
+    
 
-            Vector3 forwardForce = transform.right * acceleration * Input.GetAxis("Vertical");
+    private void vehicleHover()
+    {
+        RaycastHit hit;
 
-            forwardForce = forwardForce * Time.deltaTime * rb.mass;
+            Vector3 downwardForce;
+            float distancePercentage;
 
-            rb.AddForce(forwardForce);
-        }
-        else
-        {
-            rb.drag = 0;
-        }
+            if (Physics.Raycast(transform.position, -transform.up, out hit, hoverDistance))
+            {
+                distancePercentage = 1 - (hit.distance / hoverDistance);
+                downwardForce = (transform.up * hoverStrength * distancePercentage) * Time.deltaTime;
+                rb.AddForce(downwardForce);
+            }
+    }
+
+    private void vehicleMove()
+    {
+        Vector3 forwardForce = transform.right * acceleration * Input.GetAxis("Vertical");
+        forwardForce = forwardForce * Time.deltaTime * rb.mass;
+        rb.AddForce(forwardForce);
 
         Vector3 turnTorque = Vector3.up * turnSpeed * Input.GetAxis("Horizontal");
 
         turnTorque = turnTorque * Time.deltaTime * rb.mass;
         rb.AddTorque(turnTorque);
 
-        Vector3 newRotation = transform.eulerAngles;
-        newRotation.z = Mathf.SmoothDampAngle(newRotation.z, Input.GetAxis("Horizontal") * -turnRotationAngle, ref rotationVelocity, turnRotationSeekSpeed);
-        transform.eulerAngles = newRotation;
-
+      //  Vector3 newRotation = transform.eulerAngles;
+      //  newRotation.z = Mathf.SmoothDampAngle(newRotation.z, Input.GetAxis("Horizontal") * -turnRotationAngle, ref rotationVelocity, turnRotationSeekSpeed);
+        //transform.eulerAngles = newRotation;
     }
 
-    // Update is called once per frame
-    void Update () {
-		
-	}
+    //public void OnDrawGizmos()
+    //{
+    //    Gizmos.color = Color.red;
+    //    Gizmos.DrawLine(transform.position, transform.position * -hoverDistance);
+    //}
 }
