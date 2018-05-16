@@ -14,31 +14,50 @@ public class HoverBall : MonoBehaviour {
             return instance;
         }
     }
+    private void Awake()
+    {
+        instance = this;
+    }
 
-    //private void Awake()
-    //{
-    //    instance = this;
-    //}
 
-#endregion
+    #endregion
 
     public float hoverDistance;
     public float hoverStrength;
 
     public LayerMask groundLayerMask;
 
+    public bool isAttached = false;
+    public Transform HoverToPos;
+    public float hoverToSpeed;
+
+
     public Transform resetPos;
 
     public delegate void MyHoverBallDelegate();
     public MyHoverBallDelegate myHoverBallDelegate;
 
+    Vector3 _velocity = Vector3.zero;
 
-    Rigidbody rb;
-	void Start () {
+    public Rigidbody rb;
+    void Start()
+    {
         rb = GetComponent<Rigidbody>();
-	}
+    }
 
-	void FixedUpdate () {
+    void Update () {
+        if (HoverToPos != null)
+        {
+            hoverTo(HoverToPos.transform);
+        }
+        else
+        {
+            ballHover();
+        }
+    }
+
+    void ballHover()
+    {
         RaycastHit hit;
 
         Vector3 downwardForce;
@@ -55,5 +74,18 @@ public class HoverBall : MonoBehaviour {
     public void ballReset()
     {
         transform.position = resetPos.position;
+    }
+    public void hoverTo(Transform hoverToPos)
+    {
+        transform.position = HoverToPos.position;
+
+
+        /*I might need these
+            
+        //Vector3.Lerp(transform.position, HoverToPos.transform.position, 1f);
+           
+        //(transform.position, HoverToPos.transform.position, ref _velocity, hoverToSpeed * Time.deltaTime);
+           
+         * */
     }
 }
