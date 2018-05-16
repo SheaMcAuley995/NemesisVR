@@ -9,7 +9,10 @@ public class GrabBall : MonoBehaviour {
     {
         if(other.tag == "Ball")
         {
-            other.transform.SetParent(transform,false);
+            HoverBall.Instance.HoverToPos = this.transform;
         }
     }
+
+
+
 }

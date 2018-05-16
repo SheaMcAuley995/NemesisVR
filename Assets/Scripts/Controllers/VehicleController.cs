@@ -16,11 +16,24 @@ public class VehicleController : MonoBehaviour {
     private float rotationVelocity;
     private float groundAngelVelocity;
 
+    
+
     Rigidbody rb;
 
 	void Start () {
         rb = GetComponent<Rigidbody>();
 	}
+
+    public void Update()
+    {
+        if(Input.GetKey(KeyCode.Space))
+        {
+            Vector3 dir = (transform.forward - transform.position).normalized;
+            //HoverBall.Instance.HoverToPos = null;
+
+            HoverBall.Instance.rb.AddForce(dir);
+        }
+    }
 
     private void FixedUpdate()
     {
@@ -55,9 +68,9 @@ public class VehicleController : MonoBehaviour {
         turnTorque = turnTorque * Time.deltaTime * rb.mass;
         rb.AddTorque(turnTorque);
 
-      //  Vector3 newRotation = transform.eulerAngles;
-      //  newRotation.z = Mathf.SmoothDampAngle(newRotation.z, Input.GetAxis("Horizontal") * -turnRotationAngle, ref rotationVelocity, turnRotationSeekSpeed);
-        //transform.eulerAngles = newRotation;
+        Vector3 newRotation = transform.eulerAngles;
+        newRotation.z = Mathf.SmoothDampAngle(newRotation.z, Input.GetAxis("Horizontal") * -turnRotationAngle, ref rotationVelocity, turnRotationSeekSpeed);
+        transform.eulerAngles = newRotation;
     }
 
     //public void OnDrawGizmos()
