@@ -2,27 +2,39 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class JoystickController : MonoBehaviour
+
+namespace Valve.VR.InteractionSystem
 {
-
-
-
-    private void Start()
+    public class JoystickController : MonoBehaviour
     {
-        Debug.Log(transform.eulerAngles);
-    }
 
-    private void Update()
-    {
-        //Rotate(10.0f * Time.deltaTime, 10.0f * Time.deltaTime);
-        //Rotate(0, 10.0f * Time.deltaTime);
-        //Rotate(10.0f * Time.deltaTime, 0);
-    }
+        public JoystickHandle joystickHandle;
 
-    public void Rotate(float roll, float pitch)
-    {
-        transform.eulerAngles += Vector3.forward * roll;
-        transform.eulerAngles += Vector3.right * pitch;
-    }
 
+
+        private void Awake()
+        {
+            joystickHandle.joystickControlUpdate += JoystickUpdate;
+        }
+
+        public void JoystickUpdate(Hand hand)
+        {
+            //transform.LookAt()
+            //(hand.transform);
+            Vector3 offset = (hand.transform.position - transform.position);
+            Debug.Log(offset);
+            float rollOffset = Vector2.Angle(new Vector2(offset.x, offset.y), Vector2.up);
+            transform.eulerAngles -= Vector3.forward * rollOffset;
+            //transform.eulerAngles += Vector3.right * 90;
+           // transform.eulerAngles = new Vector3(transform.eulerAngles.x, 0, transform.eulerAngles.z);
+        }
+
+        public void Rotate(float roll, float pitch)
+        {
+            transform.eulerAngles += Vector3.forward * roll;
+            transform.eulerAngles += Vector3.right * pitch;
+        }
+
+    }
 }
+
