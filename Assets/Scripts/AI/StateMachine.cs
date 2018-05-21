@@ -26,6 +26,13 @@ namespace StateManager
             currentState.EnterState(Owner);
         }
 
+        private void Update()
+        {
+            if(currentState != null)
+            {
+                currentState.UpdateState(Owner);
+            }
+        }
     }
     public abstract class State<T>
     {

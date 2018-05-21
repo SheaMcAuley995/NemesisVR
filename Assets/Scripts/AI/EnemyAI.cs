@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AI_Script : MonoBehaviour {
+public class EnemyAI : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
