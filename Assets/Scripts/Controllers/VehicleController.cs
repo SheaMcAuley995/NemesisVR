@@ -5,6 +5,8 @@ using UnityEngine;
 public class VehicleController : MonoBehaviour {
 
     public float acceleration;
+    public float maxSpeed;
+    public float minSpeed;
     public float turnSpeed;
 
     public float turnRotationAngle;
@@ -15,8 +17,9 @@ public class VehicleController : MonoBehaviour {
 
     private float rotationVelocity;
     private float groundAngelVelocity;
-
     
+
+
 
     Rigidbody rb;
 
@@ -59,18 +62,31 @@ public class VehicleController : MonoBehaviour {
 
     private void vehicleMove()
     {
-        Vector3 forwardForce = transform.right * acceleration * Input.GetAxis("Vertical");
-        forwardForce = forwardForce * Time.deltaTime * rb.mass;
+        Vector3 forwardForce = transform.forward * acceleration * Time.deltaTime;
         rb.AddForce(forwardForce);
+        
+        Vector3 localVel = transform.InverseTransformVector(rb.velocity);
+        Debug.Log(localVel);
+        localVel.y = 0;
+        if(localVel.z > 0 && localVel.magnitude > maxSpeed)
+        {
+            localVel = transform.TransformVector(localVel.normalized * maxSpeed);
+            rb.velocity = new Vector3(localVel.x, rb.velocity.y, localVel.z);
+        }
+        else if (localVel.z < 0 && localVel.magnitude > minSpeed)
+        {
+            localVel = transform.TransformVector(localVel.normalized * minSpeed);
+            rb.velocity = new Vector3(localVel.x, rb.velocity.y, localVel.z);
+        }
 
-        Vector3 turnTorque = Vector3.up * turnSpeed * Input.GetAxis("Horizontal");
+        Vector3 turnTorque = Vector3.up * turnSpeed;
 
         turnTorque = turnTorque * Time.deltaTime * rb.mass;
         rb.AddTorque(turnTorque);
 
-        Vector3 newRotation = transform.eulerAngles;
-        newRotation.z = Mathf.SmoothDampAngle(newRotation.z, Input.GetAxis("Horizontal") * -turnRotationAngle, ref rotationVelocity, turnRotationSeekSpeed);
-        transform.eulerAngles = newRotation;
+        //Vector3 newRotation = transform.eulerAngles;
+        //newRotation.x = Mathf.SmoothDampAngle(newRotation.x, rotationMovement * -turnRotationAngle, ref rotationVelocity, turnRotationSeekSpeed);
+        //transform.eulerAngles = newRotation;
     }
 
     //public void OnDrawGizmos()

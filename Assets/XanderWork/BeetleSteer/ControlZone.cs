@@ -10,9 +10,11 @@ namespace Valve.VR.InteractionSystem
     {
 
         public VehicleController vehicle;
+        public float baseForwardSpeed;
         public float forwardForce;
+        public float rotationForce;
 
-        [Header("PROTPTYPING")]
+        [Header("PROTOTYPING")]
         public Renderer renderer;
         public Material normalMat;
         public Material touchingMat;
@@ -39,17 +41,24 @@ namespace Valve.VR.InteractionSystem
 
         private void OnHandHoverEnd(Hand hand)
         {
-            renderer.material = normalMat;
             if (hand == controlHand)
             {
+                renderer.material = normalMat;
                 controlHand = null;
+                vehicle.acceleration = 0;
+                vehicle.turnSpeed = 0;
             }
         }
 
         private void HandHoverUpdate(Hand hand)
         {
-            Vector3 offset = hand.transform.position - transform.position;
-            vehicle.acceleration = offset.z * forwardForce;
+            if(hand == controlHand)
+            {
+                Vector3 offset = transform.InverseTransformPoint(hand.transform.position);
+                offset.y = 0;
+                vehicle.acceleration = (offset.z * forwardForce) + baseForwardSpeed;
+                vehicle.turnSpeed = offset.x * rotationForce;
+            }
         }
 
 
