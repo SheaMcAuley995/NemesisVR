@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using StateManager;
 
-public class State_ChaseBall : State<Ai>
+public class State_ChaseBall : State<EnemyAI>
 {
 
 #region singleton
@@ -32,18 +32,18 @@ public class State_ChaseBall : State<Ai>
     }
 #endregion
 
-    public override void EnterState(Ai _owner)
+    public override void EnterState(EnemyAI _owner)
     {
 
         throw new System.NotImplementedException();
     }
 
-    public override void ExitState(Ai _owner)
+    public override void ExitState(EnemyAI _owner)
     {
         throw new System.NotImplementedException();
     }
 
-    public override void UpdateState(Ai _owner)
+    public override void UpdateState(EnemyAI _owner)
     {
         throw new System.NotImplementedException();
     }
