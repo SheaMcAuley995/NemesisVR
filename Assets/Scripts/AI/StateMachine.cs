@@ -26,7 +26,7 @@ namespace StateManager
             currentState.EnterState(Owner);
         }
 
-        private void Update()
+        public void Update()
         {
             if(currentState != null)
             {
