@@ -5,7 +5,6 @@ using StateManager;
 
 public class State_ChaseBall : State<EnemyAI>
 {
-
 #region singleton
     private static State_ChaseBall _instance;
 
@@ -18,7 +17,7 @@ public class State_ChaseBall : State<EnemyAI>
         _instance = this;
     }
 
-    public static  State_ChaseBall Instance
+    public static State_ChaseBall Instance
     {
         get
         {
@@ -30,21 +29,30 @@ public class State_ChaseBall : State<EnemyAI>
             return _instance;
         }
     }
-#endregion
+    #endregion
+
+
+    public Vector3 ballPos;
+    private GameObject ball;
 
     public override void EnterState(EnemyAI _owner)
     {
-
-        throw new System.NotImplementedException();
+        ball = GameObject.FindGameObjectWithTag("Ball");
     }
 
     public override void ExitState(EnemyAI _owner)
     {
-        throw new System.NotImplementedException();
+        
     }
 
     public override void UpdateState(EnemyAI _owner)
     {
-        throw new System.NotImplementedException();
+        /*  A = Distance between AI and Ball
+         *  B = Speed of ball
+         *  C = Direction AI needs to go to catch ball
+         */ 
+         
+        
+        
     }
 }
