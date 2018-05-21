@@ -1,11 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using StateManager;
 
 
 public class EnemyAI : MonoBehaviour
 {
+    //public bool
+
     public StateMachine<EnemyAI> stateMachine { get; set; }
 
     public void Start()
