@@ -21,6 +21,7 @@ public class GoalManager : MonoBehaviour {
     {
         if(other.tag == "Ball")
         {
+            HoverBall.Instance.ballReset();
             ScoreManager.Instance.AddScoreSun(scorePerGoal);
         }
     }
@@ -29,6 +30,7 @@ public class GoalManager : MonoBehaviour {
     {
         if (other.tag == "Ball")
         {
+            HoverBall.Instance.ballReset();
             ScoreManager.Instance.AddScoreMoon(scorePerGoal);
         }
     }

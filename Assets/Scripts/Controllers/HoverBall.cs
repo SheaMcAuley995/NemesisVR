@@ -43,6 +43,7 @@ public class HoverBall : MonoBehaviour {
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        ballReset();
     }
 
     void Update () {
@@ -74,6 +75,7 @@ public class HoverBall : MonoBehaviour {
     public void ballReset()
     {
         transform.position = resetPos.position;
+        rb.velocity = Vector3.zero;
     }
     public void hoverTo(Transform hoverToPos)
     {
