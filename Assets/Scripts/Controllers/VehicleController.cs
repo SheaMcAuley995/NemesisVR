@@ -73,15 +73,16 @@ public class VehicleController : MonoBehaviour {
         Vector3 forwardForce = transform.forward * acceleration * Time.fixedDeltaTime;
         rb.AddForce(forwardForce);
 
-        Vector3 localVel = transform.InverseTransformVector(rb.velocity);
-        //beetleHead.localEulerAngles = new Vector3(headRotDefault.x + localVel.z * headPitchMult,
-        //                                          headRotDefault.y,
-        //                                          headRotDefault.z);
-
         Vector3 turnTorque = Vector3.up * turnSpeed;
 
         turnTorque = turnTorque * Time.deltaTime * rb.mass;
         rb.AddTorque(turnTorque);
+
+        Vector3 localVel = transform.InverseTransformVector(rb.velocity);
+        Vector3 localTurn = rb.angularVelocity;
+        beetleHead.localEulerAngles = new Vector3(headRotDefault.x + localVel.z * headPitchMult,
+                                                  headRotDefault.y + localTurn.y * headYawMult,
+                                                  headRotDefault.z + -localTurn.y * headRollMult);
 
         //Vector3 newRotation = transform.eulerAngles;
         //newRotation.x = Mathf.SmoothDampAngle(newRotation.x, rotationMovement * -turnRotationAngle, ref rotationVelocity, turnRotationSeekSpeed);

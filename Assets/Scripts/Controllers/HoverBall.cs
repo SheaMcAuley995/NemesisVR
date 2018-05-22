@@ -78,7 +78,7 @@ public class HoverBall : MonoBehaviour {
     public void hoverTo(Transform hoverToPos)
     {
         transform.position = HoverToPos.position;
-
+        transform.rotation = HoverToPos.rotation;
 
         /*I might need these
             

@@ -14,6 +14,9 @@ namespace Valve.VR.InteractionSystem
         public float forwardForce;
         public float rotationForce;
 
+        public GrabBall grabScript;
+        public float ballShootForce;
+
         [Header("PROTOTYPING")]
         public Renderer renderer;
         public Material normalMat;
@@ -26,6 +29,8 @@ namespace Valve.VR.InteractionSystem
         private void Start()
         {
             renderer.material = normalMat;
+            vehicle.acceleration = baseForwardAccel;
+            vehicle.turnSpeed = 0;
         }
 
         private void OnHandHoverBegin(Hand hand)
@@ -55,6 +60,11 @@ namespace Valve.VR.InteractionSystem
                 Vector3 offset = transform.InverseTransformPoint(hand.transform.position);
                 vehicle.acceleration = (offset.z * forwardForce) + baseForwardAccel;
                 vehicle.turnSpeed = offset.x * rotationForce;
+
+                if(hand.GetStandardInteractionButtonDown())
+                {
+                    grabScript.ShootBall(ballShootForce);
+                }
             }
         }
 
