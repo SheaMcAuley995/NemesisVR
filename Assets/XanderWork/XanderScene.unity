@@ -715,7 +715,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 396809715}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 572444ffba0341746b532a6548c72221, type: 3}
   m_Name: 
@@ -3860,12 +3860,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   acceleration: 0
   maxSpeed: 50
-  minSpeed: -50
+  minSpeed: 50
   turnSpeed: 0
   turnRotationAngle: 15
   turnRotationSeekSpeed: 100
   hoverDistance: 4
   hoverStrength: 2000
+  rb: {fileID: 1974216594}
 --- !u!4 &1974216596
 Transform:
   m_ObjectHideFlags: 0

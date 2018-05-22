@@ -15,17 +15,14 @@ public class VehicleController : MonoBehaviour {
     public float hoverDistance;
     public float hoverStrength;
 
+    public Rigidbody rb;
+
     private float rotationVelocity;
     private float groundAngelVelocity;
     
 
 
-
-    Rigidbody rb;
-
-	void Start () {
-        rb = GetComponent<Rigidbody>();
-	}
+    
 
     public void Update()
     {
