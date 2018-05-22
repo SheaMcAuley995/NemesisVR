@@ -54,3 +54,8 @@ MonoBehaviour:
   scorePerGoal: 1
   sunGoal: {fileID: 0}
   moonGoal: {fileID: 0}
+  sunPost: {fileID: 0}
+  moonPost: {fileID: 0}
+  sunPostEnd: {fileID: 0}
+  moonPostEnd: {fileID: 0}
+  postMoveSpeed: 1
