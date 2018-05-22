@@ -24,6 +24,10 @@ public class AiController : MonoBehaviour
     public GameObject ball;
     Rigidbody rb;
     Vector3 delayedBall;
+
+
+    float desiredAngle;
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -54,31 +58,12 @@ public class AiController : MonoBehaviour
 
     private void Update()
     {
-        if (ball.transform.position.z < transform.position.z)
-        {
-            vert = 1;
-        }
-        else if (ball.transform.position.z > transform.position.z)
-        {
-            vert = -1;
-        }
-        else
-        {
-            vert = 0;
-        }
-
-        if (ball.transform.position.x < transform.position.z)
-        {
-            horz = -1;
-        }
-        else if (ball.transform.position.x >= transform.position.z)
-        {
-            horz = 1;
-        }
-        else
-        {
-            horz = 0;
-        }
+        desiredAngle = Vector3.Angle(transform.position, ball.transform.position);
+        Vector3 targetDir = (ball.transform.position - transform.position);
+        float step = turnSpeed * Time.deltaTime;
+        Vector3 newDir = Vector3.RotateTowards(transform.forward, targetDir, step, 0.0f);
+        Debug.DrawRay(transform.position, newDir, Color.red);
+        transform.rotation = Quaternion.LookRotation(newDir);
     }
 
     private void FixedUpdate()
@@ -110,7 +95,7 @@ public class AiController : MonoBehaviour
 
 
 
-        Vector3 forwardForce = transform.right * acceleration * vert;
+        Vector3 forwardForce = transform.forward * acceleration * vert;
         forwardForce = forwardForce * Time.deltaTime * rb.mass;
         rb.AddForce(forwardForce);
 
