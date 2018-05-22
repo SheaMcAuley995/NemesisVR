@@ -15,12 +15,26 @@ public class VehicleController : MonoBehaviour {
 
     public Rigidbody rb;
 
+    [Header("Head rotation")]
+    public Transform beetleHead;
+    public float headPitchMult;
+    public float headYawMult;
+    public float headRollMult;
+
+    private Vector3 headRotDefault;
+
     private float rotationVelocity;
     private float groundAngelVelocity;
-    
 
 
-    
+
+
+
+
+    private void Start()
+    {
+        headRotDefault = beetleHead.localEulerAngles;
+    }
 
     public void Update()
     {
@@ -58,6 +72,11 @@ public class VehicleController : MonoBehaviour {
     {
         Vector3 forwardForce = transform.forward * acceleration * Time.fixedDeltaTime;
         rb.AddForce(forwardForce);
+
+        Vector3 localVel = transform.InverseTransformVector(rb.velocity);
+        //beetleHead.localEulerAngles = new Vector3(headRotDefault.x + localVel.z * headPitchMult,
+        //                                          headRotDefault.y,
+        //                                          headRotDefault.z);
 
         Vector3 turnTorque = Vector3.up * turnSpeed;
 

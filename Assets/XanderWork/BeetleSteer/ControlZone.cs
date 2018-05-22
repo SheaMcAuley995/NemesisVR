@@ -19,8 +19,6 @@ namespace Valve.VR.InteractionSystem
         public Material normalMat;
         public Material touchingMat;
 
-
-
         private Hand controlHand = null;
 
 
@@ -55,12 +53,10 @@ namespace Valve.VR.InteractionSystem
             if(hand == controlHand)
             {
                 Vector3 offset = transform.InverseTransformPoint(hand.transform.position);
-                offset.y = 0;
                 vehicle.acceleration = (offset.z * forwardForce) + baseForwardAccel;
                 vehicle.turnSpeed = offset.x * rotationForce;
             }
         }
-
 
     }
 }
