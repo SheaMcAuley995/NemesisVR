@@ -120,7 +120,7 @@ MonoBehaviour:
   HoverToPos: {fileID: 0}
   hoverToSpeed: 10
   resetPos: {fileID: 0}
-  rb: {fileID: 0}
+  rb: {fileID: 54362209936840304}
 --- !u!135 &135230009605316104
 SphereCollider:
   m_ObjectHideFlags: 1

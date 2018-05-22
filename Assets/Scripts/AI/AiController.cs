@@ -31,30 +31,7 @@ public class AiController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-       // StartCoroutine(findBall());
     }
-
-    //IEnumerator findBall()
-    //{
-    //    while(true)
-    //    {
-    //        delayedBall = ball.transform.position;
-    //        Debug.Log("Update Ball Pos");
-    //        yield return new WaitForSeconds(.3f);
-    //    }
-    //}
-
-    //void AIMove()
-    //{
-    //    Vector3 dir = transform.position - delayedBall;
-    //    Vector3 desiredVel = dir.normalized * 5;
-    //    desiredVel.y = 0;
-    //    rb.AddForce(rb.velocity - desiredVel);
-    //    Vector3 shittyVctor = transform.position + rb.velocity.normalized;
-    //    Debug.DrawLine(transform.position, transform.position + (rb.velocity), Color.red);
-    //    //shittyVctor = Quaternion.AngleAxis(90, Vector3.up) * shittyVctor;
-    //    //transform.LookAt(shittyVctor);
-    //}
 
     private void Update()
     {
@@ -72,7 +49,6 @@ public class AiController : MonoBehaviour
     private void FixedUpdate()
     {
         vehicleHover();
-       // AIMove();
         vehicleMove();
     }
 
