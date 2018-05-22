@@ -59,11 +59,14 @@ public class AiController : MonoBehaviour
     private void Update()
     {
         desiredAngle = Vector3.Angle(transform.position, ball.transform.position);
-        Vector3 targetDir = (ball.transform.position - transform.position);
-        float step = turnSpeed * Time.deltaTime;
-        Vector3 newDir = Vector3.RotateTowards(transform.forward, targetDir, step, 0.0f);
-        Debug.DrawRay(transform.position, newDir, Color.red);
-        transform.rotation = Quaternion.LookRotation(newDir);
+        float currentAngle = transform.eulerAngles.y;
+        horz = 1 - (desiredAngle / currentAngle);
+
+       //Vector3 targetDir = (ball.transform.position - transform.position);
+       //float step = turnSpeed * Time.deltaTime;
+       //Vector3 newDir = Vector3.RotateTowards(transform.forward, targetDir, step, 0.0f);
+       //Debug.DrawRay(transform.position, newDir, Color.red);
+       //transform.rotation = Quaternion.LookRotation(newDir);
     }
 
     private void FixedUpdate()
