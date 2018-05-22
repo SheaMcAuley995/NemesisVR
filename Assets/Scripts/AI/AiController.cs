@@ -18,10 +18,11 @@ public class AiController : MonoBehaviour
     private float groundAngelVelocity;
 
 
-    public float vert;
-    public float horz;
+    private float vert;
+    private float horz;
 
     public GameObject ball;
+    Vector3 desiredDir;
     Rigidbody rb;
     Vector3 delayedBall;
 
@@ -35,15 +36,40 @@ public class AiController : MonoBehaviour
 
     private void Update()
     {
-        desiredAngle = Vector3.Angle(transform.position, ball.transform.position);
-        float currentAngle = transform.eulerAngles.y;
-        horz = 1 - (desiredAngle / currentAngle);
+        desiredDir = (ball.transform.position - transform.position).normalized;
+        desiredAngle = Vector3.Dot(transform.right, desiredDir);
 
-       //Vector3 targetDir = (ball.transform.position - transform.position);
-       //float step = turnSpeed * Time.deltaTime;
-       //Vector3 newDir = Vector3.RotateTowards(transform.forward, targetDir, step, 0.0f);
-       //Debug.DrawRay(transform.position, newDir, Color.red);
-       //transform.rotation = Quaternion.LookRotation(newDir);
+        if(desiredAngle > 0.01f)
+        {
+            horz = 1;
+        }
+        else if (desiredAngle < -0.01f)
+        {
+            horz = -1;
+        }
+        else
+        {
+            horz = 0;
+        }
+
+        if (desiredDir.z <= 0.9f || desiredDir.z >= -0.9f)
+        {
+            vert = 1;
+        }
+        else if (desiredDir.z > 0.9f)
+        {
+            vert = 0 - desiredAngle;
+        }
+        else if (desiredDir.z < -0.9f)
+        {
+            vert = 0 + desiredAngle;
+        }
+        else
+        {
+            vert = 0;
+        }
+
+
     }
 
     private void FixedUpdate()
@@ -83,9 +109,9 @@ public class AiController : MonoBehaviour
         turnTorque = turnTorque * Time.deltaTime * rb.mass;
         rb.AddTorque(turnTorque);
 
-        //Vector3 newRotation = transform.eulerAngles;
-        //newRotation.z = Mathf.SmoothDampAngle(newRotation.z, horz * -turnRotationAngle, ref rotationVelocity, turnRotationSeekSpeed);
-        //transform.eulerAngles = newRotation;
+        Vector3 newRotation = transform.eulerAngles;
+        newRotation.z = Mathf.SmoothDampAngle(newRotation.z, horz * -turnRotationAngle, ref rotationVelocity, turnRotationSeekSpeed);
+        transform.eulerAngles = newRotation;
     }
 
     //public void OnDrawGizmos()
