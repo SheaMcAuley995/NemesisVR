@@ -73,9 +73,7 @@ public class VehicleController : MonoBehaviour {
         Vector3 forwardForce = transform.forward * acceleration * Time.fixedDeltaTime;
         rb.AddForce(forwardForce);
 
-        Vector3 turnTorque = Vector3.up * turnSpeed;
-
-        turnTorque = turnTorque * Time.deltaTime * rb.mass;
+        Vector3 turnTorque = Vector3.up * turnSpeed * Time.fixedDeltaTime;
         rb.AddTorque(turnTorque);
 
         Vector3 localVel = transform.InverseTransformVector(rb.velocity);

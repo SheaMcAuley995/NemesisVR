@@ -14,6 +14,9 @@ namespace Valve.VR.InteractionSystem
         public float forwardForce;
         public float rotationForce;
 
+        public Transform controlPoint;
+        public float controlPointSpeed;
+
         public GrabBall grabScript;
         public float ballShootForce;
 
@@ -24,6 +27,8 @@ namespace Valve.VR.InteractionSystem
 
         private Hand controlHand = null;
 
+        private Vector3 controlPointTarget;
+
 
 
         private void Start()
@@ -31,6 +36,18 @@ namespace Valve.VR.InteractionSystem
             renderer.material = normalMat;
             vehicle.acceleration = baseForwardAccel;
             vehicle.turnSpeed = 0;
+        }
+
+        private void Update()
+        {
+            if(controlHand == null)
+            {
+                controlPointTarget = transform.position;
+            }
+            if (Vector3.Distance(controlPoint.position, controlPointTarget) > controlPointSpeed * Time.deltaTime)
+            {
+                controlPoint.position += (controlPointTarget - controlPoint.position).normalized * controlPointSpeed * Time.deltaTime;
+            }
         }
 
         private void OnHandHoverBegin(Hand hand)
@@ -57,7 +74,9 @@ namespace Valve.VR.InteractionSystem
         {
             if(hand == controlHand)
             {
-                Vector3 offset = transform.InverseTransformPoint(hand.transform.position);
+                controlPointTarget = hand.transform.position;
+
+                Vector3 offset = transform.InverseTransformPoint(controlPoint.transform.position);
                 vehicle.acceleration = (offset.z * forwardForce) + baseForwardAccel;
                 vehicle.turnSpeed = offset.x * rotationForce;
 
