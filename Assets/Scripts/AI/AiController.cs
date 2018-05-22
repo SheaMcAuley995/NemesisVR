@@ -18,28 +18,58 @@ public class AiController : MonoBehaviour
     private float groundAngelVelocity;
 
 
+    public float vert;
+    public float horz;
 
+    public GameObject ball;
     Rigidbody rb;
+    Vector3 delayedBall;
+
+
+    float desiredAngle;
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+       // StartCoroutine(findBall());
     }
 
-    public void Update()
-    {
-        if (Input.GetKey(KeyCode.Space))
-        {
-            Vector3 dir = (transform.forward - transform.position).normalized;
-            //HoverBall.Instance.HoverToPos = null;
+    //IEnumerator findBall()
+    //{
+    //    while(true)
+    //    {
+    //        delayedBall = ball.transform.position;
+    //        Debug.Log("Update Ball Pos");
+    //        yield return new WaitForSeconds(.3f);
+    //    }
+    //}
 
-            HoverBall.Instance.rb.AddForce(dir);
-        }
+    //void AIMove()
+    //{
+    //    Vector3 dir = transform.position - delayedBall;
+    //    Vector3 desiredVel = dir.normalized * 5;
+    //    desiredVel.y = 0;
+    //    rb.AddForce(rb.velocity - desiredVel);
+    //    Vector3 shittyVctor = transform.position + rb.velocity.normalized;
+    //    Debug.DrawLine(transform.position, transform.position + (rb.velocity), Color.red);
+    //    //shittyVctor = Quaternion.AngleAxis(90, Vector3.up) * shittyVctor;
+    //    //transform.LookAt(shittyVctor);
+    //}
+
+    private void Update()
+    {
+        desiredAngle = Vector3.Angle(transform.position, ball.transform.position);
+        Vector3 targetDir = (ball.transform.position - transform.position);
+        float step = turnSpeed * Time.deltaTime;
+        Vector3 newDir = Vector3.RotateTowards(transform.forward, targetDir, step, 0.0f);
+        Debug.DrawRay(transform.position, newDir, Color.red);
+        transform.rotation = Quaternion.LookRotation(newDir);
     }
 
     private void FixedUpdate()
     {
         vehicleHover();
+       // AIMove();
         vehicleMove();
     }
 
@@ -61,18 +91,22 @@ public class AiController : MonoBehaviour
 
     private void vehicleMove()
     {
-        Vector3 forwardForce = transform.right * acceleration * Input.GetAxis("Vertical");
+   //     float distancePercentage = 1 - ((Vector3.Distance(transform.position, ball.transform.position) ))
+
+
+
+        Vector3 forwardForce = transform.forward * acceleration * vert;
         forwardForce = forwardForce * Time.deltaTime * rb.mass;
         rb.AddForce(forwardForce);
 
-        Vector3 turnTorque = Vector3.up * turnSpeed * Input.GetAxis("Horizontal");
+        Vector3 turnTorque = Vector3.up * turnSpeed * horz;
 
         turnTorque = turnTorque * Time.deltaTime * rb.mass;
         rb.AddTorque(turnTorque);
 
-        Vector3 newRotation = transform.eulerAngles;
-        newRotation.z = Mathf.SmoothDampAngle(newRotation.z, Input.GetAxis("Horizontal") * -turnRotationAngle, ref rotationVelocity, turnRotationSeekSpeed);
-        transform.eulerAngles = newRotation;
+        //Vector3 newRotation = transform.eulerAngles;
+        //newRotation.z = Mathf.SmoothDampAngle(newRotation.z, horz * -turnRotationAngle, ref rotationVelocity, turnRotationSeekSpeed);
+        //transform.eulerAngles = newRotation;
     }
 
     //public void OnDrawGizmos()
@@ -81,3 +115,6 @@ public class AiController : MonoBehaviour
     //    Gizmos.DrawLine(transform.position, transform.position * -hoverDistance);
     //}
 }
+
+
+
