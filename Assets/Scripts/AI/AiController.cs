@@ -25,7 +25,7 @@ public class AiController : MonoBehaviour
     Vector3 desiredDir;
     Rigidbody rb;
     Vector3 delayedBall;
-
+    public GrabBall grabBall;
 
     float desiredAngle;
 
