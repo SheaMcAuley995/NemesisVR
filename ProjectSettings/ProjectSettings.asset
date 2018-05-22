@@ -718,7 +718,7 @@ PlayerSettings:
   facebookSdkVersion: 7.9.4
   apiCompatibilityLevel: 2
   cloudProjectId: 22f5c2a0-bf34-4aa5-aea1-682177819bb1
-  projectName: 
+  projectName: NemesisVR
   organizationId: innocentspain
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0

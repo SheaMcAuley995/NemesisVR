@@ -721,9 +721,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   vehicle: {fileID: 1974216595}
-  baseForwardSpeed: 2
-  forwardForce: 4
-  rotationForce: 2
+  baseForwardAccel: 500
+  forwardForce: 1000
+  rotationForce: 500
   renderer: {fileID: 396809717}
   normalMat: {fileID: 2100000, guid: ce81b6db142cc2f47bd986baa854aedb, type: 2}
   touchingMat: {fileID: 2100000, guid: 2a7017db938cacc42b2f959347447f03, type: 2}
@@ -3859,8 +3859,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   acceleration: 0
-  maxSpeed: 50
-  minSpeed: 50
   turnSpeed: 0
   turnRotationAngle: 15
   turnRotationSeekSpeed: 100

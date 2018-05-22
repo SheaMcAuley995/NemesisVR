@@ -10,7 +10,7 @@ namespace Valve.VR.InteractionSystem
     {
 
         public VehicleController vehicle;
-        public float baseForwardSpeed;
+        public float baseForwardAccel;
         public float forwardForce;
         public float rotationForce;
 
@@ -45,7 +45,7 @@ namespace Valve.VR.InteractionSystem
             {
                 renderer.material = normalMat;
                 controlHand = null;
-                vehicle.acceleration = 0;
+                vehicle.acceleration = baseForwardAccel;
                 vehicle.turnSpeed = 0;
             }
         }
@@ -56,7 +56,7 @@ namespace Valve.VR.InteractionSystem
             {
                 Vector3 offset = transform.InverseTransformPoint(hand.transform.position);
                 offset.y = 0;
-                vehicle.acceleration = (offset.z * forwardForce) + baseForwardSpeed;
+                vehicle.acceleration = (offset.z * forwardForce) + baseForwardAccel;
                 vehicle.turnSpeed = offset.x * rotationForce;
             }
         }
