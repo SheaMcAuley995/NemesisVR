@@ -153,6 +153,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1401370731581952
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4730121589305584}
+  m_Layer: 0
+  m_Name: BallHoldPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1489681537814740
 GameObject:
   m_ObjectHideFlags: 0
@@ -165,24 +180,6 @@ GameObject:
   - component: {fileID: 114848810315341416}
   m_Layer: 0
   m_Name: GrabZone
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!1 &1621605884203268
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 4671379784508738}
-  - component: {fileID: 20546523570321788}
-  - component: {fileID: 124616104525773402}
-  - component: {fileID: 81882066761501348}
-  m_Layer: 0
-  m_Name: Camera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -275,7 +272,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4257371906835768}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4257371906835768
 Transform:
@@ -289,10 +286,10 @@ Transform:
   m_Children:
   - {fileID: 4725256868416350}
   - {fileID: 4585879578130294}
-  - {fileID: 4671379784508738}
   - {fileID: 4546690644919114}
   - {fileID: 4203329746721148}
   - {fileID: 4558699155673024}
+  - {fileID: 4730121589305584}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -157.25, z: 0}
@@ -333,7 +330,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4257371906835768}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4558699155673024
 Transform:
@@ -346,7 +343,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4257371906835768}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4585879578130294
 Transform:
@@ -393,19 +390,6 @@ Transform:
   m_Father: {fileID: 4585879578130294}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
---- !u!4 &4671379784508738
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1621605884203268}
-  m_LocalRotation: {x: -0.23475611, y: 0.017407222, z: -0.004205163, w: -0.9718894}
-  m_LocalPosition: {x: 0.26869726, y: 4.5130873, z: 0.003081113}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 4257371906835768}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4725256868416350
 Transform:
   m_ObjectHideFlags: 1
@@ -419,42 +403,19 @@ Transform:
   m_Father: {fileID: 4257371906835768}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!20 &20546523570321788
-Camera:
+--- !u!4 &4730121589305584
+Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1621605884203268}
-  m_Enabled: 1
-  serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
-  m_NormalizedViewPortRect:
-    serializedVersion: 2
-    x: 0
-    y: 0
-    width: 1
-    height: 1
-  near clip plane: 0.3
-  far clip plane: 1000
-  field of view: 60
-  orthographic: 0
-  orthographic size: 5
-  m_Depth: 0
-  m_CullingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_RenderingPath: -1
-  m_TargetTexture: {fileID: 0}
-  m_TargetDisplay: 0
-  m_TargetEye: 3
-  m_HDR: 1
-  m_AllowMSAA: 1
-  m_AllowDynamicResolution: 0
-  m_ForceIntoRT: 0
-  m_OcclusionCulling: 1
-  m_StereoConvergence: 10
-  m_StereoSeparation: 0.022
+  m_GameObject: {fileID: 1401370731581952}
+  m_LocalRotation: {x: -0.17364825, y: 0, z: 0, w: 0.9848078}
+  m_LocalPosition: {x: -0, y: 1.14, z: 3.2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4257371906835768}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: -20, y: 0, z: 0}
 --- !u!23 &23026796753981758
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -887,13 +848,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2.74, y: 1.31, z: 2.13}
   m_Center: {x: 0, y: 0.54, z: 0}
---- !u!81 &81882066761501348
-AudioListener:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1621605884203268}
-  m_Enabled: 1
 --- !u!95 &95228170437220444
 Animator:
   serializedVersion: 3
@@ -962,7 +916,7 @@ MonoBehaviour:
   turnRotationSeekSpeed: 150
   hoverDistance: 4
   hoverStrength: 2000
-  shootForce: 1000
+  shootForce: 5000
   target: {fileID: 0}
   grabBall: {fileID: 114848810315341416}
 --- !u!114 &114722178608858666
@@ -994,11 +948,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6cd677f8ba4cc044bfd48eb56fa09b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ballHoldPos: {fileID: 4725256868416350}
---- !u!124 &124616104525773402
-Behaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1621605884203268}
-  m_Enabled: 1
+  ballHoldPos: {fileID: 4730121589305584}
