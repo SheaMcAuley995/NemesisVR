@@ -52,15 +52,15 @@ public class AiController : MonoBehaviour
             horz = 0;
         }
 
-        if (desiredDir.z <= 0.9f || desiredDir.z >= -0.9f)
+        if (desiredDir.z <= 0.6f && desiredDir.z >= -0.6f)
         {
             vert = 1;
         }
-        else if (desiredDir.z > 0.9f)
+        else if (desiredDir.z > 0.6f)
         {
-            vert = 0 - desiredAngle;
+            vert = 0 + desiredAngle;
         }
-        else if (desiredDir.z < -0.9f)
+        else if (desiredDir.z < -0.6f)
         {
             vert = 0 + desiredAngle;
         }
@@ -96,10 +96,6 @@ public class AiController : MonoBehaviour
 
     private void vehicleMove()
     {
-   //     float distancePercentage = 1 - ((Vector3.Distance(transform.position, ball.transform.position) ))
-
-
-
         Vector3 forwardForce = transform.forward * acceleration * vert;
         forwardForce = forwardForce * Time.deltaTime * rb.mass;
         rb.AddForce(forwardForce);
