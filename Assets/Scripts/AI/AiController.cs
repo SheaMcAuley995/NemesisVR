@@ -69,10 +69,11 @@ public class AiController : MonoBehaviour
         {
             vert += 1;
         }
-        if (Vector3.Distance(transform.position, target.transform.position ) > 95)
+        if (Vector3.Distance(transform.position, target.transform.position) > 60)
         {
-            vert = 0.8f;
+            vert = 0.9f;
         }
+
 
 
         if(!grabBall.holdingBall)
@@ -82,7 +83,7 @@ public class AiController : MonoBehaviour
         else if (grabBall.holdingBall)
         {
             target = GameObject.FindGameObjectWithTag("Goal");
-            if(Vector3.Distance(transform.position,target.transform.position) < 20)
+            if(Vector3.Distance(transform.position,target.transform.position) < 80)
             {
                 grabBall.ShootBall(shootForce);
             }
