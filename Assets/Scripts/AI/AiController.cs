@@ -21,7 +21,9 @@ public class AiController : MonoBehaviour
     private float vert;
     private float horz;
 
-    public GameObject ball;
+    public float shootForce;
+
+    public GameObject target;
     Vector3 desiredDir;
     Rigidbody rb;
     Vector3 delayedBall;
@@ -36,12 +38,12 @@ public class AiController : MonoBehaviour
 
     private void Update()
     {
-        desiredDir = (ball.transform.position - transform.position).normalized;
+        desiredDir = (target.transform.position - transform.position).normalized;
         desiredAngle = Vector3.Dot(transform.right, desiredDir);
 
         if(desiredAngle > 0.01f)
         {
-            horz = 1;
+            horz = 1 ;
         }
         else if (desiredAngle < -0.01f)
         {
@@ -51,22 +53,39 @@ public class AiController : MonoBehaviour
         {
             horz = 0;
         }
+        if(Vector3.Distance(transform.position, target.transform.position) > 50)
+        {
+            horz += 1 - (Vector3.Distance(transform.position, target.transform.position) / 100);
+        }
+        else if(Vector3.Distance(transform.position,target.transform.position) < 10)
+        {
+            horz += 1 - (Vector3.Distance(transform.position, target.transform.position) / 100);
+        }
 
-        if (desiredDir.z <= 0.6f && desiredDir.z >= -0.6f)
+
+        vert = 1 - (Vector3.Distance(transform.position, target.transform.position)/100);
+
+        if (Vector3.Angle(transform.position,target.transform.position) < 10f)
         {
-            vert = 1;
+            vert += 1;
         }
-        else if (desiredDir.z > 0.6f)
+        if (Vector3.Distance(transform.position, target.transform.position ) > 95)
         {
-            vert = 0 + desiredAngle;
+            vert = 0.8f;
         }
-        else if (desiredDir.z < -0.6f)
+
+
+        if(!grabBall.holdingBall)
         {
-            vert = 0 + desiredAngle;
+            target = GameObject.FindGameObjectWithTag("Ball");
         }
-        else
+        else if (grabBall.holdingBall)
         {
-            vert = 0;
+            target = GameObject.FindGameObjectWithTag("Goal");
+            if(Vector3.Distance(transform.position,target.transform.position) < 20)
+            {
+                grabBall.ShootBall(shootForce);
+            }
         }
 
 

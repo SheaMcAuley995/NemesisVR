@@ -6,8 +6,12 @@ public class GrabBall : MonoBehaviour {
 
     public Transform ballHoldPos;
 
-    private bool holdingBall = false;
+    public bool holdingBall { get; private set; }
 
+    private void Start()
+    {
+        holdingBall = false;
+    }
 
     private void OnTriggerEnter(Collider other)
     {

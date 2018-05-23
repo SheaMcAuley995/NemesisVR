@@ -7,6 +7,10 @@ public class TestingDot : MonoBehaviour {
 
     
     public Transform cube02;
+
+    [Header("Angles")]
+    public float AngleBetweenObjects;
+
     [Header("Dot Product")]
     public float dotProd;
     public Vector3 cubePos;
@@ -19,12 +23,13 @@ public class TestingDot : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-
+        
         cubePos = gameObject.transform.position;
         cube02Pos = cube02.position;
         desiredRot = (cube02Pos - cubePos).normalized;
         dotProd = Vector3.Dot(cubePos, desiredRot);
         Distance = Vector3.Distance(cubePos, cube02Pos);
+        AngleBetweenObjects = Vector3.Angle(transform.forward, cube02Pos);
 
-	}
+    }
 }
