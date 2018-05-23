@@ -5,8 +5,9 @@ using UnityEngine;
 [ExecuteInEditMode]
 public class TestingDot : MonoBehaviour {
 
-    [Header("Dot Product")]
+    
     public Transform cube02;
+    [Header("Dot Product")]
     public float dotProd;
     public Vector3 cubePos;
     public Vector3 cube02Pos;
