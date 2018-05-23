@@ -18,8 +18,8 @@ public class AiController : MonoBehaviour
     private float groundAngelVelocity;
 
 
-    private float vert;
-    private float horz;
+    public float vert;
+    public float horz;
 
     public float shootForce;
 
@@ -30,6 +30,7 @@ public class AiController : MonoBehaviour
     public GrabBall grabBall;
 
     float desiredAngle;
+    float currentDistance;
 
     void Start()
     {
@@ -40,8 +41,9 @@ public class AiController : MonoBehaviour
     {
         desiredDir = (target.transform.position - transform.position).normalized;
         desiredAngle = Vector3.Dot(transform.right, desiredDir);
+        currentDistance = Vector3.Distance(transform.position, target.transform.position);
 
-        if(desiredAngle > 0.01f)
+        if (desiredAngle > 0.01f)
         {
             horz = 1 ;
         }
@@ -53,30 +55,35 @@ public class AiController : MonoBehaviour
         {
             horz = 0;
         }
-        if(Vector3.Distance(transform.position, target.transform.position) > 50)
+        if(currentDistance > 50)
         {
-            horz += 1 - (Vector3.Distance(transform.position, target.transform.position) / 100);
+            horz += 1 - (currentDistance / 100);
         }
         else if(Vector3.Distance(transform.position,target.transform.position) < 10)
         {
-            horz += 1 - (Vector3.Distance(transform.position, target.transform.position) / 100);
+            horz += 1 - (currentDistance / 100);
         }
 
 
-        vert = 1 - (Vector3.Distance(transform.position, target.transform.position)/100);
+        vert = 1 - (currentDistance/100);
 
         if (Vector3.Angle(transform.position,target.transform.position) < 10f)
         {
             vert += 1;
         }
-        if (Vector3.Distance(transform.position, target.transform.position) > 60)
+        if (currentDistance > 60)
         {
             vert = 0.9f;
         }
 
+        if (!grabBall.holdingBall && currentDistance < 10)
+        {
+            vert = -1 - (currentDistance / 100);
+        }
 
+        
 
-        if(!grabBall.holdingBall)
+        if (!grabBall.holdingBall)
         {
             target = GameObject.FindGameObjectWithTag("Ball");
         }
@@ -85,7 +92,10 @@ public class AiController : MonoBehaviour
             target = GameObject.FindGameObjectWithTag("Goal");
             if(Vector3.Distance(transform.position,target.transform.position) < 80)
             {
-                grabBall.ShootBall(shootForce);
+                if(desiredAngle <= 0.001f && desiredAngle >= -0.001f)
+                {
+                    grabBall.ShootBall(shootForce);
+                }
             }
         }
 
@@ -129,12 +139,6 @@ public class AiController : MonoBehaviour
         newRotation.z = Mathf.SmoothDampAngle(newRotation.z, horz * -turnRotationAngle, ref rotationVelocity, turnRotationSeekSpeed);
         transform.eulerAngles = newRotation;
     }
-
-    //public void OnDrawGizmos()
-    //{
-    //    Gizmos.color = Color.red;
-    //    Gizmos.DrawLine(transform.position, transform.position * -hoverDistance);
-    //}
 }
 
 

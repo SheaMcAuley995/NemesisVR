@@ -27,7 +27,7 @@ public class TestingDot : MonoBehaviour {
         cubePos = gameObject.transform.position;
         cube02Pos = cube02.position;
         desiredRot = (cube02Pos - cubePos).normalized;
-        dotProd = Vector3.Dot(cubePos, desiredRot);
+        dotProd = Vector3.Dot(transform.right, desiredRot);
         Distance = Vector3.Distance(cubePos, cube02Pos);
         AngleBetweenObjects = Vector3.Angle(transform.forward, cube02Pos);
 
