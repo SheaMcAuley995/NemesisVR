@@ -254,7 +254,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   volume: 1.5
-  speedThreshold: 0.1
+  speedThreshold: 0.05
   audio: {fileID: 82381506641738422}
   headPos: {fileID: 4026619032213574}
   beetlePos: {fileID: 0}
