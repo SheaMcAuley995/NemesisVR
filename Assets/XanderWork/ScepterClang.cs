@@ -8,6 +8,7 @@ public class ScepterClang : MonoBehaviour {
     public float speedThreshold;
     public AudioSource audio;
     public Transform headPos;
+    public Transform beetlePos;
 
     private Vector3 lastHeadPos;
     private Vector3 headOffset = Vector3.zero;
@@ -18,7 +19,7 @@ public class ScepterClang : MonoBehaviour {
 
     private void Start()
     {
-        lastHeadPos = headPos.position;
+        lastHeadPos = beetlePos.InverseTransformPoint(headPos.position);
         correctLocalPos = transform.localPosition;
         correctLocalEuler = transform.localEulerAngles;
     }
@@ -27,8 +28,8 @@ public class ScepterClang : MonoBehaviour {
     {
         transform.localPosition = correctLocalPos;
         transform.localEulerAngles = correctLocalEuler;
-        headOffset = headPos.position - lastHeadPos;
-        lastHeadPos = headPos.position;
+        headOffset = beetlePos.InverseTransformPoint(headPos.position) - lastHeadPos;
+        lastHeadPos = beetlePos.InverseTransformPoint(headPos.position);
     }
 
     private void OnCollisionEnter(Collision collision)
