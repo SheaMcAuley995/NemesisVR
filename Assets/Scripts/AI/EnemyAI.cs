@@ -4,8 +4,7 @@ using StateManager;
 
 public class EnemyAI : MonoBehaviour
 {
-    //public bool
-
+    public bool switchState = false;
     public StateMachine<EnemyAI> stateMachine { get; set; }
 
     public void Start()
