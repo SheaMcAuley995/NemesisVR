@@ -74,7 +74,7 @@ public class HoverBall : MonoBehaviour {
 
     public void ballReset()
     {
-        //transform.position = resetPos.position;
+        transform.position = resetPos.position;
         rb.velocity = Vector3.zero;
     }
     public void hoverTo(Transform hoverToPos)
