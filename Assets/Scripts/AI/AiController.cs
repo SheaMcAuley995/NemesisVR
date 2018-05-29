@@ -52,7 +52,7 @@ public class AiController : MonoBehaviour
 
         if (!grabBall.holdingBall)
         {
-            target = GameObject.FindGameObjectWithTag("Ball");
+            target = HoverBall.Instance.gameObject;
         }
         else if (grabBall.holdingBall)
         {
@@ -211,7 +211,8 @@ public class AiController : MonoBehaviour
         
         if(isAvoiding)
         {
-            horz += avoidMultiplier; 
+            horz += avoidMultiplier;
+            //vert += avoidMultiplier;
         }
     }
 }
