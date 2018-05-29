@@ -17,6 +17,11 @@ public class AiController : MonoBehaviour
     private float rotationVelocity;
     private float groundAngelVelocity;
 
+    public float maxSteerAngle = 40f;
+
+    public Vector3 InverseTransform;
+    public float newSteer;
+    public float newFwd;
 
     public float vert;
     public float horz;
@@ -25,12 +30,17 @@ public class AiController : MonoBehaviour
 
     public GameObject target;
     Vector3 desiredDir;
-    Rigidbody rb;
-    Vector3 delayedBall;
+    Rigidbody rb; 
     public GrabBall grabBall;
 
     float desiredAngle;
     float currentDistance;
+
+
+    public float sensorLength = 10f;
+    public Vector3 frontSensorpos = new Vector3(0,0.2f,0);
+    public float FrontsideSensorPos = 0.2f;
+    public float frontSensorAngle = 30;
 
     void Start()
     {
@@ -39,49 +49,6 @@ public class AiController : MonoBehaviour
 
     private void Update()
     {
-        desiredDir = (target.transform.position - transform.position).normalized;
-        desiredAngle = Vector3.Dot(transform.right, desiredDir);
-        currentDistance = Vector3.Distance(transform.position, target.transform.position);
-
-        if (desiredAngle > 0.01f)
-        {
-            horz = 1 ;
-        }
-        else if (desiredAngle < -0.01f)
-        {
-            horz = -1;
-        }
-        else
-        {
-            horz = 0;
-        }
-        if(currentDistance > 50)
-        {
-            horz += 1 - (currentDistance / 100);
-        }
-        else if(Vector3.Distance(transform.position,target.transform.position) < 10)
-        {
-            horz += 1 - (currentDistance / 100);
-        }
-
-
-        vert = 1 - (currentDistance/100);
-
-        if (Vector3.Angle(transform.position,target.transform.position) < 10f)
-        {
-            vert += 1;
-        }
-        if (currentDistance > 60)
-        {
-            vert = 0.9f;
-        }
-
-        if (!grabBall.holdingBall && currentDistance < 10)
-        {
-            vert = -1 - (currentDistance / 100);
-        }
-
-        
 
         if (!grabBall.holdingBall)
         {
@@ -99,13 +66,16 @@ public class AiController : MonoBehaviour
             }
         }
 
+        
 
     }
 
     private void FixedUpdate()
     {
+        vehicleSteer();
         vehicleHover();
         vehicleMove();
+        vehicleSensor();
     }
 
 
@@ -139,7 +109,177 @@ public class AiController : MonoBehaviour
         newRotation.z = Mathf.SmoothDampAngle(newRotation.z, horz * -turnRotationAngle, ref rotationVelocity, turnRotationSeekSpeed);
         transform.eulerAngles = newRotation;
     }
+
+    private void vehicleSteer()
+    {
+        InverseTransform = transform.InverseTransformPoint(target.transform.position);
+        newSteer = InverseTransform.x / InverseTransform.magnitude;
+        newFwd = InverseTransform.z / InverseTransform.magnitude;
+        horz = newSteer;
+        if(newSteer > 0)
+        {
+            vert = newFwd - newSteer;
+        }
+        //if (Vector3.Distance(transform.position, target.transform.position) < 10 && !grabBall.holdingBall)
+        //{
+        //    vert = 0.4f;
+        //}
+    }
+
+    private void vehicleSensor()
+    {
+        RaycastHit hit;
+        Vector3 sensorStartingpos = transform.position + frontSensorpos;
+        sensorStartingpos += transform.forward * frontSensorpos.z;
+        sensorStartingpos += transform.up * frontSensorpos.y;
+        float avoidMultiplier = 0;
+        bool isAvoiding = false;
+        //front center
+        if (avoidMultiplier == 0)
+        {
+            if (Physics.Raycast(sensorStartingpos, transform.forward, out hit, sensorLength))
+            {
+                if (!hit.collider.CompareTag("Ground"))
+                {
+                    Debug.DrawLine(sensorStartingpos, hit.point);
+                    isAvoiding = true;
+                    if(hit.normal.x < 0)
+                    {
+                        avoidMultiplier = -1;
+                    }
+                    else
+                    {
+                        avoidMultiplier = 1;
+                    }
+                    
+                }
+                
+            }
+        }
+
+        //front right
+        sensorStartingpos += transform.right * FrontsideSensorPos;
+        if (Physics.Raycast(sensorStartingpos, transform.forward, out hit, sensorLength))
+        {
+            if (!hit.collider.CompareTag("Ground"))
+            {
+                Debug.DrawLine(sensorStartingpos, hit.point);
+                isAvoiding = true;
+                avoidMultiplier -= 1f;
+            }
+            
+        }
+        
+
+        //front right angle
+        if (Physics.Raycast(sensorStartingpos, Quaternion.AngleAxis(30,transform.up) * transform.forward, out hit, sensorLength))
+        {
+            if (!hit.collider.CompareTag("Ground"))
+            {
+                Debug.DrawLine(sensorStartingpos, hit.point);
+                isAvoiding = true;
+                avoidMultiplier -= 0.5f;
+            }
+            
+        }
+
+        //front left
+        sensorStartingpos -= transform.right * FrontsideSensorPos * 2;
+        if (Physics.Raycast(sensorStartingpos, transform.forward, out hit, sensorLength))
+        {
+            if (!hit.collider.CompareTag("Ground"))
+            {
+                Debug.DrawLine(sensorStartingpos, hit.point);
+                isAvoiding = true;
+                avoidMultiplier += 1f;
+            }
+            
+        }
+        
+
+        //front left angle
+        if (Physics.Raycast(sensorStartingpos, Quaternion.AngleAxis(-30, transform.up) * transform.forward, out hit, sensorLength))
+        {
+            if (!hit.collider.CompareTag("Ground"))
+            {
+                Debug.DrawLine(sensorStartingpos, hit.point);
+                isAvoiding = true;
+                avoidMultiplier += 0.5f;
+            }
+            
+        }
+        
+        if(isAvoiding)
+        {
+            horz += avoidMultiplier; 
+        }
+    }
 }
 
 
 
+
+//desiredDir = (target.transform.position - transform.position).normalized;
+//desiredAngle = Vector3.Dot(transform.right, desiredDir);
+//currentDistance = Vector3.Distance(transform.position, target.transform.position);
+//
+//if (desiredAngle > 0.01f)
+//{
+//    horz = 1 ;
+//}
+//else if (desiredAngle < -0.01f)
+//{
+//    horz = -1;
+//}
+//else
+//{
+//    horz = 0;
+//}
+//if(currentDistance > 50)
+//{
+//    horz += 1 - (currentDistance / 100);
+//}
+//else if(Vector3.Distance(transform.position,target.transform.position) < 10)
+//{
+//    horz += 1 - (currentDistance / 100);
+//}
+//
+//
+//vert = 1 - (currentDistance/100);
+//
+//if (Vector3.Angle(transform.position,target.transform.position) < 10f)
+//{
+//    vert += 1;
+//}
+//if (currentDistance > 60)
+//{
+//    vert = 0.9f;
+//}
+//
+//if (!grabBall.holdingBall && currentDistance < 20)
+//{
+//    if(desiredAngle > 0.03f || desiredAngle < 0.03f)
+//    {
+//        vert = 0.1f;
+//    }
+//    
+//}
+//
+//
+//
+//if (!grabBall.holdingBall)
+//{
+//    target = GameObject.FindGameObjectWithTag("Ball");
+//}
+//else if (grabBall.holdingBall)
+//{
+//    target = GameObject.FindGameObjectWithTag("Goal");
+//    if(Vector3.Distance(transform.position,target.transform.position) < 80)
+//    {
+//        if(desiredAngle <= 0.001f && desiredAngle >= -0.001f)
+//        {
+//            grabBall.ShootBall(shootForce);
+//        }
+//    }
+//}
+//

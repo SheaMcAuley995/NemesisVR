@@ -6,30 +6,39 @@ using UnityEngine;
 public class TestingDot : MonoBehaviour {
 
     
-    public Transform cube02;
+    public Transform Target;
+
+    [Header("Vectors")]
+    public Vector3 VehiclePosition;
+    public Vector3 TargetPosition;
+    public Vector3 desiredRot;
 
     [Header("Angles")]
     public float AngleBetweenObjects;
 
     [Header("Dot Product")]
     public float dotProd;
-    public Vector3 cubePos;
-    public Vector3 cube02Pos;
-    public Vector3 desiredRot;
-
 
     [Header("Distance")]
     public float Distance;
 
+    [Header("Inverse Transform")]
+    public Vector3 InverseTransform;
+    public float newSteer;
+    public float newFwd;
+
     // Update is called once per frame
     void Update () {
-        
-        cubePos = gameObject.transform.position;
-        cube02Pos = cube02.position;
-        desiredRot = (cube02Pos - cubePos).normalized;
+
+        InverseTransform = transform.InverseTransformPoint(TargetPosition);
+        newSteer = InverseTransform.x / InverseTransform.magnitude;
+        newFwd = InverseTransform.z / InverseTransform.magnitude;
+        VehiclePosition = gameObject.transform.position;
+        TargetPosition = Target.position;
+        desiredRot = (TargetPosition - VehiclePosition).normalized;
         dotProd = Vector3.Dot(transform.right, desiredRot);
-        Distance = Vector3.Distance(cubePos, cube02Pos);
-        AngleBetweenObjects = Vector3.Angle(transform.forward, cube02Pos);
+        Distance = Vector3.Distance(VehiclePosition, TargetPosition);
+        AngleBetweenObjects = Vector3.Angle(transform.forward, TargetPosition);
 
     }
 }

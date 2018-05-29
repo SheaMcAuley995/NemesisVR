@@ -52,7 +52,10 @@ public class State_ChaseBall : State<EnemyAI>
          *  C = Direction AI needs to go to catch ball
          */ 
          
-        
+        if(_owner.switchState)
+        {
+
+        }
         
     }
 }
