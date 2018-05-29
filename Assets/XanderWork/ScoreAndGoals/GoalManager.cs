@@ -4,6 +4,15 @@ using UnityEngine;
 
 public class GoalManager : MonoBehaviour {
 
+    private static GoalManager instance;
+    public static GoalManager Instance
+    {
+        get
+        {
+            return instance;
+        }
+    }
+
     public int scorePerGoal = 1;
 
     public GoalTrigger sunGoal;
@@ -25,6 +34,8 @@ public class GoalManager : MonoBehaviour {
 
     private void Awake()
     {
+        instance = this;
+
         sunGoal.goalTriggered += SunGoalTrigger;
         moonGoal.goalTriggered += MoonGoalTrigger;
         sunPostMoveTo = sunPost.position;

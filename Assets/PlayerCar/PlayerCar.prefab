@@ -656,6 +656,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6cd677f8ba4cc044bfd48eb56fa09b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ballHoldPos: {fileID: 0}
 --- !u!114 &114853911500961644
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -673,6 +674,11 @@ MonoBehaviour:
   turnRotationSeekSpeed: 100
   hoverDistance: 4
   hoverStrength: 2000
+  rb: {fileID: 0}
+  beetleHead: {fileID: 0}
+  headPitchMult: 0
+  headYawMult: 0
+  headRollMult: 0
 --- !u!124 &124862887780519444
 Behaviour:
   m_ObjectHideFlags: 1
