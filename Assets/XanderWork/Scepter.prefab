@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 64655748366686462}
   - component: {fileID: 82381506641738422}
   - component: {fileID: 54318309325547214}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Scepter
   m_TagString: Untagged
   m_Icon: {fileID: 0}

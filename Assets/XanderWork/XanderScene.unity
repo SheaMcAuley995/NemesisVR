@@ -421,7 +421,7 @@ GameObject:
   - component: {fileID: 164210996}
   - component: {fileID: 164210995}
   - component: {fileID: 164210994}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: SpeedZone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2004,7 +2004,7 @@ GameObject:
   - component: {fileID: 655122324}
   - component: {fileID: 655122323}
   - component: {fileID: 655122322}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: SpeedZone (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3084,7 +3084,7 @@ GameObject:
   - component: {fileID: 1012965290}
   m_Layer: 0
   m_Name: EnemyCar
-  m_TagString: Untagged
+  m_TagString: TeamMoon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4061,7 +4061,7 @@ GameObject:
   - component: {fileID: 1485861122}
   - component: {fileID: 1485861121}
   - component: {fileID: 1485861120}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: SpeedZone (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5043,7 +5043,7 @@ GameObject:
   - component: {fileID: 1880302691}
   - component: {fileID: 1880302690}
   - component: {fileID: 1880302689}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: SpeedZone (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5409,7 +5409,7 @@ GameObject:
   - component: {fileID: 1974216597}
   m_Layer: 0
   m_Name: PlayerCar
-  m_TagString: Untagged
+  m_TagString: TeamSun
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
