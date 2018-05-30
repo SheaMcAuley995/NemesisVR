@@ -61,7 +61,7 @@ public class AiController : MonoBehaviour
             {
                 if(desiredAngle <= 0.001f && desiredAngle >= -0.001f)
                 {
-                    if(Vector3.Angle(transform.forward, (target.transform.position - transform.position).normalized) < 10)
+                    if(Vector3.Angle(transform.forward, (target.transform.position - transform.position).normalized) < 20)
                     {
                         grabBall.ShootBall(shootForce);
                     }
