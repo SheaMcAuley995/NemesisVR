@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class TeamManager : MonoBehaviour {
 
-    //public Dictionary<int, GameObject> TeamSun;
-    //public Dictionary<int, GameObject> TeamMoon;
+    public int capacity;
 
     public List<GameObject> TeamSun;
+    private bool hasBall = false;
     public List<GameObject> TeamMoon;
+
 }

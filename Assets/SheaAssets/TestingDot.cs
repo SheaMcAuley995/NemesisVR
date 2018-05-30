@@ -38,7 +38,10 @@ public class TestingDot : MonoBehaviour {
         desiredRot = (TargetPosition - VehiclePosition).normalized;
         dotProd = Vector3.Dot(transform.right, desiredRot);
         Distance = Vector3.Distance(VehiclePosition, TargetPosition);
-        AngleBetweenObjects = Vector3.Angle(transform.forward, TargetPosition);
+        AngleBetweenObjects = Vector3.Angle(transform.forward, (TargetPosition - transform.position).normalized);
 
+        Debug.DrawLine(transform.position, Target.transform.position);
+        Debug.DrawRay(transform.position, transform.forward * 6,Color.red);
+        Debug.DrawRay(transform.position, transform.forward * -6, Color.blue);
     }
 }

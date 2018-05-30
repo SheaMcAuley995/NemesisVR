@@ -15,7 +15,7 @@ public class AiController : MonoBehaviour
     public float hoverStrength;
 
     private float rotationVelocity;
-    private float groundAngelVelocity;
+  //  private float groundAngelVelocity;
 
     public float maxSteerAngle = 40f;
 
@@ -61,7 +61,15 @@ public class AiController : MonoBehaviour
             {
                 if(desiredAngle <= 0.001f && desiredAngle >= -0.001f)
                 {
-                    grabBall.ShootBall(shootForce);
+                    if(Vector3.Angle(transform.forward, (target.transform.position - transform.position).normalized) < 10)
+                    {
+                        grabBall.ShootBall(shootForce);
+                    }
+                    
+                }
+                if(Vector3.Distance(transform.position, target.transform.position) < 30)
+                {
+
                 }
             }
         }
@@ -75,7 +83,7 @@ public class AiController : MonoBehaviour
         vehicleSteer();
         vehicleHover();
         vehicleMove();
-        vehicleSensor();
+       // vehicleSensor();
     }
 
 
@@ -120,105 +128,106 @@ public class AiController : MonoBehaviour
         {
             vert = newFwd - newSteer;
         }
+        if(newSteer < 0)
+        {
+            vert = newFwd + newSteer;
+        }
         //if (Vector3.Distance(transform.position, target.transform.position) < 10 && !grabBall.holdingBall)
         //{
         //    vert = 0.4f;
         //}
     }
 
-    private void vehicleSensor()
-    {
-        RaycastHit hit;
-        Vector3 sensorStartingpos = transform.position + frontSensorpos;
-        sensorStartingpos += transform.forward * frontSensorpos.z;
-        sensorStartingpos += transform.up * frontSensorpos.y;
-        float avoidMultiplier = 0;
-        bool isAvoiding = false;
-        //front center
-        if (avoidMultiplier == 0)
-        {
-            if (Physics.Raycast(sensorStartingpos, transform.forward, out hit, sensorLength))
-            {
-                if (!hit.collider.CompareTag("Ground"))
-                {
-                    Debug.DrawLine(sensorStartingpos, hit.point);
-                    isAvoiding = true;
-                    if(hit.normal.x < 0)
-                    {
-                        avoidMultiplier = -1;
-                    }
-                    else
-                    {
-                        avoidMultiplier = 1;
-                    }
+    //private void vehicleSensor()
+    //{
+    //    RaycastHit hit;
+    //    Vector3 sensorStartingpos = transform.position + frontSensorpos;
+    //    sensorStartingpos += transform.forward * frontSensorpos.z;
+    //    sensorStartingpos += transform.up * frontSensorpos.y;
+    //    float avoidMultiplier = 0;
+    //    bool isAvoiding = false;
+    //    //front center
+    //    if (avoidMultiplier == 0)
+    //    {
+    //        if (Physics.Raycast(sensorStartingpos, transform.forward, out hit, sensorLength))
+    //        {
+    //            if (!hit.collider.CompareTag("Ground"))
+    //            {
+    //                Debug.DrawLine(sensorStartingpos, hit.point);
+    //                isAvoiding = true;
+    //                if(hit.normal.x < 0)
+    //                {
+    //                    avoidMultiplier = -1;
+    //                }
+    //                else
+    //                {
+    //                    avoidMultiplier = 1;
+    //                }
                     
-                }
+    //            }
                 
-            }
-        }
+    //        }
+    //    }
 
-        //front right
-        sensorStartingpos += transform.right * FrontsideSensorPos;
-        if (Physics.Raycast(sensorStartingpos, transform.forward, out hit, sensorLength))
-        {
-            if (!hit.collider.CompareTag("Ground"))
-            {
-                Debug.DrawLine(sensorStartingpos, hit.point);
-                isAvoiding = true;
-                avoidMultiplier -= 1f;
-            }
+    //    //front right
+    //    sensorStartingpos += transform.right * FrontsideSensorPos;
+    //    if (Physics.Raycast(sensorStartingpos, transform.forward, out hit, sensorLength))
+    //    {
+    //        if (!hit.collider.CompareTag("Ground"))
+    //        {
+    //            Debug.DrawLine(sensorStartingpos, hit.point);
+    //            isAvoiding = true;
+    //            avoidMultiplier -= 1f;
+    //        }
             
-        }
+    //    }
         
 
-        //front right angle
-        if (Physics.Raycast(sensorStartingpos, Quaternion.AngleAxis(30,transform.up) * transform.forward, out hit, sensorLength))
-        {
-            if (!hit.collider.CompareTag("Ground"))
-            {
-                Debug.DrawLine(sensorStartingpos, hit.point);
-                isAvoiding = true;
-                avoidMultiplier -= 0.5f;
-            }
+    //    //front right angle
+    //    if (Physics.Raycast(sensorStartingpos, Quaternion.AngleAxis(30,transform.up) * transform.forward, out hit, sensorLength))
+    //    {
+    //        if (!hit.collider.CompareTag("Ground"))
+    //        {
+    //            Debug.DrawLine(sensorStartingpos, hit.point);
+    //            isAvoiding = true;
+    //            avoidMultiplier -= 0.5f;
+    //        }
             
-        }
+    //    }
 
-        //front left
-        sensorStartingpos -= transform.right * FrontsideSensorPos * 2;
-        if (Physics.Raycast(sensorStartingpos, transform.forward, out hit, sensorLength))
-        {
-            if (!hit.collider.CompareTag("Ground"))
-            {
-                Debug.DrawLine(sensorStartingpos, hit.point);
-                isAvoiding = true;
-                avoidMultiplier += 1f;
-            }
+    //    //front left
+    //    sensorStartingpos -= transform.right * FrontsideSensorPos * 2;
+    //    if (Physics.Raycast(sensorStartingpos, transform.forward, out hit, sensorLength))
+    //    {
+    //        if (!hit.collider.CompareTag("Ground"))
+    //        {
+    //            Debug.DrawLine(sensorStartingpos, hit.point);
+    //            isAvoiding = true;
+    //            avoidMultiplier += 1f;
+    //        }
             
-        }
+    //    }
         
 
-        //front left angle
-        if (Physics.Raycast(sensorStartingpos, Quaternion.AngleAxis(-30, transform.up) * transform.forward, out hit, sensorLength))
-        {
-            if (!hit.collider.CompareTag("Ground"))
-            {
-                Debug.DrawLine(sensorStartingpos, hit.point);
-                isAvoiding = true;
-                avoidMultiplier += 0.5f;
-            }
+    //    //front left angle
+    //    if (Physics.Raycast(sensorStartingpos, Quaternion.AngleAxis(-30, transform.up) * transform.forward, out hit, sensorLength))
+    //    {
+    //        if (!hit.collider.CompareTag("Ground"))
+    //        {
+    //            Debug.DrawLine(sensorStartingpos, hit.point);
+    //            isAvoiding = true;
+    //            avoidMultiplier += 0.5f;
+    //        }
             
-        }
+    //    }
         
-        if(isAvoiding)
-        {
-            horz += avoidMultiplier;
-            //vert += avoidMultiplier;
-        }
-    }
+    //    if(isAvoiding)
+    //    {
+    //        horz += avoidMultiplier;
+    //        //vert += avoidMultiplier;
+    //    }
+    //}
 }
-
-
-
 
 //desiredDir = (target.transform.position - transform.position).normalized;
 //desiredAngle = Vector3.Dot(transform.right, desiredDir);
