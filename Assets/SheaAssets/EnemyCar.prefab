@@ -163,7 +163,7 @@ GameObject:
   - component: {fileID: 4730121589305584}
   m_Layer: 0
   m_Name: BallHoldPos
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -178,8 +178,26 @@ GameObject:
   - component: {fileID: 4725256868416350}
   - component: {fileID: 65015704564910530}
   - component: {fileID: 114848810315341416}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: GrabZone
+  m_TagString: Ground
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1537490119614708
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4715007721400694}
+  - component: {fileID: 20381525723493668}
+  - component: {fileID: 124624216201753148}
+  - component: {fileID: 81422269990773804}
+  m_Layer: 0
+  m_Name: Camera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -280,8 +298,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1395877584857500}
-  m_LocalRotation: {x: 0, y: -0.98035735, z: 0, w: 0.19722971}
-  m_LocalPosition: {x: 9.66, y: 2.7, z: 2.36}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1, y: 2.7, z: -45.44}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4725256868416350}
@@ -290,9 +308,10 @@ Transform:
   - {fileID: 4203329746721148}
   - {fileID: 4558699155673024}
   - {fileID: 4730121589305584}
+  - {fileID: 4715007721400694}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: -157.25, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4337216822766324
 Transform:
   m_ObjectHideFlags: 1
@@ -390,6 +409,19 @@ Transform:
   m_Father: {fileID: 4585879578130294}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!4 &4715007721400694
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1537490119614708}
+  m_LocalRotation: {x: -0.14824966, y: -0.012527404, z: 0.0018780825, w: -0.9888689}
+  m_LocalPosition: {x: -0.25668246, y: 4.6100492, z: -0.99457866}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4257371906835768}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4725256868416350
 Transform:
   m_ObjectHideFlags: 1
@@ -397,7 +429,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1489681537814740}
   m_LocalRotation: {x: -0, y: -0.7071068, z: -0, w: 0.70710677}
-  m_LocalPosition: {x: 0, y: 0.94000006, z: 3.88}
+  m_LocalPosition: {x: 0, y: 0.94000006, z: 2.57}
   m_LocalScale: {x: 2.718757, y: 0.2584265, z: 1.8766636}
   m_Children: []
   m_Father: {fileID: 4257371906835768}
@@ -409,13 +441,49 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1401370731581952}
-  m_LocalRotation: {x: -0.17364825, y: 0, z: 0, w: 0.9848078}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0, y: 1.14, z: 3.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4257371906835768}
   m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: -20, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!20 &20381525723493668
+Camera:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1537490119614708}
+  m_Enabled: 1
+  serializedVersion: 2
+  m_ClearFlags: 1
+  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_NormalizedViewPortRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
+  near clip plane: 0.3
+  far clip plane: 1000
+  field of view: 60
+  orthographic: 0
+  orthographic size: 5
+  m_Depth: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RenderingPath: -1
+  m_TargetTexture: {fileID: 0}
+  m_TargetDisplay: 0
+  m_TargetEye: 3
+  m_HDR: 1
+  m_AllowMSAA: 1
+  m_AllowDynamicResolution: 0
+  m_ForceIntoRT: 0
+  m_OcclusionCulling: 1
+  m_StereoConvergence: 10
+  m_StereoSeparation: 0.022
 --- !u!23 &23026796753981758
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -810,7 +878,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.47, y: 5.07, z: 1.09}
+  m_Size: {x: -1.45, y: 5.07, z: 1.09}
   m_Center: {x: 0, y: -2.35, z: 0.11}
 --- !u!65 &65512666907735482
 BoxCollider:
@@ -848,6 +916,13 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2.74, y: 1.31, z: 2.13}
   m_Center: {x: 0, y: 0.54, z: 0}
+--- !u!81 &81422269990773804
+AudioListener:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1537490119614708}
+  m_Enabled: 1
 --- !u!95 &95228170437220444
 Animator:
   serializedVersion: 3
@@ -910,15 +985,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9353dc695e95e82448e5e6fe86af2582, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  acceleration: 1500
-  turnSpeed: 150
+  acceleration: 1000
+  turnSpeed: 250
   turnRotationAngle: 15
   turnRotationSeekSpeed: 150
   hoverDistance: 4
   hoverStrength: 2000
+  maxSteerAngle: 40
+  InverseTransform: {x: 0, y: 0, z: 0}
+  newSteer: 0
+  newFwd: 0
+  vert: 0
+  horz: 0
   shootForce: 5000
   target: {fileID: 0}
   grabBall: {fileID: 114848810315341416}
+  sensorLength: 15
+  frontSensorpos: {x: 0, y: 0.2, z: 0}
+  FrontsideSensorPos: 1.2
+  frontSensorAngle: 30
 --- !u!114 &114722178608858666
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -930,13 +1015,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c0d2978ff230df4a90c870cf241564c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cube02: {fileID: 0}
-  AngleBetweenObjects: 112.50479
-  dotProd: 9.548303
-  cubePos: {x: 9.66, y: 2.7, z: 2.36}
-  cube02Pos: {x: 39.2, y: 4.08, z: -0.08}
-  desiredRot: {x: 0.9955276, y: 0.046507377, z: -0.08223044}
-  Distance: 29.672709
+  Target: {fileID: 0}
+  VehiclePosition: {x: 1, y: 2.7, z: -45.44}
+  TargetPosition: {x: 46.52, y: 4.08, z: 11.85}
+  desiredRot: {x: 0.6219811, y: 0.01885619, z: 0.78280526}
+  AngleBetweenObjects: 75.761444
+  dotProd: 0.6219811
+  Distance: 73.18551
+  InverseTransform: {x: 45.52, y: 1.3799999, z: 57.29}
+  newSteer: 0.6219811
+  newFwd: 0.78280526
 --- !u!114 &114848810315341416
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -949,3 +1037,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ballHoldPos: {fileID: 4730121589305584}
+--- !u!124 &124624216201753148
+Behaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1537490119614708}
+  m_Enabled: 1

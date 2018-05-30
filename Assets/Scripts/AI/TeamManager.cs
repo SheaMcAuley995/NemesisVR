@@ -4,9 +4,13 @@ using UnityEngine;
 
 public class TeamManager : MonoBehaviour {
 
-    //public Dictionary<int, GameObject> TeamSun;
-    //public Dictionary<int, GameObject> TeamMoon;
+    public int capacity;
 
     public List<GameObject> TeamSun;
     public List<GameObject> TeamMoon;
+
+    private void Awake()
+    {
+        TeamSun.Capacity = capacity;
+    }
 }

@@ -9,6 +9,8 @@ TagManager:
   - Ball
   - Goal
   - Ground
+  - TeamSun
+  - TeamMoon
   layers:
   - Default
   - TransparentFX
