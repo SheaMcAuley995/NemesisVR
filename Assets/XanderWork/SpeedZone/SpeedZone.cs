@@ -15,7 +15,15 @@ public class SpeedZone : MonoBehaviour
     {
         foreach(Rigidbody b in bodies)
         {
-            b.AddForce(transform.forward * force);
+            float angle = Vector3.Angle(b.velocity.normalized, transform.forward);
+            if(angle < 90)
+            {
+                b.AddForce(transform.forward * force);
+            }
+            else
+            {
+                b.AddForce(-transform.forward * force);
+            }
         }
     }
 
