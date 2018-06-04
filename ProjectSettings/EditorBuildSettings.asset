@@ -4,4 +4,10 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/XanderWork/MainMenu/MenuScene.unity
+    guid: 31f54ceacaab7cb4e88497bd24b469f2
+  - enabled: 1
+    path: Assets/XanderWork/XanderScene.unity
+    guid: 4fb4d72fb0bf24d45b2c9b5b1a43729f

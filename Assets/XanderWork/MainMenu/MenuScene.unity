@@ -415,9 +415,11 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 637494524}
+  - component: {fileID: 637494526}
   - component: {fileID: 637494523}
   - component: {fileID: 637494522}
   - component: {fileID: 637494521}
+  - component: {fileID: 637494525}
   m_Layer: 0
   m_Name: GameStart
   m_TagString: Untagged
@@ -491,6 +493,33 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &637494525
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 637494520}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b93b6a877adcbf94c89a9d6e0c0e844d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &637494526
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 637494520}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d965e5d3e0dd6948becf80defa0c32a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameSceneName: XanderScene
+  renderer: {fileID: 637494521}
+  normalMat: {fileID: 2100000, guid: 30f490a70b6731c4e9343bf66c395236, type: 2}
+  touchingMat: {fileID: 2100000, guid: 8ac5356a7e16c6c42abf2545a8cd9bcf, type: 2}
+  holdingMat: {fileID: 2100000, guid: d7326c6ee8201b248be72275dc62d212, type: 2}
 --- !u!1 &991745914
 GameObject:
   m_ObjectHideFlags: 0
