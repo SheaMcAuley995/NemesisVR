@@ -25,6 +25,15 @@ namespace Valve.VR.InteractionSystem
         private void Start()
         {
             renderer.material = normalMat;
+
+            if(SceneBridge.Instance.spellPrefab != null)
+            {
+                spellPrefab = SceneBridge.Instance.spellPrefab;
+            }
+            if(SceneBridge.Instance.staffSpellEffectPrefab != null)
+            {
+                staffSpellEffectPrefab = SceneBridge.Instance.staffSpellEffectPrefab;
+            }
         }
 
         private void OnTriggerEnter(Collider other)
