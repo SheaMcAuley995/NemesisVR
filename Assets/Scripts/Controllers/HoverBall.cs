@@ -22,6 +22,8 @@ public class HoverBall : MonoBehaviour {
 
     #endregion
 
+    public static bool isEquipped;
+
     public float hoverDistance;
     public float hoverStrength;
 
