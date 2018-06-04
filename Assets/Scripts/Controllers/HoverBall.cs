@@ -57,6 +57,10 @@ public class HoverBall : MonoBehaviour {
         {
             ballHover();
         }
+        if(transform.position.y < -18)
+        {
+            transform.position = resetPos.position;
+        }
     }
 
     void ballHover()

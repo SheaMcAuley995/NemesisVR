@@ -34,7 +34,7 @@ public class AiController : MonoBehaviour
     Vector3 desiredDir;
     Rigidbody rb; 
     public GrabBall grabBall;
-
+    public GameObject myGoal;
     float desiredAngle;
     float currentDistance;
 
@@ -59,12 +59,12 @@ public class AiController : MonoBehaviour
 
         if (grabBall.holdingBall)
         {
-            target = GameObject.FindGameObjectWithTag("Goal");
+            target = myGoal;
             if(Vector3.Distance(transform.position,target.transform.position) < 80)
             {
                 if(desiredAngle <= 0.001f && desiredAngle >= -0.001f)
                 {
-                    if(Vector3.Angle(transform.forward, (target.transform.position - transform.position).normalized) < 15)
+                    if(Vector3.Angle(transform.forward, (target.transform.position - transform.position).normalized) < 12)
                     {
                         grabBall.ShootBall(shootForce);
                     }
@@ -88,8 +88,9 @@ public class AiController : MonoBehaviour
     {
         vehicleSteer();
         vehicleHover();
-        vehicleMove();
         vehicleSensor();
+        vehicleMove();
+        
     }
 
 
@@ -137,9 +138,9 @@ public class AiController : MonoBehaviour
         {
             vert = newFwd + newSteer;
         }
-        if (Vector3.Angle(transform.forward, (target.transform.position - transform.position).normalized) < 5)
+        if (Vector3.Distance(transform.position, target.transform.position) < 20)
         {
-            horz *= 2;
+           horz *= 19 - Vector3.Distance(transform.position, target.transform.position);
         }
     }
 
@@ -162,17 +163,18 @@ public class AiController : MonoBehaviour
                     isAvoiding = true;
                     if(hit.normal.x < 0)
                     {
-                        avoidMultiplier = -1;
+                        vert *= -0.5f;
                     }
                     else
                     {
-                        avoidMultiplier = 1;
+                        vert *= 1;
                     }
                   
                 }
               
             }
         }
+
 
         //front right
         sensorStartingpos += transform.right * FrontsideSensorPos;
@@ -184,12 +186,12 @@ public class AiController : MonoBehaviour
                 isAvoiding = true;
                 avoidMultiplier -= 1f;
             }
-          
+
         }
-      
+
 
         //front right angle
-        if (Physics.Raycast(sensorStartingpos, Quaternion.AngleAxis(30,transform.up) * transform.forward, out hit, sensorLength))
+        if (Physics.Raycast(sensorStartingpos, Quaternion.AngleAxis(30, transform.up) * transform.forward, out hit, sensorLength))
         {
             if (!hit.collider.CompareTag("Ground"))
             {
@@ -197,7 +199,7 @@ public class AiController : MonoBehaviour
                 isAvoiding = true;
                 avoidMultiplier -= 0.5f;
             }
-          
+
         }
 
         //front left
@@ -210,9 +212,9 @@ public class AiController : MonoBehaviour
                 isAvoiding = true;
                 avoidMultiplier += 1f;
             }
-          
+
         }
-      
+
 
         //front left angle
         if (Physics.Raycast(sensorStartingpos, Quaternion.AngleAxis(-30, transform.up) * transform.forward, out hit, sensorLength))
@@ -223,10 +225,9 @@ public class AiController : MonoBehaviour
                 isAvoiding = true;
                 avoidMultiplier += 0.5f;
             }
-          
+
         }
-      
-        if(isAvoiding)
+        if (isAvoiding)
         {
             horz += avoidMultiplier;
             //vert += avoidMultiplier;
