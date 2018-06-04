@@ -19,7 +19,7 @@ public class ReleaseBallSpell : SpellAbstract {
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.tag == targetTag)
+        if(other.tag == enemyTeamTag)
         {
             other.transform.GetComponentInChildren<GrabBall>().ShootBall(releaseShootForce);
             Remove();

@@ -12,7 +12,8 @@ namespace Valve.VR.InteractionSystem
         public Transform spellEffectObj = null;
         public bool spellShootDebounce = true;
 
-        private string targetTeamTag;
+        private string enemyTeamTag;
+        private string allyTeamTag;
 
 
 
@@ -20,11 +21,13 @@ namespace Valve.VR.InteractionSystem
         {
             if (transform.parent.parent.parent.parent.parent.tag == "TeamSun")
             {
-                targetTeamTag = "TeamMoon";
+                enemyTeamTag = "TeamMoon";
+                allyTeamTag = "TeamSun";
             }
             else
             {
-                targetTeamTag = "TeamSun";
+                enemyTeamTag = "TeamSun";
+                allyTeamTag = "TeamMoon";
             }
         }
 
@@ -40,7 +43,8 @@ namespace Valve.VR.InteractionSystem
                     spell.transform.position = transform.position;
                     spell.transform.rotation = transform.rotation;
                     SpellAbstract script = spell.GetComponent<SpellAbstract>();
-                    script.targetTag = targetTeamTag;
+                    script.enemyTeamTag = enemyTeamTag;
+                    script.allyTeamTag = allyTeamTag;
                     script.Shoot();
                     spell.GetComponent<Rigidbody>().AddForce(spellEffectObj.forward * spellShootForce);
                     spellPrefab = null;

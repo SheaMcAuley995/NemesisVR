@@ -4,7 +4,8 @@ using UnityEngine;
 
 public abstract class SpellAbstract : MonoBehaviour {
 
-    public string targetTag;
+    public string enemyTeamTag;
+    public string allyTeamTag;
 
 
 
