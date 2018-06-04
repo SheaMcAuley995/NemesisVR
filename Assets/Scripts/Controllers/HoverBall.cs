@@ -22,6 +22,8 @@ public class HoverBall : MonoBehaviour {
 
     #endregion
 
+    public static bool isEquipped;
+
     public float hoverDistance;
     public float hoverStrength;
 
@@ -54,6 +56,10 @@ public class HoverBall : MonoBehaviour {
         else
         {
             ballHover();
+        }
+        if(transform.position.y < -18)
+        {
+            transform.position = resetPos.position;
         }
     }
 
