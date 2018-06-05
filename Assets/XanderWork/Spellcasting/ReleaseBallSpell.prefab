@@ -111,7 +111,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5fc5eea65fe62c4ab32cef214380c39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetTag: 
+  enemyTeamTag: 
+  allyTeamTag: 
+  releaseShootForce: 1000
 --- !u!135 &135407808450359712
 SphereCollider:
   m_ObjectHideFlags: 1

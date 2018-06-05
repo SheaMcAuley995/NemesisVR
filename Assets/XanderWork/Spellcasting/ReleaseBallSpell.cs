@@ -5,7 +5,7 @@ using UnityEngine;
 public class ReleaseBallSpell : SpellAbstract {
 
     private float lifetime = 10.0f;
-    private float releaseShootForce = 10000.0f;
+    public float releaseShootForce = 10000.0f;
 
     public override void Shoot()
     {
