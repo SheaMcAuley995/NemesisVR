@@ -89,7 +89,7 @@ public class AiController : MonoBehaviour
         vehicleSteer();
         vehicleHover();
         vehicleSensor();
-        vehicleMove();
+
         
     }
 
@@ -163,15 +163,15 @@ public class AiController : MonoBehaviour
                     isAvoiding = true;
                     if(hit.normal.x < 0)
                     {
-                        vert *= -0.5f;
+                        vert = -0.5f;
                     }
                     else
                     {
-                        vert *= 1;
+                        vert = 1;
                     }
                   
                 }
-              
+                Debug.DrawLine(sensorStartingpos, hit.point);
             }
         }
 
@@ -182,11 +182,11 @@ public class AiController : MonoBehaviour
         {
             if (!hit.collider.CompareTag("Ground"))
             {
-                Debug.DrawLine(sensorStartingpos, hit.point);
+                
                 isAvoiding = true;
                 avoidMultiplier -= 1f;
             }
-
+            Debug.DrawLine(sensorStartingpos, hit.point);
         }
 
 
@@ -199,7 +199,7 @@ public class AiController : MonoBehaviour
                 isAvoiding = true;
                 avoidMultiplier -= 0.5f;
             }
-
+            Debug.DrawLine(sensorStartingpos, hit.point);
         }
 
         //front left
@@ -212,7 +212,7 @@ public class AiController : MonoBehaviour
                 isAvoiding = true;
                 avoidMultiplier += 1f;
             }
-
+            Debug.DrawLine(sensorStartingpos, hit.point);
         }
 
 
@@ -225,12 +225,16 @@ public class AiController : MonoBehaviour
                 isAvoiding = true;
                 avoidMultiplier += 0.5f;
             }
-
+            Debug.DrawLine(sensorStartingpos, hit.point);
         }
         if (isAvoiding)
         {
-            horz += avoidMultiplier;
+            horz += 1 +  avoidMultiplier;
             //vert += avoidMultiplier;
+        }
+        else
+        {
+            vehicleMove();
         }
     }
 }

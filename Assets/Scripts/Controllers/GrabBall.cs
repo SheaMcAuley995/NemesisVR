@@ -5,7 +5,7 @@ using UnityEngine;
 public class GrabBall : MonoBehaviour {
 
     public Transform ballHoldPos;
-
+    TeamManager tm;
     public bool holdingBall { get; private set; }
 
     private void Start()
@@ -15,6 +15,7 @@ public class GrabBall : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
+        
         if(other.tag == "Ball")
         {
             HoverBall.Instance.HoverToPos = ballHoldPos;

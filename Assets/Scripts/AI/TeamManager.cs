@@ -2,12 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class TeamManager : MonoBehaviour {
+    public enum TeamBall { Moon, Sun, NoTeam };
 
     public int capacity;
 
-    public List<GameObject> TeamSun;
+    
+
+    public static List<GameObject> TeamSun;
     private bool hasBall = false;
-    public List<GameObject> TeamMoon;
+    public static List<GameObject> TeamMoon;
 
 }
