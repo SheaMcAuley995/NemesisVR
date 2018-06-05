@@ -5728,7 +5728,7 @@ GameObject:
   - component: {fileID: 482757544}
   - component: {fileID: 482757543}
   - component: {fileID: 482757542}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: MoonPostObj
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6418,7 +6418,8 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 576168888}
-  m_Layer: 0
+  - component: {fileID: 576168889}
+  m_Layer: 13
   m_Name: HeadRig
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6449,6 +6450,18 @@ Transform:
   m_Father: {fileID: 2043681726}
   m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &576168889
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 576168887}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.8
+  m_Center: {x: 0, y: 0, z: 0.1}
 --- !u!1 &580485131
 GameObject:
   m_ObjectHideFlags: 0
@@ -7026,6 +7039,7 @@ GameObject:
   - component: {fileID: 645843697}
   - component: {fileID: 645843699}
   - component: {fileID: 645843698}
+  - component: {fileID: 645843700}
   m_Layer: 0
   m_Name: exteriorshell2
   m_TagString: Untagged
@@ -7090,6 +7104,19 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 645843696}
   m_Mesh: {fileID: 4300044, guid: 88987a9980bc5504fbeb87cb04be1e5e, type: 3}
+--- !u!136 &645843700
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 645843696}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.01
+  m_Height: 0.035
+  m_Direction: 2
+  m_Center: {x: 0, y: -0.008589396, z: -0.017306693}
 --- !u!1 &655881064
 GameObject:
   m_ObjectHideFlags: 0
@@ -8795,7 +8822,7 @@ Prefab:
       objectReference: {fileID: 2100000, guid: 69e1e3f5a401540409bee7772ca7b3fa, type: 2}
     - target: {fileID: 100002, guid: 29cbad912afc58d45bbcdb1c460e3cdc, type: 3}
       propertyPath: m_Layer
-      value: 8
+      value: 12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 29cbad912afc58d45bbcdb1c460e3cdc, type: 3}
@@ -11722,7 +11749,7 @@ Prefab:
       objectReference: {fileID: 2100000, guid: 69e1e3f5a401540409bee7772ca7b3fa, type: 2}
     - target: {fileID: 100000, guid: 97931c269b2214f4a89f085c8a94950e, type: 3}
       propertyPath: m_Layer
-      value: 8
+      value: 12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 97931c269b2214f4a89f085c8a94950e, type: 3}
@@ -12144,7 +12171,8 @@ GameObject:
   - component: {fileID: 1992078557}
   - component: {fileID: 1992078559}
   - component: {fileID: 1992078558}
-  m_Layer: 0
+  - component: {fileID: 1992078560}
+  m_Layer: 13
   m_Name: exterior_shell1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12208,6 +12236,19 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1992078556}
   m_Mesh: {fileID: 4300042, guid: 88987a9980bc5504fbeb87cb04be1e5e, type: 3}
+--- !u!136 &1992078560
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1992078556}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.01
+  m_Height: 0.035
+  m_Direction: 2
+  m_Center: {x: 0, y: -0.008589396, z: -0.017306693}
 --- !u!1 &1992582850
 GameObject:
   m_ObjectHideFlags: 0
@@ -12289,7 +12330,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcade8d69cce7e24e8031f64ef96450b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  capacity: 0
   AIBeetles:
   - {fileID: 598791038}
   SunSpawn: []
@@ -12321,7 +12361,7 @@ GameObject:
   - component: {fileID: 2008500163}
   - component: {fileID: 2008500162}
   - component: {fileID: 2008500161}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: SunPostObj
   m_TagString: Untagged
   m_Icon: {fileID: 0}
