@@ -852,7 +852,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1512099831883104}
   m_LocalRotation: {x: -0.00000062325853, y: -0.2147785, z: 0.000024540874, w: 0.9766629}
-  m_LocalPosition: {x: 40.77, y: -1.7, z: 83.63}
+  m_LocalPosition: {x: 33.9, y: 3.3, z: 76.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4243689836738580}
@@ -1000,13 +1000,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1482437730906504}
-  m_LocalRotation: {x: -0.11762413, y: 0, z: 0, w: 0.9930582}
-  m_LocalPosition: {x: 0, y: 1.46, z: 2.38}
+  m_LocalRotation: {x: -0.16100103, y: 0, z: 0, w: 0.9869543}
+  m_LocalPosition: {x: 0, y: 0.9, z: 3.36}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4342496957541808}
   m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: -13.51, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -18.53, y: 0, z: 0}
 --- !u!4 &4574547578082504
 Transform:
   m_ObjectHideFlags: 1
@@ -2759,21 +2759,21 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1512099831883104}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2c0d2978ff230df4a90c870cf241564c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Target: {fileID: 0}
-  VehiclePosition: {x: 40.77, y: -1.7, z: 83.63}
+  VehiclePosition: {x: 33.9, y: 3.3, z: 76.4}
   TargetPosition: {x: 58.4, y: -19.98, z: -37.9}
   desiredRot: {x: 0.14199969, y: -0.14723505, z: -0.97885543}
   AngleBetweenObjects: 161.46304
   dotProd: -0.28176975
   Distance: 124.155205
-  InverseTransform: {x: -34.983185, y: -18.279411, z: -117.71388}
-  newSteer: -0.28176975
-  newFwd: -0.9481187
+  InverseTransform: {x: -25.714031, y: -23.279821, z: -114.03305}
+  newSteer: -0.21573648
+  newFwd: -0.95671844
 --- !u!136 &136693715897354188
 CapsuleCollider:
   m_ObjectHideFlags: 1
