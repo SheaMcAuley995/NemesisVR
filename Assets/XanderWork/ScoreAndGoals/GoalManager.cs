@@ -41,6 +41,11 @@ public class GoalManager : MonoBehaviour {
         sunPostMoveTo = sunPost.position;
         moonPostMoveTo = moonPost.position;
 
+        
+    }
+
+    private void Start()
+    {
         sunPostMoveIncrement = (sunPostEnd.position - sunPost.position).normalized *
                                   (Vector3.Distance(sunPost.position, sunPostEnd.position)
                                    / ScoreManager.Instance.scoreToWin);
