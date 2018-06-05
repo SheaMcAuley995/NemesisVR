@@ -18,14 +18,17 @@ namespace Valve.VR.InteractionSystem
         public Material holdingMat;
 
         public float fadeToBlackDuration;
+        public TeamManager.TeamBall team;
 
         private int handsIn = 0;
+        private static bool startingGame = false;
 
 
 
         private void Start()
         {
             renderer.material = normalMat;
+            startingGame = false;
         }
 
         private void OnHandHoverBegin(Hand hand)
@@ -45,9 +48,11 @@ namespace Valve.VR.InteractionSystem
 
         private void HandHoverUpdate(Hand hand)
         {
-            if (hand.GetStandardInteractionButtonDown())
+            if (hand.GetStandardInteractionButtonDown() && !startingGame)
             {
+                startingGame = true;
                 renderer.material = holdingMat;
+                SceneBridge.Instance.playerTeam = team;
                 SteamVR_Fade.Start(Color.black, fadeToBlackDuration);
                 Invoke("GoToMenu", fadeToBlackDuration);
             }

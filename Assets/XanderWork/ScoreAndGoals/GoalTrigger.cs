@@ -60,7 +60,14 @@ public class GoalTrigger : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
-        MoonGoalTrigger(other);
+        if(TeamManager.ballStatus == TeamManager.TeamBall.Moon)
+        {
+            MoonGoalTrigger(other);
+        }
+        else if (TeamManager.ballStatus == TeamManager.TeamBall.Sun)
+        {
+            SunGoalTrigger(other);
+        }
     }
 
     public void SunGoalTrigger(Collider other)

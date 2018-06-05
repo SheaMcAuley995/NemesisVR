@@ -34,6 +34,15 @@ public class VehicleController : MonoBehaviour {
     private void Start()
     {
         headRotDefault = beetleHead.localEulerAngles;
+
+        if(SceneBridge.Instance.playerTeam == TeamManager.TeamBall.Moon)
+        {
+            tag = "TeamMoon";
+        }
+        else
+        {
+            tag = "TeamSun";
+        }
     }
 
     public void Update()
