@@ -38,6 +38,7 @@ public class AiController : MonoBehaviour
     float desiredAngle;
     float currentDistance;
 
+    public LayerMask obstical;
 
     public float sensorLength = 10f;
     public Vector3 frontSensorpos = new Vector3(0,0.2f,0);
@@ -155,7 +156,7 @@ public class AiController : MonoBehaviour
         //front center
         if (avoidMultiplier == 0)
         {
-            if (Physics.Raycast(sensorStartingpos, transform.forward, out hit, sensorLength))
+            if (Physics.Raycast(sensorStartingpos, transform.forward, out hit, sensorLength, obstical))
             {
                 if (!hit.collider.CompareTag("Ground"))
                 {
@@ -178,7 +179,7 @@ public class AiController : MonoBehaviour
 
         //front right
         sensorStartingpos += transform.right * FrontsideSensorPos;
-        if (Physics.Raycast(sensorStartingpos, transform.forward, out hit, sensorLength))
+        if (Physics.Raycast(sensorStartingpos, transform.forward, out hit, sensorLength, obstical))
         {
             if (!hit.collider.CompareTag("Ground"))
             {
@@ -191,7 +192,7 @@ public class AiController : MonoBehaviour
 
 
         //front right angle
-        if (Physics.Raycast(sensorStartingpos, Quaternion.AngleAxis(30, transform.up) * transform.forward, out hit, sensorLength))
+        if (Physics.Raycast(sensorStartingpos, Quaternion.AngleAxis(30, transform.up) * transform.forward, out hit, sensorLength, obstical))
         {
             if (!hit.collider.CompareTag("Ground"))
             {
@@ -204,7 +205,7 @@ public class AiController : MonoBehaviour
 
         //front left
         sensorStartingpos -= transform.right * FrontsideSensorPos * 2;
-        if (Physics.Raycast(sensorStartingpos, transform.forward, out hit, sensorLength))
+        if (Physics.Raycast(sensorStartingpos, transform.forward, out hit, sensorLength, obstical))
         {
             if (!hit.collider.CompareTag("Ground"))
             {
@@ -217,7 +218,7 @@ public class AiController : MonoBehaviour
 
 
         //front left angle
-        if (Physics.Raycast(sensorStartingpos, Quaternion.AngleAxis(-30, transform.up) * transform.forward, out hit, sensorLength))
+        if (Physics.Raycast(sensorStartingpos, Quaternion.AngleAxis(-30, transform.up) * transform.forward, out hit, sensorLength, obstical))
         {
             if (!hit.collider.CompareTag("Ground"))
             {

@@ -2717,6 +2717,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9353dc695e95e82448e5e6fe86af2582, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  myTeam: 0
   acceleration: 1000
   turnSpeed: 250
   turnRotationAngle: 15
@@ -2733,6 +2734,9 @@ MonoBehaviour:
   target: {fileID: 0}
   grabBall: {fileID: 114593290805966372}
   myGoal: {fileID: 0}
+  obstical:
+    serializedVersion: 2
+    m_Bits: 4096
   sensorLength: 15
   frontSensorpos: {x: 0, y: 0.2, z: 0}
   FrontsideSensorPos: 1.2

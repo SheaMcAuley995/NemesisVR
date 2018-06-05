@@ -6,7 +6,7 @@ using UnityEngine;
 public class TeamManager : MonoBehaviour {
     public enum TeamBall { Moon, Sun, NoTeam };
 
-    public int capacity;
+    //public int capacity;
     private bool hasBall = false;
     public static TeamBall ballStatus;
     public AiController[] AIBeetles;
