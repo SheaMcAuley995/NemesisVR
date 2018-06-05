@@ -7,10 +7,11 @@ public class GrabBall : MonoBehaviour {
     public Transform ballHoldPos;
     TeamManager tm;
     public bool holdingBall { get; private set; }
+    
 
     private void Start()
     {
-        holdingBall = false;
+            holdingBall = false;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -25,11 +26,22 @@ public class GrabBall : MonoBehaviour {
 
     public void ShootBall(float force)
     {
-        if(holdingBall)
+        if (holdingBall)
         {
+            if (transform.parent != null && transform.parent.tag == "TeamMoon")
+            {
+                TeamManager.ballStatus = TeamManager.TeamBall.Moon;
+            }
+            if (transform.parent != null && transform.parent.tag == "TeamSun")
+            {
+                TeamManager.ballStatus = TeamManager.TeamBall.Sun;
+            }
+
             holdingBall = false;
             HoverBall.Instance.HoverToPos = null;
             HoverBall.Instance.rb.AddForce(HoverBall.Instance.transform.forward * force);
+
+            Debug.Log(TeamManager.ballStatus);
         }
     }
 
