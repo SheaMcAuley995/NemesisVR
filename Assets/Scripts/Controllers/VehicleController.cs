@@ -60,7 +60,14 @@ public class VehicleController : MonoBehaviour {
         vehicleHover();
         vehicleMove();
     }
-    
+
+    private void LateUpdate()
+    {
+        transform.eulerAngles -= Vector3.right * transform.eulerAngles.x;
+        transform.eulerAngles -= Vector3.forward * transform.eulerAngles.z;
+    }
+
+
 
     private void vehicleHover()
     {

@@ -32,6 +32,16 @@ public class ScepterClang : MonoBehaviour {
         lastHeadPos = beetlePos.InverseTransformPoint(headPos.position);
     }
 
+    //private void OnTriggerEnter(Collider other)
+    //{
+    //    if ((other.gameObject.layer == LayerMask.NameToLayer("ScepterHittable")
+    //        || other.gameObject.layer == LayerMask.NameToLayer("Scepters"))
+    //    && headOffset.magnitude >= speedThreshold)
+    //    {
+    //        audio.PlayOneShot(audio.clip, headOffset.magnitude * volume);
+    //    }
+    //}
+
     private void OnCollisionEnter(Collision collision)
     {
         if(headOffset.magnitude >= speedThreshold)
