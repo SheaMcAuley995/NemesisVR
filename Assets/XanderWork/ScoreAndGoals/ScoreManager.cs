@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ScoreManager : MonoBehaviour {
 
@@ -37,6 +38,11 @@ public class ScoreManager : MonoBehaviour {
     public OnScoreIncrease onScoreSunIncrease;
     public OnScoreIncrease onScoreMoonIncrease;
 
+    public float fadeToBlackDuration;
+    public string menuSceneName;
+
+    private bool gameOver = false;
+
 
 
 
@@ -62,6 +68,21 @@ public class ScoreManager : MonoBehaviour {
         {
             onScoreMoonIncrease(scoreMoon);
         }
+    }
+
+    public void CheckGameOver()
+    {
+        if(!gameOver && scoreSun >= scoreToWin || scoreMoon >= scoreToWin)
+        {
+            gameOver = true;
+            SteamVR_Fade.Start(Color.black, fadeToBlackDuration);
+            Invoke("GoToMenu", fadeToBlackDuration);
+        }
+    }
+
+    private void GoToMenu()
+    {
+        SceneManager.LoadSceneAsync(menuSceneName);
     }
 
 }

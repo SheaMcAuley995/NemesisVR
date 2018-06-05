@@ -1385,6 +1385,7 @@ Prefab:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114000011983135080, guid: dc06161b6d97feb419f45f03b62e14b9, type: 2}
+    - {fileID: 114000012530188460, guid: dc06161b6d97feb419f45f03b62e14b9, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: dc06161b6d97feb419f45f03b62e14b9, type: 2}
   m_IsPrefabParent: 0
 --- !u!4 &609943666 stripped
@@ -1407,6 +1408,41 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 609943665}
   m_Script: {fileID: 11500000, guid: 29e3e4511966ba94d8ba0b98c6c62f82, type: 3}
+--- !u!4 &609943670 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 429506, guid: dc06161b6d97feb419f45f03b62e14b9, type: 2}
+  m_PrefabInternal: {fileID: 609943665}
+--- !u!1 &609943671 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 125964, guid: dc06161b6d97feb419f45f03b62e14b9, type: 2}
+  m_PrefabInternal: {fileID: 609943665}
+--- !u!114 &609943672
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 609943671}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6bca9ccf900ccc84c887d783321d27e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _head: {fileID: 609943670}
+  _ears: {fileID: 0}
+  wireframe: 0
+--- !u!114 &609943673
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 609943671}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f7cbbb18f7d4204d94010db20471533, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fadeDuration: 5
+  waitToFade: 3
 --- !u!1 &631789883
 GameObject:
   m_ObjectHideFlags: 0
@@ -1595,6 +1631,7 @@ MonoBehaviour:
   normalMat: {fileID: 2100000, guid: 30f490a70b6731c4e9343bf66c395236, type: 2}
   touchingMat: {fileID: 2100000, guid: 8ac5356a7e16c6c42abf2545a8cd9bcf, type: 2}
   holdingMat: {fileID: 2100000, guid: d7326c6ee8201b248be72275dc62d212, type: 2}
+  fadeToBlackDuration: 5
 --- !u!1 &656970431
 GameObject:
   m_ObjectHideFlags: 0

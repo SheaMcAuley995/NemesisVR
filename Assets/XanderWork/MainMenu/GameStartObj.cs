@@ -17,6 +17,8 @@ namespace Valve.VR.InteractionSystem
         public Material touchingMat;
         public Material holdingMat;
 
+        public float fadeToBlackDuration;
+
         private int handsIn = 0;
 
 
@@ -46,8 +48,14 @@ namespace Valve.VR.InteractionSystem
             if (hand.GetStandardInteractionButtonDown())
             {
                 renderer.material = holdingMat;
-                SceneManager.LoadSceneAsync(gameSceneName);
+                SteamVR_Fade.Start(Color.black, fadeToBlackDuration);
+                Invoke("GoToMenu", fadeToBlackDuration);
             }
+        }
+
+        private void GoToMenu()
+        {
+            SceneManager.LoadSceneAsync(gameSceneName);
         }
 
     }

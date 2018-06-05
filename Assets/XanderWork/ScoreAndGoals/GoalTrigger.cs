@@ -43,11 +43,24 @@ public class GoalTrigger : MonoBehaviour {
         if (Vector3.Distance(sunPost.position, sunPostMoveTo) > postMoveSpeed)
         {
             sunPost.position += (sunPostMoveTo - sunPost.position).normalized * postMoveSpeed * Time.deltaTime;
+            if(!(Vector3.Distance(sunPost.position, sunPostMoveTo) > postMoveSpeed))
+            {
+                ScoreManager.Instance.CheckGameOver();
+            }
         }
         if (Vector3.Distance(moonPost.position, moonPostMoveTo) > postMoveSpeed)
         {
             moonPost.position += (moonPostMoveTo - moonPost.position).normalized * postMoveSpeed * Time.deltaTime;
+            if(!(Vector3.Distance(moonPost.position, moonPostMoveTo) > postMoveSpeed))
+            {
+                ScoreManager.Instance.CheckGameOver();
+            }
         }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        MoonGoalTrigger(other);
     }
 
     public void SunGoalTrigger(Collider other)
