@@ -2,16 +2,77 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+
 public class GoalTrigger : MonoBehaviour {
 
-    public delegate void GoalTriggered(Collider other);
-    public GoalTriggered goalTriggered;
+    public int scorePerGoal = 1;
 
-    private void OnTriggerEnter(Collider other)
+    public Transform sunPost;
+    public Transform moonPost;
+    public Transform sunPostEnd;
+    public Transform moonPostEnd;
+
+    public float postMoveSpeed;
+
+    private Vector3 sunPostMoveTo;
+    private Vector3 moonPostMoveTo;
+    private Vector3 sunPostMoveIncrement;
+    private Vector3 moonPostMoveIncrement;
+
+
+
+    private void Awake()
     {
-        if(goalTriggered != null)
+        sunPostMoveTo = sunPost.position;
+        moonPostMoveTo = moonPost.position;
+    }
+
+    private void Start()
+    {
+        sunPostMoveIncrement = (sunPostEnd.position - sunPost.position).normalized *
+                                  (Vector3.Distance(sunPost.position, sunPostEnd.position)
+                                   / ScoreManager.Instance.scoreToWin);
+        moonPostMoveIncrement = (moonPostEnd.position - moonPost.position).normalized *
+                                  (Vector3.Distance(moonPost.position, moonPostEnd.position)
+                                   / ScoreManager.Instance.scoreToWin);
+    }
+
+    private void Update()
+    {
+        if (Vector3.Distance(sunPost.position, sunPostMoveTo) > postMoveSpeed)
         {
-            goalTriggered(other);
+            sunPost.position += (sunPostMoveTo - sunPost.position).normalized * postMoveSpeed * Time.deltaTime;
+        }
+        if (Vector3.Distance(moonPost.position, moonPostMoveTo) > postMoveSpeed)
+        {
+            moonPost.position += (moonPostMoveTo - moonPost.position).normalized * postMoveSpeed * Time.deltaTime;
+        }
+    }
+
+    public void SunGoalTrigger(Collider other)
+    {
+        if (other.tag == "Ball")
+        {
+            HoverBall.Instance.ballReset();
+            if (ScoreManager.Instance.ScoreSun < ScoreManager.Instance.scoreToWin)
+            {
+                sunPostMoveTo += sunPostMoveIncrement;
+            }
+            ScoreManager.Instance.AddScoreSun(scorePerGoal);
+        }
+    }
+
+    public void MoonGoalTrigger(Collider other)
+    {
+        if (other.tag == "Ball")
+        {
+            HoverBall.Instance.ballReset();
+            if (ScoreManager.Instance.ScoreMoon < ScoreManager.Instance.scoreToWin)
+            {
+                moonPostMoveTo += moonPostMoveIncrement;
+            }
+            ScoreManager.Instance.AddScoreMoon(scorePerGoal);
         }
     }
 
