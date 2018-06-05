@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AiController : MonoBehaviour
 {
-
+    public TeamManager.TeamBall myTeam;
 //    List
 
     public float acceleration;

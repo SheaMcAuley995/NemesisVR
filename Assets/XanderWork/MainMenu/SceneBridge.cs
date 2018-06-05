@@ -21,5 +21,6 @@ public class SceneBridge {
 
     public GameObject spellPrefab;
     public GameObject staffSpellEffectPrefab;
+    public TeamManager.TeamBall playerTeam;
 
 }
