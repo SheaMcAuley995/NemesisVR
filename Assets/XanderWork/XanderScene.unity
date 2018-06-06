@@ -1641,8 +1641,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 369340724}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 95.99, y: 19.8, z: 14.2}
+  m_LocalRotation: {x: 0.0449145, y: 0.75974023, z: -0.052786347, w: 0.6465223}
+  m_LocalPosition: {x: -158.51892, y: 23.577225, z: 11.196188}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -5792,7 +5792,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 14
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: 2af92af4c25b49c46aa66b2da4a306e5, type: 3}
@@ -6413,6 +6413,11 @@ Prefab:
       propertyPath: resetPos
       value: 
       objectReference: {fileID: 369340725}
+    - target: {fileID: 114444378055522902, guid: d1e50abf06856d5428b6c9320fb43619,
+        type: 2}
+      propertyPath: hoverStrength
+      value: 2000
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d1e50abf06856d5428b6c9320fb43619, type: 2}
   m_IsPrefabParent: 0
@@ -6714,6 +6719,21 @@ Prefab:
       propertyPath: target
       value: 
       objectReference: {fileID: 660906716}
+    - target: {fileID: 114553160008636334, guid: 620376b36c7ac0842b70fa74e89d98be,
+        type: 2}
+      propertyPath: obstacle.m_Bits
+      value: 4096
+      objectReference: {fileID: 0}
+    - target: {fileID: 114553160008636334, guid: 620376b36c7ac0842b70fa74e89d98be,
+        type: 2}
+      propertyPath: hoverStrength
+      value: 4000
+      objectReference: {fileID: 0}
+    - target: {fileID: 114553160008636334, guid: 620376b36c7ac0842b70fa74e89d98be,
+        type: 2}
+      propertyPath: hoverDistance
+      value: 3.5
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114824807253063488, guid: 620376b36c7ac0842b70fa74e89d98be, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 620376b36c7ac0842b70fa74e89d98be, type: 2}
@@ -9992,6 +10012,18 @@ Prefab:
         type: 2}
       propertyPath: postMoveSpeed
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4164371534557554, guid: d051fff09062d3c4a9e7ff5c1597ef7a, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4164371534557554, guid: d051fff09062d3c4a9e7ff5c1597ef7a, type: 2}
+      propertyPath: m_LocalScale.y
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4164371534557554, guid: d051fff09062d3c4a9e7ff5c1597ef7a, type: 2}
+      propertyPath: m_LocalScale.z
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d051fff09062d3c4a9e7ff5c1597ef7a, type: 2}
