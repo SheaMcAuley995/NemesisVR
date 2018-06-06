@@ -19,7 +19,7 @@ namespace Valve.VR.InteractionSystem
 
         private void Start()
         {
-            if (transform.parent.parent.parent.parent.parent.tag == "TeamSun")
+            if (SceneBridge.Instance.playerTeam == TeamManager.TeamBall.Sun)
             {
                 enemyTeamTag = "TeamMoon";
                 allyTeamTag = "TeamSun";
