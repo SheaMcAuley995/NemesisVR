@@ -150,6 +150,10 @@ public class AiController : MonoBehaviour
         {
            horz *= 0 + Vector3.Distance(transform.position, target.transform.position)/10;
         }
+        else if(Vector3.Distance(transform.position, target.transform.position) < 10)
+        {
+            horz *= 5;
+        }
     }
 
     private void vehicleSensor()
@@ -163,7 +167,7 @@ public class AiController : MonoBehaviour
         //front center
         if (avoidMultiplier == 0)
         {
-            if (Physics.Raycast(sensorStartingpos, transform.forward, out hit, sensorLength, obstacle))
+            if (Physics.Raycast(sensorStartingpos, transform.forward, out hit, sensorLength/2, obstacle))
             {
                 if (!hit.collider.CompareTag("Ground"))
                 {
@@ -171,11 +175,11 @@ public class AiController : MonoBehaviour
                     isAvoiding = true;
                     if(hit.normal.x < 0)
                     {
-                        vert = -0.5f;
+                        vert += -0.5f;
                     }
                     else
                     {
-                        vert = 1;
+                        vert += -0.5f;
                     }
                   
                 }
@@ -192,7 +196,7 @@ public class AiController : MonoBehaviour
             {
                 
                 isAvoiding = true;
-                avoidMultiplier -= 1f;
+                avoidMultiplier -= 2f;
             }
             Debug.DrawLine(sensorStartingpos, hit.point);
         }
@@ -205,7 +209,7 @@ public class AiController : MonoBehaviour
             {
                 Debug.DrawLine(sensorStartingpos, hit.point);
                 isAvoiding = true;
-                avoidMultiplier -= 0.5f;
+                avoidMultiplier -= 1.5f;
             }
             Debug.DrawLine(sensorStartingpos, hit.point);
         }
@@ -218,7 +222,7 @@ public class AiController : MonoBehaviour
             {
                 Debug.DrawLine(sensorStartingpos, hit.point);
                 isAvoiding = true;
-                avoidMultiplier += 1f;
+                avoidMultiplier += 2f;
             }
             Debug.DrawLine(sensorStartingpos, hit.point);
         }
@@ -231,19 +235,17 @@ public class AiController : MonoBehaviour
             {
                 Debug.DrawLine(sensorStartingpos, hit.point);
                 isAvoiding = true;
-                avoidMultiplier += 0.5f;
+                avoidMultiplier += 1.5f;
             }
             Debug.DrawLine(sensorStartingpos, hit.point);
         }
         if (isAvoiding)
         {
-            horz += 1 +  avoidMultiplier;
+            horz += avoidMultiplier;
             //vert += avoidMultiplier;
         }
-        else
-        {
+        
             vehicleMove();
-        }
     }
 }
 
