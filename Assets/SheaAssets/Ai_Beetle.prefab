@@ -1000,13 +1000,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1482437730906504}
-  m_LocalRotation: {x: -0.16100103, y: 0, z: 0, w: 0.9869543}
+  m_LocalRotation: {x: -0.0011343815, y: 0, z: 0, w: 0.9999994}
   m_LocalPosition: {x: 0, y: 0.9, z: 3.36}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4342496957541808}
   m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: -18.53, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -0.13, y: 0, z: 0}
 --- !u!4 &4574547578082504
 Transform:
   m_ObjectHideFlags: 1
@@ -2734,9 +2734,9 @@ MonoBehaviour:
   target: {fileID: 0}
   grabBall: {fileID: 114593290805966372}
   myGoal: {fileID: 0}
-  obstical:
+  obstacle:
     serializedVersion: 2
-    m_Bits: 4096
+    m_Bits: 0
   sensorLength: 15
   frontSensorpos: {x: 0, y: 0.2, z: 0}
   FrontsideSensorPos: 1.2
