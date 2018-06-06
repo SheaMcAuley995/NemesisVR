@@ -38,7 +38,7 @@ public class AiController : MonoBehaviour
     float desiredAngle;
     float currentDistance;
 
-    public LayerMask obstical;
+    public LayerMask obstacle;
 
     public float sensorLength = 10f;
     public Vector3 frontSensorpos = new Vector3(0,0.2f,0);
@@ -47,6 +47,7 @@ public class AiController : MonoBehaviour
 
     void Start()
     {
+        target = HoverBall.Instance.gameObject;
         rb = GetComponent<Rigidbody>();
     }
 
@@ -67,7 +68,13 @@ public class AiController : MonoBehaviour
                 {
                     if(Vector3.Angle(transform.forward, (target.transform.position - transform.position).normalized) < 12)
                     {
-                        grabBall.ShootBall(shootForce);
+                        int randnum = Random.Range(0, 50);
+                        if (randnum == 8)
+                        {
+                            
+                            grabBall.ShootBall(shootForce);
+                        }
+                        Debug.Log(randnum);
                     }
                     
                 }
@@ -139,9 +146,13 @@ public class AiController : MonoBehaviour
         {
             vert = newFwd + newSteer;
         }
-        if (Vector3.Distance(transform.position, target.transform.position) < 20)
+        if (Vector3.Distance(transform.position, target.transform.position) < 70 && Vector3.Distance(transform.position, target.transform.position) > 10)
         {
-           horz *= 19 - Vector3.Distance(transform.position, target.transform.position);
+           horz *= 0 + Vector3.Distance(transform.position, target.transform.position)/10;
+        }
+        else if(Vector3.Distance(transform.position, target.transform.position) < 10)
+        {
+            horz *= 5;
         }
     }
 
@@ -156,7 +167,7 @@ public class AiController : MonoBehaviour
         //front center
         if (avoidMultiplier == 0)
         {
-            if (Physics.Raycast(sensorStartingpos, transform.forward, out hit, sensorLength, obstical))
+            if (Physics.Raycast(sensorStartingpos, transform.forward, out hit, sensorLength/2, obstacle))
             {
                 if (!hit.collider.CompareTag("Ground"))
                 {
@@ -164,11 +175,11 @@ public class AiController : MonoBehaviour
                     isAvoiding = true;
                     if(hit.normal.x < 0)
                     {
-                        vert = -0.5f;
+                        vert += -0.5f;
                     }
                     else
                     {
-                        vert = 1;
+                        vert += -0.5f;
                     }
                   
                 }
@@ -179,64 +190,62 @@ public class AiController : MonoBehaviour
 
         //front right
         sensorStartingpos += transform.right * FrontsideSensorPos;
-        if (Physics.Raycast(sensorStartingpos, transform.forward, out hit, sensorLength, obstical))
+        if (Physics.Raycast(sensorStartingpos, transform.forward, out hit, sensorLength, obstacle))
         {
             if (!hit.collider.CompareTag("Ground"))
             {
                 
                 isAvoiding = true;
-                avoidMultiplier -= 1f;
+                avoidMultiplier -= 2f;
             }
             Debug.DrawLine(sensorStartingpos, hit.point);
         }
 
 
         //front right angle
-        if (Physics.Raycast(sensorStartingpos, Quaternion.AngleAxis(30, transform.up) * transform.forward, out hit, sensorLength, obstical))
+        if (Physics.Raycast(sensorStartingpos, Quaternion.AngleAxis(30, transform.up) * transform.forward, out hit, sensorLength, obstacle))
         {
             if (!hit.collider.CompareTag("Ground"))
             {
                 Debug.DrawLine(sensorStartingpos, hit.point);
                 isAvoiding = true;
-                avoidMultiplier -= 0.5f;
+                avoidMultiplier -= 1.5f;
             }
             Debug.DrawLine(sensorStartingpos, hit.point);
         }
 
         //front left
         sensorStartingpos -= transform.right * FrontsideSensorPos * 2;
-        if (Physics.Raycast(sensorStartingpos, transform.forward, out hit, sensorLength, obstical))
+        if (Physics.Raycast(sensorStartingpos, transform.forward, out hit, sensorLength, obstacle))
         {
             if (!hit.collider.CompareTag("Ground"))
             {
                 Debug.DrawLine(sensorStartingpos, hit.point);
                 isAvoiding = true;
-                avoidMultiplier += 1f;
+                avoidMultiplier += 2f;
             }
             Debug.DrawLine(sensorStartingpos, hit.point);
         }
 
 
         //front left angle
-        if (Physics.Raycast(sensorStartingpos, Quaternion.AngleAxis(-30, transform.up) * transform.forward, out hit, sensorLength, obstical))
+        if (Physics.Raycast(sensorStartingpos, Quaternion.AngleAxis(-30, transform.up) * transform.forward, out hit, sensorLength, obstacle))
         {
             if (!hit.collider.CompareTag("Ground"))
             {
                 Debug.DrawLine(sensorStartingpos, hit.point);
                 isAvoiding = true;
-                avoidMultiplier += 0.5f;
+                avoidMultiplier += 1.5f;
             }
             Debug.DrawLine(sensorStartingpos, hit.point);
         }
         if (isAvoiding)
         {
-            horz += 1 +  avoidMultiplier;
+            horz += avoidMultiplier;
             //vert += avoidMultiplier;
         }
-        else
-        {
+        
             vehicleMove();
-        }
     }
 }
 
