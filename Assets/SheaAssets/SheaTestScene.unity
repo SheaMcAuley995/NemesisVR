@@ -898,26 +898,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 135230009605316104, guid: d1e50abf06856d5428b6c9320fb43619,
-        type: 2}
-      propertyPath: m_IsTrigger
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 114444378055522902, guid: d1e50abf06856d5428b6c9320fb43619,
         type: 2}
       propertyPath: resetPos
       value: 
       objectReference: {fileID: 1654983934}
-    - target: {fileID: 54362209936840304, guid: d1e50abf06856d5428b6c9320fb43619,
-        type: 2}
-      propertyPath: m_Drag
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 54362209936840304, guid: d1e50abf06856d5428b6c9320fb43619,
-        type: 2}
-      propertyPath: m_AngularDrag
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d1e50abf06856d5428b6c9320fb43619, type: 2}
   m_IsPrefabParent: 0
