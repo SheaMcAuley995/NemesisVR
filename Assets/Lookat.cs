@@ -5,9 +5,17 @@ using UnityEngine;
 public class Lookat : MonoBehaviour {
 
     public Transform target;
-	
-	// Update is called once per frame
-	void Update () {
+
+    private void Start()
+    {
+        if(target == null)
+        {
+            target = GameObject.FindGameObjectWithTag("Goal").transform;
+        }
+    }
+
+    // Update is called once per frame
+    void Update () {
         transform.LookAt(target);
 	}
 }
