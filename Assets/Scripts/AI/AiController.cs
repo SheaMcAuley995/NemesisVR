@@ -167,7 +167,7 @@ public class AiController : MonoBehaviour
         //front center
         if (avoidMultiplier == 0)
         {
-            if (Physics.Raycast(sensorStartingpos, transform.forward, out hit, sensorLength/2, obstacle))
+            if (Physics.Raycast(sensorStartingpos, transform.forward, out hit, sensorLength + 3, obstacle))
             {
                 if (!hit.collider.CompareTag("Ground"))
                 {
@@ -175,13 +175,16 @@ public class AiController : MonoBehaviour
                     isAvoiding = true;
                     if(hit.normal.x < 0)
                     {
-                        vert += -0.5f;
+                        vert += -2f;
+                        avoidMultiplier += 1;
                     }
                     else
                     {
-                        vert += -0.5f;
+                        vert += -2f;
+                        avoidMultiplier += -1;
                     }
                   
+                    //if(Vector3.Distance(transform.position,))
                 }
                 Debug.DrawLine(sensorStartingpos, hit.point);
             }
@@ -214,6 +217,12 @@ public class AiController : MonoBehaviour
             Debug.DrawLine(sensorStartingpos, hit.point);
         }
 
+        if (Physics.Raycast(sensorStartingpos, Quaternion.AngleAxis(45, transform.up) * transform.forward, out hit, sensorLength, obstacle))
+        {
+            vert += 1f;
+            Debug.DrawLine(sensorStartingpos, hit.point);
+        }
+
         //front left
         sensorStartingpos -= transform.right * FrontsideSensorPos * 2;
         if (Physics.Raycast(sensorStartingpos, transform.forward, out hit, sensorLength, obstacle))
@@ -239,7 +248,13 @@ public class AiController : MonoBehaviour
             }
             Debug.DrawLine(sensorStartingpos, hit.point);
         }
-        if (isAvoiding)
+
+        if (Physics.Raycast(sensorStartingpos, Quaternion.AngleAxis(-45, transform.up) * transform.forward, out hit, sensorLength, obstacle))
+        {
+            vert = 1f;
+            Debug.DrawLine(sensorStartingpos, hit.point);
+        }
+            if (isAvoiding)
         {
             horz += avoidMultiplier;
             //vert += avoidMultiplier;
