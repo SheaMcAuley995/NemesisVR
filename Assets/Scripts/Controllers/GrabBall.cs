@@ -4,12 +4,15 @@ using UnityEngine;
 
 public class GrabBall : MonoBehaviour {
 
+    private static GrabBall currentBallHolder = null;
+
     public Transform ballHoldPos;
     TeamManager tm;
     public bool holdingBall { get; private set; }
 
     public delegate void OnGrabBall();
     public OnGrabBall onGrabBall;
+    public OnGrabBall onReleaseBall;
     
 
 
@@ -28,6 +31,21 @@ public class GrabBall : MonoBehaviour {
             {
                 onGrabBall();
             }
+
+            if(currentBallHolder != null)
+            {
+                currentBallHolder.OnBallStolen();
+            }
+            currentBallHolder = this;
+        }
+    }
+
+    public void OnBallStolen()
+    {
+        holdingBall = false;
+        if (onReleaseBall != null)
+        {
+            onReleaseBall();
         }
     }
 
@@ -47,6 +65,13 @@ public class GrabBall : MonoBehaviour {
             holdingBall = false;
             HoverBall.Instance.HoverToPos = null;
             HoverBall.Instance.rb.AddForce(HoverBall.Instance.transform.forward * force);
+
+            if(onReleaseBall != null)
+            {
+                onReleaseBall();
+            }
+
+            currentBallHolder = null;
 
             Debug.Log(TeamManager.ballStatus);
         }
