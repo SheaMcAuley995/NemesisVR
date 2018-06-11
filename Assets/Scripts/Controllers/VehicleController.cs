@@ -21,7 +21,9 @@ public class VehicleController : MonoBehaviour {
     public float headYawMult;
     public float headRollMult;
 
-    private Vector3 headRotDefault;
+    public bool handleHeadRotation = true;
+
+    public Vector3 headRotDefault { get; private set; }
 
     private float rotationVelocity;
     private float groundAngelVelocity;
@@ -92,11 +94,15 @@ public class VehicleController : MonoBehaviour {
         Vector3 turnTorque = Vector3.up * turnSpeed * Time.fixedDeltaTime;
         rb.AddTorque(turnTorque);
 
-        Vector3 localVel = transform.InverseTransformVector(rb.velocity);
-        Vector3 localTurn = rb.angularVelocity;
-        beetleHead.localEulerAngles = new Vector3(headRotDefault.x + localVel.z * headPitchMult,
-                                                  headRotDefault.y + localTurn.y * headYawMult,
-                                                  headRotDefault.z + -localTurn.y * headRollMult);
+        if(handleHeadRotation)
+        {
+            Vector3 localVel = transform.InverseTransformVector(rb.velocity);
+            Vector3 localTurn = rb.angularVelocity;
+            beetleHead.localEulerAngles = new Vector3(headRotDefault.x + localVel.z * headPitchMult,
+                                                      headRotDefault.y + localTurn.y * headYawMult,
+                                                      headRotDefault.z + -localTurn.y * headRollMult);
+        }
+        
 
         //Vector3 newRotation = transform.eulerAngles;
         //newRotation.x = Mathf.SmoothDampAngle(newRotation.x, rotationMovement * -turnRotationAngle, ref rotationVelocity, turnRotationSeekSpeed);

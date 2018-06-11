@@ -276,6 +276,12 @@ MonoBehaviour:
   spellPrefab: {fileID: 0}
   spellEffectObj: {fileID: 0}
   spellShootDebounce: 1
+  grabBallScript: {fileID: 0}
+  vc: {fileID: 0}
+  beetleHead: {fileID: 0}
+  headPitchMult: 100
+  headYawMult: 100
+  headRollMult: 100
 --- !u!114 &114710641940334774
 MonoBehaviour:
   m_ObjectHideFlags: 1

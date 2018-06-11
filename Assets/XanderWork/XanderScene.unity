@@ -1685,6 +1685,16 @@ Prefab:
       propertyPath: grabBallScript
       value: 
       objectReference: {fileID: 47918390}
+    - target: {fileID: 114647351915798368, guid: f9392665b6a5a8f44a52cf61cc23379b,
+        type: 2}
+      propertyPath: beetleHead
+      value: 
+      objectReference: {fileID: 576168888}
+    - target: {fileID: 114647351915798368, guid: f9392665b6a5a8f44a52cf61cc23379b,
+        type: 2}
+      propertyPath: vc
+      value: 
+      objectReference: {fileID: 1974216595}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f9392665b6a5a8f44a52cf61cc23379b, type: 2}
   m_IsPrefabParent: 0
@@ -1715,7 +1725,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 369340724}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 142.1, y: 23.577225, z: 93.8}
+  m_LocalPosition: {x: 161.2, y: 23.577225, z: 130}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1949,7 +1959,6 @@ MonoBehaviour:
   baseForwardAccel: 0
   forwardForce: 3000
   rotationForce: 800
-  waitToShowControlZone: 0
   controlPoint: {fileID: 1475947356}
   controlPointSpeed: 0.2
   grabScript: {fileID: 47918390}
@@ -10013,6 +10022,31 @@ Prefab:
       propertyPath: grabBallScript
       value: 
       objectReference: {fileID: 47918390}
+    - target: {fileID: 114647351915798368, guid: f9392665b6a5a8f44a52cf61cc23379b,
+        type: 2}
+      propertyPath: beetleHead
+      value: 
+      objectReference: {fileID: 576168888}
+    - target: {fileID: 114647351915798368, guid: f9392665b6a5a8f44a52cf61cc23379b,
+        type: 2}
+      propertyPath: vc
+      value: 
+      objectReference: {fileID: 1974216595}
+    - target: {fileID: 114647351915798368, guid: f9392665b6a5a8f44a52cf61cc23379b,
+        type: 2}
+      propertyPath: headPitchMult
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 114647351915798368, guid: f9392665b6a5a8f44a52cf61cc23379b,
+        type: 2}
+      propertyPath: headYawMult
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 114647351915798368, guid: f9392665b6a5a8f44a52cf61cc23379b,
+        type: 2}
+      propertyPath: headRollMult
+      value: 100
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f9392665b6a5a8f44a52cf61cc23379b, type: 2}
   m_IsPrefabParent: 0
@@ -12353,6 +12387,7 @@ MonoBehaviour:
   headPitchMult: 1.5
   headYawMult: 10
   headRollMult: 10
+  handleHeadRotation: 1
 --- !u!4 &1974216596
 Transform:
   m_ObjectHideFlags: 0

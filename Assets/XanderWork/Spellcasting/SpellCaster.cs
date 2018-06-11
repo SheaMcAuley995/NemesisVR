@@ -6,15 +6,26 @@ namespace Valve.VR.InteractionSystem
 {
     public class SpellCaster : MonoBehaviour {
 
+        private static SpellCaster aimer = null;
+
         public float spellShootForce;
         public Hand hand;
         public GameObject spellPrefab = null;
         public Transform spellEffectObj = null;
         public bool spellShootDebounce = true;
         public GrabBall grabBallScript;
+        public VehicleController vc;
+
+        [Header("Aiming")]
+        public Transform beetleHead;
+        public float headPitchMult;
+        public float headYawMult;
+        public float headRollMult;
 
         private string enemyTeamTag;
         private string allyTeamTag;
+
+        private Vector3 aimStartPos = Vector3.zero;
 
 
 
@@ -32,6 +43,37 @@ namespace Valve.VR.InteractionSystem
             }
 
             grabBallScript.onGrabBall += OnGrabBall;
+            grabBallScript.onReleaseBall += OnReleaseBall;
+        }
+
+        private void Update()
+        {
+            if (grabBallScript.holdingBall && hand.GetStandardInteractionButton()
+                && aimer == null && ControlZone.Instance.controlHand != hand)
+            {
+                vc.handleHeadRotation = false;
+                aimStartPos = vc.transform.InverseTransformPoint(hand.transform.position);
+                aimer = this;
+            }
+
+            if (aimer == this)
+            {
+                if (grabBallScript.holdingBall && hand.GetStandardInteractionButtonUp())
+                {
+                    vc.handleHeadRotation = true;
+                    grabBallScript.ShootBall(ControlZone.Instance.ballShootForce);
+                    aimer = null;
+                }
+
+                if (!vc.handleHeadRotation)
+                {
+                    Vector3 offset = vc.transform.InverseTransformPoint(hand.transform.position)
+                                                                          - aimStartPos;
+                    beetleHead.localEulerAngles = new Vector3(vc.headRotDefault.x + offset.z * headPitchMult,
+                                                              vc.headRotDefault.y + offset.x * headYawMult,
+                                                              vc.headRotDefault.z + 0 * headRollMult);
+                }
+            }
         }
 
         private void LateUpdate()
@@ -65,6 +107,12 @@ namespace Valve.VR.InteractionSystem
                 Destroy(spellEffectObj.gameObject);
                 spellEffectObj = null;
             }
+        }
+
+        public void OnReleaseBall()
+        {
+            vc.handleHeadRotation = true;
+            aimer = null;
         }
 
     }
