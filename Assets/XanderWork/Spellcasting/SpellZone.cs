@@ -18,8 +18,7 @@ namespace Valve.VR.InteractionSystem
         public Material normalMat;
         public Material touchingMat;
         public Material cooldownMat;
-
-        private int touchingHandCount = 0;
+        
         private List<Hand> handsIn = new List<Hand>();
         private List<SpellCaster> handHeads = new List<SpellCaster>();
 
@@ -94,6 +93,11 @@ namespace Valve.VR.InteractionSystem
                     //--i;
                 }
             }
+        }
+
+        public bool IsHandIn(Hand hand)
+        {
+            return handsIn.Contains(hand);
         }
 
     }
