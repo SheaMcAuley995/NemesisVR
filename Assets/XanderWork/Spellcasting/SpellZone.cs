@@ -11,11 +11,13 @@ namespace Valve.VR.InteractionSystem
 
         public GameObject spellPrefab;
         public GameObject staffSpellEffectPrefab;
+        public GrabBall grabBallScript;
 
         [Header("PROTOTYPING")]
         public Renderer renderer;
         public Material normalMat;
         public Material touchingMat;
+        public Material cooldownMat;
 
         private int touchingHandCount = 0;
         private List<Hand> handsIn = new List<Hand>();
@@ -25,6 +27,9 @@ namespace Valve.VR.InteractionSystem
         private void Start()
         {
             renderer.material = normalMat;
+
+            grabBallScript.onGrabBall += OnGrabBall;
+            grabBallScript.onReleaseBall += OnReleaseBall;
 
             if(SceneBridge.Instance.spellPrefab != null)
             {
@@ -38,19 +43,37 @@ namespace Valve.VR.InteractionSystem
 
         private void OnTriggerEnter(Collider other)
         {
-            renderer.material = touchingMat;
-            handsIn.Add(other.transform.parent.parent.GetComponent<Hand>());
-            handHeads.Add(other.transform.GetComponent<SpellCaster>());
+            if(!grabBallScript.holdingBall)
+            {
+                renderer.material = touchingMat;
+                handsIn.Add(other.transform.parent.parent.GetComponent<Hand>());
+                handHeads.Add(other.transform.GetComponent<SpellCaster>());
+            }
         }
 
         private void OnTriggerExit(Collider other)
         {
-            handsIn.Remove(other.transform.parent.parent.GetComponent<Hand>());
-            handHeads.Remove(other.transform.GetComponent<SpellCaster>());
-            if (handsIn.Count == 0)
+            if(!grabBallScript.holdingBall)
             {
-                renderer.material = normalMat;
+                handsIn.Remove(other.transform.parent.parent.GetComponent<Hand>());
+                handHeads.Remove(other.transform.GetComponent<SpellCaster>());
+                if (handsIn.Count == 0)
+                {
+                    renderer.material = normalMat;
+                }
             }
+        }
+
+        public void OnGrabBall()
+        {
+            handsIn.Clear();
+            handHeads.Clear();
+            renderer.material = cooldownMat;
+        }
+
+        public void OnReleaseBall()
+        {
+            renderer.material = normalMat;
         }
 
         private void Update()

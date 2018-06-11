@@ -1238,7 +1238,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 4ca493ad02001394cb67540837de8e22, type: 2}
+  - {fileID: 2100000, guid: 422a4bbc35f551243ac4519a844e7f42, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1647,7 +1647,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 369340724}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 140.3, y: 23.577225, z: 112}
+  m_LocalPosition: {x: 142.1, y: 23.577225, z: 93.8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -8233,9 +8233,11 @@ MonoBehaviour:
     type: 2}
   staffSpellEffectPrefab: {fileID: 1311112724507752, guid: 4a8268ccee56a9f41af64e06b552f20e,
     type: 2}
+  grabBallScript: {fileID: 47918390}
   renderer: {fileID: 896788278}
   normalMat: {fileID: 2100000, guid: ce81b6db142cc2f47bd986baa854aedb, type: 2}
   touchingMat: {fileID: 2100000, guid: 2a7017db938cacc42b2f959347447f03, type: 2}
+  cooldownMat: {fileID: 2100000, guid: 0de69f3c2cac9464fa951393f91fc2b9, type: 2}
 --- !u!1 &899770630
 GameObject:
   m_ObjectHideFlags: 0
@@ -9527,7 +9529,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 4ca493ad02001394cb67540837de8e22, type: 2}
+  - {fileID: 2100000, guid: 422a4bbc35f551243ac4519a844e7f42, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -10034,6 +10036,11 @@ Prefab:
     - target: {fileID: 4164371534557554, guid: d051fff09062d3c4a9e7ff5c1597ef7a, type: 2}
       propertyPath: m_LocalScale.z
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 114747675193043742, guid: d051fff09062d3c4a9e7ff5c1597ef7a,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d051fff09062d3c4a9e7ff5c1597ef7a, type: 2}
@@ -12241,8 +12248,8 @@ MonoBehaviour:
   turnSpeed: 0
   turnRotationAngle: 15
   turnRotationSeekSpeed: 100
-  hoverDistance: 4
-  hoverStrength: 4000
+  hoverDistance: 5
+  hoverStrength: 2000
   rb: {fileID: 1974216594}
   beetleHead: {fileID: 576168888}
   headPitchMult: 1.5
