@@ -2025,7 +2025,7 @@ MonoBehaviour:
   vehicle: {fileID: 1974216595}
   baseForwardAccel: 0
   forwardForce: 3000
-  rotationForce: 800
+  rotationForce: 1500
   controlPoint: {fileID: 1475947356}
   controlPointSpeed: 0.2
   grabScript: {fileID: 47918390}
