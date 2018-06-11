@@ -32,7 +32,7 @@ public class GrabBall : MonoBehaviour {
                 onGrabBall();
             }
 
-            if(currentBallHolder != null)
+            if(currentBallHolder != null && currentBallHolder != this)
             {
                 currentBallHolder.OnBallStolen();
             }

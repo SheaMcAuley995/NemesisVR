@@ -69,9 +69,11 @@ namespace Valve.VR.InteractionSystem
                 {
                     Vector3 offset = vc.transform.InverseTransformPoint(hand.transform.position)
                                                                           - aimStartPos;
-                    beetleHead.localEulerAngles = new Vector3(vc.headRotDefault.x + offset.z * headPitchMult,
-                                                              vc.headRotDefault.y + offset.x * headYawMult,
-                                                              vc.headRotDefault.z + 0 * headRollMult);
+                    Vector3 newEuler = new Vector3(vc.headRotDefault.x + -offset.y * headPitchMult,
+                                                   vc.headRotDefault.y + offset.x * headYawMult,
+                                                   vc.headRotDefault.z + 0 * headRollMult);
+                    Debug.Log(newEuler);
+                    beetleHead.localEulerAngles = newEuler;
                 }
             }
         }
