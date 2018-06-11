@@ -1612,6 +1612,11 @@ Prefab:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114647351915798368, guid: f9392665b6a5a8f44a52cf61cc23379b,
+        type: 2}
+      propertyPath: grabBallScript
+      value: 
+      objectReference: {fileID: 47918390}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f9392665b6a5a8f44a52cf61cc23379b, type: 2}
   m_IsPrefabParent: 0
@@ -1641,8 +1646,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 369340724}
-  m_LocalRotation: {x: 0.0449145, y: 0.75974023, z: -0.052786347, w: 0.6465223}
-  m_LocalPosition: {x: -158.51892, y: 23.577225, z: 11.196188}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 140.3, y: 23.577225, z: 112}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -6373,7 +6378,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4185503741645740, guid: d1e50abf06856d5428b6c9320fb43619, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 119.7
+      value: 143.64
       objectReference: {fileID: 0}
     - target: {fileID: 4185503741645740, guid: d1e50abf06856d5428b6c9320fb43619, type: 2}
       propertyPath: m_LocalPosition.y
@@ -6381,7 +6386,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4185503741645740, guid: d1e50abf06856d5428b6c9320fb43619, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 122.9
+      value: 127.31
       objectReference: {fileID: 0}
     - target: {fileID: 4185503741645740, guid: d1e50abf06856d5428b6c9320fb43619, type: 2}
       propertyPath: m_LocalRotation.x
@@ -6726,13 +6731,13 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 114553160008636334, guid: 620376b36c7ac0842b70fa74e89d98be,
         type: 2}
-      propertyPath: hoverStrength
-      value: 4000
+      propertyPath: hoverDistance
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 114553160008636334, guid: 620376b36c7ac0842b70fa74e89d98be,
         type: 2}
-      propertyPath: hoverDistance
-      value: 3.5
+      propertyPath: hoverStrength
+      value: 2000
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114824807253063488, guid: 620376b36c7ac0842b70fa74e89d98be, type: 2}
@@ -9933,6 +9938,11 @@ Prefab:
       propertyPath: hand
       value: 
       objectReference: {fileID: 1735009908}
+    - target: {fileID: 114647351915798368, guid: f9392665b6a5a8f44a52cf61cc23379b,
+        type: 2}
+      propertyPath: grabBallScript
+      value: 
+      objectReference: {fileID: 47918390}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f9392665b6a5a8f44a52cf61cc23379b, type: 2}
   m_IsPrefabParent: 0
@@ -12232,7 +12242,7 @@ MonoBehaviour:
   turnRotationAngle: 15
   turnRotationSeekSpeed: 100
   hoverDistance: 4
-  hoverStrength: 2000
+  hoverStrength: 4000
   rb: {fileID: 1974216594}
   beetleHead: {fileID: 576168888}
   headPitchMult: 1.5

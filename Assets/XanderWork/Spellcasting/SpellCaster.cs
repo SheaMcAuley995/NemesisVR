@@ -11,6 +11,7 @@ namespace Valve.VR.InteractionSystem
         public GameObject spellPrefab = null;
         public Transform spellEffectObj = null;
         public bool spellShootDebounce = true;
+        public GrabBall grabBallScript;
 
         private string enemyTeamTag;
         private string allyTeamTag;
@@ -29,6 +30,8 @@ namespace Valve.VR.InteractionSystem
                 enemyTeamTag = "TeamSun";
                 allyTeamTag = "TeamMoon";
             }
+
+            grabBallScript.onGrabBall += OnGrabBall;
         }
 
         private void LateUpdate()
@@ -52,6 +55,15 @@ namespace Valve.VR.InteractionSystem
                     spellEffectObj = null;
                 }
                 spellShootDebounce = false;
+            }
+        }
+
+        public void OnGrabBall()
+        {
+            if(spellEffectObj != null)
+            {
+                Destroy(spellEffectObj.gameObject);
+                spellEffectObj = null;
             }
         }
 
