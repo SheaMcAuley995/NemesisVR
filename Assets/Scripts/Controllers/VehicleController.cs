@@ -12,6 +12,8 @@ public class VehicleController : MonoBehaviour {
 
     public float hoverDistance;
     public float hoverStrength;
+    public float pitchCorrectionForce;
+    public float rollCorrectionForce;
 
     public Rigidbody rb;
     public Transform[] thrusters;
@@ -65,7 +67,7 @@ public class VehicleController : MonoBehaviour {
         vehicleHover();
         vehicleMove();
 
-        transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, 0f);
+        //transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, 0f);
     }
 
     //private void LateUpdate()
@@ -104,6 +106,25 @@ public class VehicleController : MonoBehaviour {
                 downwardForce = (transform.up * hoverStrength * distancePercentage) * Time.deltaTime;
                 rb.AddForceAtPosition(downwardForce, thruster.position);
             }
+        }
+        
+
+        if(transform.eulerAngles.x >= 0 && transform.eulerAngles.x < 180)
+        {
+            rb.AddTorque(-transform.right * transform.eulerAngles.x * pitchCorrectionForce);
+        }
+        else
+        {
+            rb.AddTorque(transform.right * (180 - (transform.eulerAngles.x - 180)) * pitchCorrectionForce);
+        }
+
+        if (transform.eulerAngles.z >= 0 && transform.eulerAngles.z < 180)
+        {
+            rb.AddTorque(-transform.forward * transform.eulerAngles.z * rollCorrectionForce);
+        }
+        else
+        {
+            rb.AddTorque(transform.forward * (180 - (transform.eulerAngles.z - 180)) * rollCorrectionForce);
         }
     }
 
