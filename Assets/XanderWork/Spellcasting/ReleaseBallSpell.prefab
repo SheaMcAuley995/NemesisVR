@@ -114,6 +114,7 @@ MonoBehaviour:
   enemyTeamTag: 
   allyTeamTag: 
   releaseShootForce: 1000
+  randomDirectionMult: 0.7
 --- !u!135 &135407808450359712
 SphereCollider:
   m_ObjectHideFlags: 1

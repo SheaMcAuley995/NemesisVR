@@ -6,6 +6,7 @@ public class ReleaseBallSpell : SpellAbstract {
 
     private float lifetime = 10.0f;
     public float releaseShootForce = 10000.0f;
+    public float randomDirectionMult;
 
     public override void Shoot()
     {
@@ -21,7 +22,7 @@ public class ReleaseBallSpell : SpellAbstract {
     {
         if(other.tag == enemyTeamTag)
         {
-            other.transform.GetComponentInChildren<GrabBall>().ShootBall(releaseShootForce);
+            other.transform.GetComponentInChildren<GrabBall>().ShootBall(releaseShootForce, Vector3.up + Random.onUnitSphere * randomDirectionMult);
             Remove();
         }
     }

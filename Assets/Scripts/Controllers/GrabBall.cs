@@ -13,7 +13,7 @@ public class GrabBall : MonoBehaviour {
     public delegate void OnGrabBall();
     public OnGrabBall onGrabBall;
     public OnGrabBall onReleaseBall;
-    
+
 
 
     private void Start()
@@ -52,6 +52,11 @@ public class GrabBall : MonoBehaviour {
 
     public void ShootBall(float force)
     {
+        ShootBall(force, HoverBall.Instance.transform.forward);
+    }
+
+    public void ShootBall(float force, Vector3 dir)
+    {
         if (holdingBall)
         {
             if (transform.parent != null && transform.parent.tag == "TeamMoon")
@@ -65,9 +70,9 @@ public class GrabBall : MonoBehaviour {
 
             holdingBall = false;
             HoverBall.Instance.HoverToPos = null;
-            HoverBall.Instance.rb.AddForce(HoverBall.Instance.transform.forward * force);
+            HoverBall.Instance.rb.AddForce(dir * force);
 
-            if(onReleaseBall != null)
+            if (onReleaseBall != null)
             {
                 onReleaseBall();
             }
