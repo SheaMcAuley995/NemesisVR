@@ -14,6 +14,7 @@ public class VehicleController : MonoBehaviour {
     public float hoverStrength;
 
     public Rigidbody rb;
+    public Transform[] thrusters;
 
     [Header("Head rotation")]
     public Transform beetleHead;
@@ -63,29 +64,47 @@ public class VehicleController : MonoBehaviour {
     {
         vehicleHover();
         vehicleMove();
+
+        transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, 0f);
     }
 
-    private void LateUpdate()
-    {
-        transform.eulerAngles -= Vector3.right * transform.eulerAngles.x;
-        transform.eulerAngles -= Vector3.forward * transform.eulerAngles.z;
-    }
+    //private void LateUpdate()
+    //{
+    //    transform.eulerAngles -= Vector3.right * transform.eulerAngles.x;
+    //    transform.eulerAngles -= Vector3.forward * transform.eulerAngles.z;
+    //}
 
 
 
     private void vehicleHover()
     {
+        //RaycastHit hit;
+        //
+        //Vector3 downwardForce;
+        //float distancePercentage;
+        //
+        //if (Physics.Raycast(transform.position, -transform.up, out hit, hoverDistance))
+        //{
+        //    distancePercentage = 1 - (hit.distance / hoverDistance);
+        //    downwardForce = (transform.up * hoverStrength * distancePercentage) * Time.fixedDeltaTime;
+        //    rb.AddForce(downwardForce);
+        //}
+
         RaycastHit hit;
 
+        foreach (Transform thruster in thrusters)
+        {
             Vector3 downwardForce;
             float distancePercentage;
 
-            if (Physics.Raycast(transform.position, -transform.up, out hit, hoverDistance))
+            if (Physics.Raycast(thruster.position, -Vector3.up, out hit, hoverDistance))
             {
+                Debug.DrawLine(thruster.position, hit.point);
                 distancePercentage = 1 - (hit.distance / hoverDistance);
-                downwardForce = (transform.up * hoverStrength * distancePercentage) * Time.fixedDeltaTime;
-                rb.AddForce(downwardForce);
+                downwardForce = (transform.up * hoverStrength * distancePercentage) * Time.deltaTime;
+                rb.AddForceAtPosition(downwardForce, thruster.position);
             }
+        }
     }
 
     private void vehicleMove()
