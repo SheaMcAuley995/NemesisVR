@@ -17,6 +17,12 @@ public class ScepterClang : MonoBehaviour {
 
 
 
+    private void Awake()
+    {
+        audio.enabled = false;
+        Invoke("EnableAudio", 2.0f);
+    }
+
     private void Start()
     {
         lastHeadPos = beetlePos.InverseTransformPoint(headPos.position);
@@ -32,6 +38,11 @@ public class ScepterClang : MonoBehaviour {
         lastHeadPos = beetlePos.InverseTransformPoint(headPos.position);
     }
 
+    private void EnableAudio()
+    {
+        audio.enabled = true;
+    }
+
     //private void OnTriggerEnter(Collider other)
     //{
     //    if ((other.gameObject.layer == LayerMask.NameToLayer("ScepterHittable")
@@ -44,7 +55,7 @@ public class ScepterClang : MonoBehaviour {
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(headOffset.magnitude >= speedThreshold)
+        if(headOffset.magnitude >= speedThreshold && audio.enabled)
         {
             audio.PlayOneShot(audio.clip, headOffset.magnitude * volume);
         }
