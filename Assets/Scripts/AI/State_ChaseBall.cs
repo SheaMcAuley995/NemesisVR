@@ -21,7 +21,7 @@ public class State_ChaseBall : State<EnemyAI>
     {
         get
         {
-            if(_instance != null)
+            if(_instance == null)
             {
                 new State_ChaseBall();
             }
