@@ -20,6 +20,8 @@ public class VehicleController : MonoBehaviour {
     public float headPitchMult;
     public float headYawMult;
     public float headRollMult;
+    public float headPitchMin;
+    public float headPitchMax;
 
     public bool handleHeadRotation = true;
 
@@ -98,9 +100,12 @@ public class VehicleController : MonoBehaviour {
         {
             Vector3 localVel = transform.InverseTransformVector(rb.velocity);
             Vector3 localTurn = rb.angularVelocity;
-            beetleHead.localEulerAngles = new Vector3(headRotDefault.x + localVel.z * headPitchMult,
-                                                      headRotDefault.y + localTurn.y * headYawMult,
-                                                      headRotDefault.z + -localTurn.y * headRollMult);
+            Vector3 newEuler = new Vector3(headRotDefault.x + localVel.z * headPitchMult,
+                                           headRotDefault.y + localTurn.y * headYawMult,
+                                           headRotDefault.z + -localTurn.y * headRollMult);
+            
+            newEuler.x = Mathf.Clamp(newEuler.x, headPitchMin, headPitchMax);
+            beetleHead.localEulerAngles = newEuler;
         }
         
 

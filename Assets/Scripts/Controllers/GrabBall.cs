@@ -73,8 +73,6 @@ public class GrabBall : MonoBehaviour {
             }
 
             currentBallHolder = null;
-
-            Debug.Log(TeamManager.ballStatus);
         }
     }
 

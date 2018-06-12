@@ -12248,6 +12248,8 @@ MonoBehaviour:
   headPitchMult: 1.5
   headYawMult: 10
   headRollMult: 10
+  headPitchMin: -20
+  headPitchMax: 20
   handleHeadRotation: 1
 --- !u!4 &1974216596
 Transform:
