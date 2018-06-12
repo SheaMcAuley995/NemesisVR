@@ -118,7 +118,8 @@ public class AiController : MonoBehaviour
         vehicleHover();
         vehicleSensor();
 
-        
+        transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, 0f);
+
     }
 
 
@@ -131,12 +132,19 @@ public class AiController : MonoBehaviour
             Vector3 downwardForce;
             float distancePercentage;
 
-            if (Physics.Raycast(thruster.position, -transform.up, out hit, hoverDistance))
+            if (Physics.Raycast(thruster.position, -Vector3.up, out hit, hoverDistance))
             {
+                Debug.DrawLine(thruster.position, hit.point);
+                rb.drag = normDrag;
                 distancePercentage = 1 - (hit.distance / hoverDistance);
                 downwardForce = (transform.up * hoverStrength * distancePercentage) * Time.deltaTime;
-                rb.AddForce(downwardForce);
+                rb.AddForceAtPosition(downwardForce, thruster.position);
             }
+            //else
+            //{
+            //    downwardForce = (-transform.up * hoverStrength)/2 * Time.deltaTime;
+            //    rb.AddForce(downwardForce);
+            //}
         }
 
     }
