@@ -15,9 +15,11 @@ public class Lookat : MonoBehaviour {
     private float yRot;
     private float zRot;
 
+
     private void Start()
     {
-        if(target == null)
+       
+        if (target == null)
         {
             target = GameObject.FindGameObjectWithTag("Goal").transform;
         }
@@ -26,6 +28,8 @@ public class Lookat : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
+        
+
 
         transform.LookAt(target,Vector3.up);
 

@@ -6,6 +6,8 @@ public class AiController : MonoBehaviour
 {
 
 
+    public Transform[] thrusters;
+
     public TeamManager.TeamBall myTeam;
 //    List
 
@@ -90,7 +92,6 @@ public class AiController : MonoBehaviour
                             
                             grabBall.ShootBall(shootForce);
                         }
-                        Debug.Log(randnum);
                     }
                     
                 }
@@ -124,15 +125,20 @@ public class AiController : MonoBehaviour
     private void vehicleHover()
     {
         RaycastHit hit;
-        Vector3 downwardForce;
-        float distancePercentage;
 
-        if (Physics.Raycast(transform.position, -transform.up, out hit, hoverDistance))
+        foreach(Transform thruster in thrusters)
         {
-            distancePercentage = 1 - (hit.distance / hoverDistance);
-            downwardForce = (transform.up * hoverStrength * distancePercentage) * Time.deltaTime;
-            rb.AddForce(downwardForce);
+            Vector3 downwardForce;
+            float distancePercentage;
+
+            if (Physics.Raycast(thruster.position, -transform.up, out hit, hoverDistance))
+            {
+                distancePercentage = 1 - (hit.distance / hoverDistance);
+                downwardForce = (transform.up * hoverStrength * distancePercentage) * Time.deltaTime;
+                rb.AddForce(downwardForce);
+            }
         }
+
     }
 
     private void vehicleMove()
