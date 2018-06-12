@@ -17,6 +17,21 @@ public class SpeedZone : MonoBehaviour
         {
             if(b != null)
             {
+                if (b.tag == "Ball")
+                {
+                    Vector3 flatVel = b.velocity;
+                    flatVel.y = 0;
+                    float angle = Vector3.Angle(flatVel.normalized, transform.forward);
+                    if (angle < 90)
+                    {
+                        b.transform.LookAt(transform.position + transform.forward * 100000);
+                    }
+                    else
+                    {
+                        b.transform.LookAt(transform.position - transform.forward * 100000);
+                    }
+                    //b.transform.LookAt(transform.position + transform.forward * transform.localScale.z);
+                }
                 b.AddForce(b.transform.forward * force);
             }
             else
