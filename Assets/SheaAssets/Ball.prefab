@@ -120,6 +120,8 @@ MonoBehaviour:
   HoverToPos: {fileID: 0}
   hoverToSpeed: 10
   resetPos: {fileID: 0}
+  spawnRadiusMin: 70
+  spawnRadiusMax: 150
   rb: {fileID: 54362209936840304}
 --- !u!135 &135230009605316104
 SphereCollider:

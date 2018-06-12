@@ -35,6 +35,8 @@ public class HoverBall : MonoBehaviour {
 
 
     public Transform resetPos;
+    public float spawnRadiusMin;
+    public float spawnRadiusMax;
 
     public delegate void MyHoverBallDelegate();
     public MyHoverBallDelegate myHoverBallDelegate;
@@ -80,7 +82,9 @@ public class HoverBall : MonoBehaviour {
 
     public void ballReset()
     {
-        transform.position = resetPos.position;
+        Vector2 circle = Random.insideUnitCircle.normalized * Random.Range(spawnRadiusMin, spawnRadiusMax);
+        Vector3 spawnOffset = new Vector3(circle.x, 0, circle.y);
+        transform.position = resetPos.position + spawnOffset;
         rb.velocity = Vector3.zero;
     }
     public void hoverTo(Transform hoverToPos)
