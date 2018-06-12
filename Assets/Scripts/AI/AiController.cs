@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class AiController : MonoBehaviour
 {
+
+
     public TeamManager.TeamBall myTeam;
 //    List
 
@@ -40,27 +42,41 @@ public class AiController : MonoBehaviour
 
     public LayerMask obstacle;
 
+    public Transform beetleHead;
+
     public float sensorLength = 10f;
     public Vector3 frontSensorpos = new Vector3(0,0.2f,0);
     public float FrontsideSensorPos = 0.2f;
     public float frontSensorAngle = 30;
 
+    private float normDrag;
+    public float ballDrag;
+
     void Start()
     {
+        
         target = HoverBall.Instance.gameObject;
         rb = GetComponent<Rigidbody>();
+        normDrag = rb.drag;
+        grabBall.onReleaseBall += OnBallRelease;
+    }
+
+    public void OnBallRelease()
+    {
+        target = HoverBall.Instance.gameObject;
     }
 
     private void Update()
     {
 
-        if (!grabBall.holdingBall)
+        if (!GrabBall.currentBallHolder == this.grabBall)
         {
             target = HoverBall.Instance.gameObject;
+            rb.drag = normDrag; 
         }
-
-        if (grabBall.holdingBall)
+        if (GrabBall.currentBallHolder == this.grabBall)
         {
+            rb.drag = ballDrag;
             target = myGoal;
             if(Vector3.Distance(transform.position,target.transform.position) < 80)
             {
@@ -85,7 +101,10 @@ public class AiController : MonoBehaviour
                 grabBall.ShootBall(shootForce);
             }
         }
-
+        if (Vector3.Angle(transform.forward, (target.transform.position - transform.position).normalized) < 20)
+        {
+            beetleHead.LookAt(target.transform.position);
+        }
 
 
 

@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class GrabBall : MonoBehaviour {
 
-    private static GrabBall currentBallHolder = null;
-
+    public static GrabBall currentBallHolder { private set ; get; } 
+    
     public Transform ballHoldPos;
     TeamManager tm;
     public bool holdingBall { get; private set; }
@@ -18,6 +18,7 @@ public class GrabBall : MonoBehaviour {
 
     private void Start()
     {
+        currentBallHolder = null;
         holdingBall = false;
     }
 
