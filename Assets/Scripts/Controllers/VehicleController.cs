@@ -15,6 +15,8 @@ public class VehicleController : MonoBehaviour {
     public float pitchCorrectionForce;
     public float rollCorrectionForce;
 
+    public LayerMask[] masks;
+
     public Rigidbody rb;
     public Transform[] thrusters;
 
@@ -33,6 +35,8 @@ public class VehicleController : MonoBehaviour {
     private float rotationVelocity;
     private float groundAngelVelocity;
 
+    private LayerMask mask;
+
 
 
 
@@ -41,6 +45,12 @@ public class VehicleController : MonoBehaviour {
     private void Start()
     {
         headRotDefault = beetleHead.localEulerAngles;
+
+        mask = new LayerMask();
+        foreach(LayerMask m in masks)
+        {
+            mask.value = mask.value | m.value;
+        }
 
         if(SceneBridge.Instance.playerTeam == TeamManager.TeamBall.Moon)
         {
@@ -99,7 +109,7 @@ public class VehicleController : MonoBehaviour {
             Vector3 downwardForce;
             float distancePercentage;
 
-            if (Physics.Raycast(thruster.position, -Vector3.up, out hit, hoverDistance))
+            if (Physics.Raycast(thruster.position, -Vector3.up, out hit, hoverDistance, mask))
             {
                 Debug.DrawLine(thruster.position, hit.point);
                 distancePercentage = 1 - (hit.distance / hoverDistance);
