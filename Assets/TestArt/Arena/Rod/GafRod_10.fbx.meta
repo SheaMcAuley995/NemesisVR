@@ -1,16 +1,30 @@
 fileFormatVersion: 2
-guid: b4af00fe0840c004d8cf7ee5927d27de
-timeCreated: 1528839734
+guid: 3294cc3d19aa3b24e85a2914bc837ef3
+timeCreated: 1528847368
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
     100000: //RootNode
+    100002: Gem
+    100004: Gem_Outside
+    100006: Gem_Refractor
+    100008: Rod_Shaft
     400000: //RootNode
+    400002: Gem
+    400004: Gem_Outside
+    400006: Gem_Refractor
+    400008: Rod_Shaft
     2100000: lambert1
-    2300000: //RootNode
-    3300000: //RootNode
-    4300000: Rod
+    2300000: Gem_Outside
+    2300002: Gem_Refractor
+    2300004: Rod_Shaft
+    3300000: Gem_Outside
+    3300002: Gem_Refractor
+    3300004: Rod_Shaft
+    4300000: Rod_Shaft
+    4300002: Gem_Outside
+    4300004: Gem_Refractor
     9500000: //RootNode
   externalObjects: {}
   materials:
