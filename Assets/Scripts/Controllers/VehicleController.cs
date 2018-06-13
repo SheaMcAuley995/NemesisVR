@@ -109,20 +109,20 @@ public class VehicleController : MonoBehaviour {
         }
         
 
-        if(transform.eulerAngles.x >= 0 && transform.eulerAngles.x < 180)
+        if (transform.eulerAngles.x > 45 && transform.eulerAngles.x < 180)
         {
             rb.AddTorque(-transform.right * transform.eulerAngles.x * pitchCorrectionForce);
         }
-        else
+        else if (transform.eulerAngles.x > 180 && transform.eulerAngles.x < 315)
         {
             rb.AddTorque(transform.right * (180 - (transform.eulerAngles.x - 180)) * pitchCorrectionForce);
         }
 
-        if (transform.eulerAngles.z >= 0 && transform.eulerAngles.z < 180)
+        if (transform.eulerAngles.z > 45 && transform.eulerAngles.z < 180)
         {
             rb.AddTorque(-transform.forward * transform.eulerAngles.z * rollCorrectionForce);
         }
-        else
+        else if(transform.eulerAngles.z > 180 && transform.eulerAngles.z < 315)
         {
             rb.AddTorque(transform.forward * (180 - (transform.eulerAngles.z - 180)) * rollCorrectionForce);
         }

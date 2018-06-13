@@ -20223,7 +20223,7 @@ MonoBehaviour:
   hoverDistance: 5
   hoverStrength: 1000
   pitchCorrectionForce: 1
-  rollCorrectionForce: 0
+  rollCorrectionForce: 1
   rb: {fileID: 1974216594}
   thrusters:
   - {fileID: 903648395}
@@ -21111,6 +21111,74 @@ Transform:
   m_Father: {fileID: 1657016701}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &2097742320
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 400000, guid: f1b6a137f10cc3d45855c435a628f22f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: f1b6a137f10cc3d45855c435a628f22f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -36
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: f1b6a137f10cc3d45855c435a628f22f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: f1b6a137f10cc3d45855c435a628f22f, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: f1b6a137f10cc3d45855c435a628f22f, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: f1b6a137f10cc3d45855c435a628f22f, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: f1b6a137f10cc3d45855c435a628f22f, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: f1b6a137f10cc3d45855c435a628f22f, type: 3}
+      propertyPath: m_RootOrder
+      value: 21
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: f1b6a137f10cc3d45855c435a628f22f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 990c8f4ac4b80eb448ac2d30254a929a, type: 2}
+    - target: {fileID: 2300000, guid: f1b6a137f10cc3d45855c435a628f22f, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: f1b6a137f10cc3d45855c435a628f22f, type: 3}
+  m_IsPrefabParent: 0
+--- !u!1 &2097742321 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 100000, guid: f1b6a137f10cc3d45855c435a628f22f, type: 3}
+  m_PrefabInternal: {fileID: 2097742320}
+--- !u!64 &2097742322
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2097742321}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 4300000, guid: f1b6a137f10cc3d45855c435a628f22f, type: 3}
 --- !u!1 &2122385797
 GameObject:
   m_ObjectHideFlags: 0
