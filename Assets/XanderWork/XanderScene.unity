@@ -160,7 +160,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: ab20fbfb4aa8e8f4fbe37768e27fc73e, type: 2}
+  - {fileID: 2100000, guid: ab19d2d43273e85448a339c2dadef0e9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2626,7 +2626,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: ab20fbfb4aa8e8f4fbe37768e27fc73e, type: 2}
+  - {fileID: 2100000, guid: ab19d2d43273e85448a339c2dadef0e9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -6374,7 +6374,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: ab20fbfb4aa8e8f4fbe37768e27fc73e, type: 2}
+  - {fileID: 2100000, guid: ab19d2d43273e85448a339c2dadef0e9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -6524,7 +6524,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: ab20fbfb4aa8e8f4fbe37768e27fc73e, type: 2}
+  - {fileID: 2100000, guid: ab19d2d43273e85448a339c2dadef0e9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -7031,7 +7031,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: ab20fbfb4aa8e8f4fbe37768e27fc73e, type: 2}
+  - {fileID: 2100000, guid: ab19d2d43273e85448a339c2dadef0e9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -7505,7 +7505,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 536494067}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.189, y: 0.961, z: 0.06}
+  m_LocalPosition: {x: -0.197, y: 0.961, z: 0.06}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 659772450}
@@ -7530,7 +7530,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   otherHand: {fileID: 946139477}
-  startingHandType: 2
+  startingHandType: 0
   hoverSphereTransform: {fileID: 0}
   hoverSphereRadius: 0.05
   hoverLayerMask:
@@ -7632,7 +7632,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &547730444
 Transform:
   m_ObjectHideFlags: 0
@@ -13348,7 +13348,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: ab20fbfb4aa8e8f4fbe37768e27fc73e, type: 2}
+  - {fileID: 2100000, guid: ab19d2d43273e85448a339c2dadef0e9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -13904,7 +13904,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   otherHand: {fileID: 536494069}
-  startingHandType: 2
+  startingHandType: 1
   hoverSphereTransform: {fileID: 0}
   hoverSphereRadius: 0.05
   hoverLayerMask:
@@ -13924,7 +13924,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 946139476}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.249, y: 1, z: -0.068}
+  m_LocalPosition: {x: -0.444, y: 1, z: -0.068}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 255996668}
@@ -14930,7 +14930,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: ab20fbfb4aa8e8f4fbe37768e27fc73e, type: 2}
+  - {fileID: 2100000, guid: ab19d2d43273e85448a339c2dadef0e9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -17331,7 +17331,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: ab20fbfb4aa8e8f4fbe37768e27fc73e, type: 2}
+  - {fileID: 2100000, guid: ab19d2d43273e85448a339c2dadef0e9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -18650,7 +18650,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: ab20fbfb4aa8e8f4fbe37768e27fc73e, type: 2}
+  - {fileID: 2100000, guid: ab19d2d43273e85448a339c2dadef0e9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -19647,7 +19647,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: ab20fbfb4aa8e8f4fbe37768e27fc73e, type: 2}
+  - {fileID: 2100000, guid: ab19d2d43273e85448a339c2dadef0e9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -19863,7 +19863,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1830234533
 Transform:
   m_ObjectHideFlags: 0
