@@ -62,16 +62,6 @@ public class VehicleController : MonoBehaviour {
         }
     }
 
-    public void Update()
-    {
-        if(Input.GetKey(KeyCode.Space))
-        {
-            Vector3 dir = (transform.forward - transform.position).normalized;
-
-            HoverBall.Instance.rb.AddForce(dir);
-        }
-    }
-
     private void FixedUpdate()
     {
         vehicleHover();

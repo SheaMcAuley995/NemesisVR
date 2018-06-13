@@ -43,7 +43,13 @@ public class HoverBall : MonoBehaviour {
 
     Vector3 _velocity = Vector3.zero;
 
+    public float passiveMoveForce;
+
     public Rigidbody rb;
+
+
+
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -63,6 +69,11 @@ public class HoverBall : MonoBehaviour {
         {
             transform.position = resetPos.position;
         }
+    }
+
+    private void FixedUpdate()
+    {
+        rb.AddForce(transform.forward * passiveMoveForce);
     }
 
     void ballHover()

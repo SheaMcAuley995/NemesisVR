@@ -7517,6 +7517,11 @@ Prefab:
       propertyPath: hoverStrength
       value: 2000
       objectReference: {fileID: 0}
+    - target: {fileID: 114444378055522902, guid: d1e50abf06856d5428b6c9320fb43619,
+        type: 2}
+      propertyPath: passiveMoveForce
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d1e50abf06856d5428b6c9320fb43619, type: 2}
   m_IsPrefabParent: 0
