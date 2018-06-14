@@ -59,10 +59,14 @@ Material:
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
+    - _Fresnel: 0
+    - _Fresnelamount: 0
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
+    - _MaxSin: 1
     - _Metallic: 0
+    - _MinSin: 0.2
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Offset: 0
@@ -75,3 +79,7 @@ Material:
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _node_2709: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+    - _node_4591: {r: 1, g: 1, b: 1, a: 1}
+    - _node_7986: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+    - _node_9139: {r: 0.01330019, g: 0.09319272, b: 0.9044118, a: 1}
