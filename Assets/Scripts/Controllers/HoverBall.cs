@@ -73,7 +73,10 @@ public class HoverBall : MonoBehaviour {
 
     private void FixedUpdate()
     {
-        rb.AddForce(transform.forward * passiveMoveForce);
+        Vector3 dir = transform.forward;
+        dir.y = 0;
+        dir.Normalize();
+        rb.AddForce(dir * passiveMoveForce);
     }
 
     void ballHover()
