@@ -12,8 +12,15 @@ public class VehicleController : MonoBehaviour {
 
     public float hoverDistance;
     public float hoverStrength;
+    public float pitchCorrectionForce;
+    public float rollCorrectionForce;
+
+    public float dislodgeBallSpeed;
+
+    public LayerMask[] masks;
 
     public Rigidbody rb;
+    public Transform[] thrusters;
 
     [Header("Head rotation")]
     public Transform beetleHead;
@@ -30,6 +37,9 @@ public class VehicleController : MonoBehaviour {
     private float rotationVelocity;
     private float groundAngelVelocity;
 
+    private LayerMask mask;
+    private string enemyTag;
+
 
 
 
@@ -39,23 +49,21 @@ public class VehicleController : MonoBehaviour {
     {
         headRotDefault = beetleHead.localEulerAngles;
 
+        mask = new LayerMask();
+        foreach(LayerMask m in masks)
+        {
+            mask.value = mask.value | m.value;
+        }
+
         if(SceneBridge.Instance.playerTeam == TeamManager.TeamBall.Moon)
         {
             tag = "TeamMoon";
+            enemyTag = "TeamSun";
         }
         else
         {
             tag = "TeamSun";
-        }
-    }
-
-    public void Update()
-    {
-        if(Input.GetKey(KeyCode.Space))
-        {
-            Vector3 dir = (transform.forward - transform.position).normalized;
-
-            HoverBall.Instance.rb.AddForce(dir);
+            enemyTag = "TeamMoon";
         }
     }
 
@@ -63,6 +71,8 @@ public class VehicleController : MonoBehaviour {
     {
         vehicleHover();
         vehicleMove();
+
+        //transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, 0f);
     }
 
     private void LateUpdate()
@@ -76,16 +86,32 @@ public class VehicleController : MonoBehaviour {
     private void vehicleHover()
     {
         RaycastHit hit;
+        
+        Vector3 downwardForce;
+        float distancePercentage;
+        
+        if (Physics.Raycast(transform.position, -transform.up, out hit, hoverDistance))
+        {
+            distancePercentage = 1 - (hit.distance / hoverDistance);
+            downwardForce = (transform.up * hoverStrength * distancePercentage) * Time.fixedDeltaTime;
+            rb.AddForce(downwardForce);
+        }
 
-            Vector3 downwardForce;
-            float distancePercentage;
-
-            if (Physics.Raycast(transform.position, -transform.up, out hit, hoverDistance))
-            {
-                distancePercentage = 1 - (hit.distance / hoverDistance);
-                downwardForce = (transform.up * hoverStrength * distancePercentage) * Time.fixedDeltaTime;
-                rb.AddForce(downwardForce);
-            }
+        //RaycastHit hit;
+        //
+        //foreach (Transform thruster in thrusters)
+        //{
+        //    Vector3 downwardForce;
+        //    float distancePercentage;
+        //
+        //    if (Physics.Raycast(thruster.position, -Vector3.up, out hit, hoverDistance, mask))
+        //    {
+        //        Debug.DrawLine(thruster.position, hit.point);
+        //        distancePercentage = 1 - (hit.distance / hoverDistance);
+        //        downwardForce = (transform.up * hoverStrength * distancePercentage) * Time.deltaTime;
+        //        rb.AddForceAtPosition(downwardForce, thruster.position);
+        //    }
+        //}
     }
 
     private void vehicleMove()
@@ -113,5 +139,13 @@ public class VehicleController : MonoBehaviour {
         //newRotation.x = Mathf.SmoothDampAngle(newRotation.x, rotationMovement * -turnRotationAngle, ref rotationVelocity, turnRotationSeekSpeed);
         //transform.eulerAngles = newRotation;
     }
-    
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.tag == enemyTag && collision.relativeVelocity.magnitude >= dislodgeBallSpeed)
+        {
+            collision.transform.GetComponentInChildren<GrabBall>().ShootBall(1000, Vector3.up);
+        }
+    }
+
 }

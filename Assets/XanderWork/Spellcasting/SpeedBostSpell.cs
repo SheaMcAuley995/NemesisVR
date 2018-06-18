@@ -9,7 +9,10 @@ public class SpeedBostSpell : SpellAbstract {
     public float shootLifetime = 1.0f;
     public float boostLength = 1.0f;
     public float boostForce = 100.0f;
+
     private Rigidbody target = null;
+
+
 
     public override void Shoot()
     {

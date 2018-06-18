@@ -1,6 +1,11 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: f4dd16ebc3c42b648a9a051c7da31455
 timeCreated: 1528302129
+=======
+guid: f2f4a92ad66fbfc4ca14d3f7a89fd26e
+timeCreated: 1528153868
+>>>>>>> corwin
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName: {}

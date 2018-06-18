@@ -113,8 +113,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyTeamTag: 
   allyTeamTag: 
+  lifetime: 10
   releaseShootForce: 1000
   randomDirectionMult: 0.7
+  pushLength: 0.5
+  pushForce: 100
+  rend: {fileID: 23739379836477330}
 --- !u!135 &135407808450359712
 SphereCollider:
   m_ObjectHideFlags: 1

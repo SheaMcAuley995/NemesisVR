@@ -57,7 +57,7 @@ namespace Valve.VR.InteractionSystem
             {
                 if (h.GetStandardInteractionButtonDown() && controlHand == null
                 && !spellZone.IsHandIn(h)
-                && h.transform.Find("Scepter").Find("HeadPos").GetComponent<SpellCaster>().spellEffectObj == null)
+                && h.transform.Find("GafRod").Find("Rod_Shaft").GetComponent<SpellCaster>().spellEffectObj == null)
                 {
                     controlHand = h;
                     transform.position = h.transform.position;

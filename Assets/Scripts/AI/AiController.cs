@@ -208,12 +208,15 @@ public class AiController : MonoBehaviour
                     isAvoiding = true;
                     if(hit.normal.x < 0)
                     {
-                        vert += -2f;
+                        Debug.Log(1 - (Vector3.Distance(transform.position, hit.point) / sensorLength));
+                        vert -= 1 - (Vector3.Distance(transform.position, hit.point)/sensorLength);
+                        //vert += -2f;
                         avoidMultiplier += 1;
                     }
                     else
                     {
-                        vert += -2f;
+                        Debug.Log(1 - (Vector3.Distance(transform.position, hit.point) / sensorLength));
+                        vert -= 1 - (Vector3.Distance(transform.position, hit.point) / sensorLength);
                         avoidMultiplier += -1;
                     }
                   
@@ -252,8 +255,9 @@ public class AiController : MonoBehaviour
 
         if (Physics.Raycast(sensorStartingpos, Quaternion.AngleAxis(45, transform.up) * transform.forward, out hit, sensorLength, obstacle))
         {
-            vert += 1f;
-            Debug.DrawLine(sensorStartingpos, hit.point);
+            vert += Mathf.Lerp(vert, 1, 0.5f * Time.deltaTime);
+            horz -= horz;
+            Debug.DrawLine(sensorStartingpos, hit.point,Color.green);
         }
 
         //front left
@@ -284,10 +288,11 @@ public class AiController : MonoBehaviour
 
         if (Physics.Raycast(sensorStartingpos, Quaternion.AngleAxis(-45, transform.up) * transform.forward, out hit, sensorLength, obstacle))
         {
-            vert = 1f;
-            Debug.DrawLine(sensorStartingpos, hit.point);
+            vert += Mathf.Lerp(vert,1,0.5f * Time.deltaTime);
+            horz -= horz;
+            Debug.DrawLine(sensorStartingpos, hit.point,Color.green);
         }
-            if (isAvoiding)
+        if (isAvoiding)
         {
             horz += avoidMultiplier;
             //vert += avoidMultiplier;

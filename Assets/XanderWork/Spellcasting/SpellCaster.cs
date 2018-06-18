@@ -49,7 +49,8 @@ namespace Valve.VR.InteractionSystem
         private void Update()
         {
             if (grabBallScript.holdingBall && hand.GetStandardInteractionButton()
-                && aimer == null && ControlZone.Instance.controlHand != hand)
+                && aimer == null && ControlZone.Instance.controlHand != hand
+                && ControlZone.Instance.controlHand != null)
             {
                 vc.handleHeadRotation = false;
                 aimStartPos = vc.transform.InverseTransformPoint(hand.transform.position);
@@ -72,7 +73,7 @@ namespace Valve.VR.InteractionSystem
                     Vector3 newEuler = new Vector3(vc.headRotDefault.x + -offset.y * headPitchMult,
                                                    vc.headRotDefault.y + offset.x * headYawMult,
                                                    vc.headRotDefault.z + 0 * headRollMult);
-                    Debug.Log(newEuler);
+                    
                     beetleHead.localEulerAngles = newEuler;
                 }
             }
@@ -93,7 +94,7 @@ namespace Valve.VR.InteractionSystem
                     script.enemyTeamTag = enemyTeamTag;
                     script.allyTeamTag = allyTeamTag;
                     script.Shoot();
-                    spell.GetComponent<Rigidbody>().AddForce(spellEffectObj.forward * spellShootForce);
+                    spell.GetComponent<Rigidbody>().AddForce(-spellEffectObj.up * spellShootForce);
                     spellPrefab = null;
                     Destroy(spellEffectObj.gameObject);
                     spellEffectObj = null;
