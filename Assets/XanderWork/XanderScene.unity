@@ -18983,9 +18983,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57e0d727b5622c040abbc0f8cd7e088a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spellPrefab: {fileID: 1092029263818072, guid: 10997af069432e346a03428e9372e675,
+  spellPrefab: {fileID: 1756185833104356, guid: 942d982e9284a1d438661dfc205c4199,
     type: 2}
-  staffSpellEffectPrefab: {fileID: 1524039319921968, guid: 97fb11bfbf273204b9d012320f7f3fb2,
+  staffSpellEffectPrefab: {fileID: 1311112724507752, guid: 4a8268ccee56a9f41af64e06b552f20e,
     type: 2}
   grabBallScript: {fileID: 2014791200}
   renderer: {fileID: 1779780904}
@@ -20136,6 +20136,7 @@ MonoBehaviour:
   hoverStrength: 4000
   pitchCorrectionForce: 1
   rollCorrectionForce: 1
+  dislodgeBallSpeed: 40
   masks:
   - serializedVersion: 2
     m_Bits: 256

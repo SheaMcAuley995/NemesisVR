@@ -15,6 +15,8 @@ public class VehicleController : MonoBehaviour {
     public float pitchCorrectionForce;
     public float rollCorrectionForce;
 
+    public float dislodgeBallSpeed;
+
     public LayerMask[] masks;
 
     public Rigidbody rb;
@@ -36,6 +38,7 @@ public class VehicleController : MonoBehaviour {
     private float groundAngelVelocity;
 
     private LayerMask mask;
+    private string enemyTag;
 
 
 
@@ -55,10 +58,12 @@ public class VehicleController : MonoBehaviour {
         if(SceneBridge.Instance.playerTeam == TeamManager.TeamBall.Moon)
         {
             tag = "TeamMoon";
+            enemyTag = "TeamSun";
         }
         else
         {
             tag = "TeamSun";
+            enemyTag = "TeamMoon";
         }
     }
 
@@ -74,6 +79,7 @@ public class VehicleController : MonoBehaviour {
     {
         transform.eulerAngles -= Vector3.right * transform.eulerAngles.x;
         transform.eulerAngles -= Vector3.forward * transform.eulerAngles.z;
+        Debug.Log(rb.velocity.magnitude);
     }
 
 
@@ -134,5 +140,13 @@ public class VehicleController : MonoBehaviour {
         //newRotation.x = Mathf.SmoothDampAngle(newRotation.x, rotationMovement * -turnRotationAngle, ref rotationVelocity, turnRotationSeekSpeed);
         //transform.eulerAngles = newRotation;
     }
-    
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.tag == enemyTag && collision.impulse.magnitude >= dislodgeBallSpeed)
+        {
+            collision.transform.GetComponentInChildren<GrabBall>().ShootBall(1000, Vector3.up);
+        }
+    }
+
 }
