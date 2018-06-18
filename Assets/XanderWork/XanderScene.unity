@@ -20136,7 +20136,7 @@ MonoBehaviour:
   hoverStrength: 4000
   pitchCorrectionForce: 1
   rollCorrectionForce: 1
-  dislodgeBallSpeed: 40
+  dislodgeBallSpeed: 25
   masks:
   - serializedVersion: 2
     m_Bits: 256

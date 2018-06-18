@@ -79,7 +79,6 @@ public class VehicleController : MonoBehaviour {
     {
         transform.eulerAngles -= Vector3.right * transform.eulerAngles.x;
         transform.eulerAngles -= Vector3.forward * transform.eulerAngles.z;
-        Debug.Log(rb.velocity.magnitude);
     }
 
 
@@ -143,7 +142,7 @@ public class VehicleController : MonoBehaviour {
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.tag == enemyTag && collision.impulse.magnitude >= dislodgeBallSpeed)
+        if(collision.gameObject.tag == enemyTag && collision.relativeVelocity.magnitude >= dislodgeBallSpeed)
         {
             collision.transform.GetComponentInChildren<GrabBall>().ShootBall(1000, Vector3.up);
         }
