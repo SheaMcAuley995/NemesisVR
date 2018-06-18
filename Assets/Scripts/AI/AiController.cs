@@ -208,12 +208,15 @@ public class AiController : MonoBehaviour
                     isAvoiding = true;
                     if(hit.normal.x < 0)
                     {
-                        vert += -2f;
+                        Debug.Log((Vector3.Distance(transform.position, hit.point) / sensorLength));
+                        vert += 1 - (Vector3.Distance(transform.position, hit.point)/sensorLength);
+                        //vert += -2f;
                         avoidMultiplier += 1;
                     }
                     else
                     {
-                        vert += -2f;
+                        Debug.Log((Vector3.Distance(transform.position, hit.point) / sensorLength));
+                        vert += 1 - (Vector3.Distance(transform.position, hit.point) / sensorLength);
                         avoidMultiplier += -1;
                     }
                   
