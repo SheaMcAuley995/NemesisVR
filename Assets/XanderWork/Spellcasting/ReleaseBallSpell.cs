@@ -30,11 +30,15 @@ public class ReleaseBallSpell : SpellAbstract {
     {
         if(other.tag == enemyTeamTag && target == null)
         {
-            other.transform.GetComponentInChildren<GrabBall>().ShootBall(releaseShootForce, Vector3.up + Random.onUnitSphere * randomDirectionMult);
-            target = other.GetComponent<Rigidbody>();
-            rend.enabled = false;
-            CancelInvoke();
-            Invoke("Remove", pushLength);
+            GrabBall gb = other.transform.GetComponentInChildren<GrabBall>();
+            if(gb.holdingBall)
+            {
+                other.transform.GetComponentInChildren<GrabBall>().ShootBall(releaseShootForce, Vector3.up + Random.onUnitSphere * randomDirectionMult);
+                target = other.GetComponent<Rigidbody>();
+                rend.enabled = false;
+                CancelInvoke();
+                Invoke("Remove", pushLength);
+            }
         }
     }
 
