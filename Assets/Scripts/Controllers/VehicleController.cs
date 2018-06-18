@@ -70,62 +70,43 @@ public class VehicleController : MonoBehaviour {
         //transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, 0f);
     }
 
-    //private void LateUpdate()
-    //{
-    //    transform.eulerAngles -= Vector3.right * transform.eulerAngles.x;
-    //    transform.eulerAngles -= Vector3.forward * transform.eulerAngles.z;
-    //}
+    private void LateUpdate()
+    {
+        transform.eulerAngles -= Vector3.right * transform.eulerAngles.x;
+        transform.eulerAngles -= Vector3.forward * transform.eulerAngles.z;
+    }
 
 
 
     private void vehicleHover()
     {
+        RaycastHit hit;
+        
+        Vector3 downwardForce;
+        float distancePercentage;
+        
+        if (Physics.Raycast(transform.position, -transform.up, out hit, hoverDistance))
+        {
+            distancePercentage = 1 - (hit.distance / hoverDistance);
+            downwardForce = (transform.up * hoverStrength * distancePercentage) * Time.fixedDeltaTime;
+            rb.AddForce(downwardForce);
+        }
+
         //RaycastHit hit;
         //
-        //Vector3 downwardForce;
-        //float distancePercentage;
-        //
-        //if (Physics.Raycast(transform.position, -transform.up, out hit, hoverDistance))
+        //foreach (Transform thruster in thrusters)
         //{
-        //    distancePercentage = 1 - (hit.distance / hoverDistance);
-        //    downwardForce = (transform.up * hoverStrength * distancePercentage) * Time.fixedDeltaTime;
-        //    rb.AddForce(downwardForce);
+        //    Vector3 downwardForce;
+        //    float distancePercentage;
+        //
+        //    if (Physics.Raycast(thruster.position, -Vector3.up, out hit, hoverDistance, mask))
+        //    {
+        //        Debug.DrawLine(thruster.position, hit.point);
+        //        distancePercentage = 1 - (hit.distance / hoverDistance);
+        //        downwardForce = (transform.up * hoverStrength * distancePercentage) * Time.deltaTime;
+        //        rb.AddForceAtPosition(downwardForce, thruster.position);
+        //    }
         //}
-
-        RaycastHit hit;
-
-        foreach (Transform thruster in thrusters)
-        {
-            Vector3 downwardForce;
-            float distancePercentage;
-
-            if (Physics.Raycast(thruster.position, -Vector3.up, out hit, hoverDistance, mask))
-            {
-                Debug.DrawLine(thruster.position, hit.point);
-                distancePercentage = 1 - (hit.distance / hoverDistance);
-                downwardForce = (transform.up * hoverStrength * distancePercentage) * Time.deltaTime;
-                rb.AddForceAtPosition(downwardForce, thruster.position);
-            }
-        }
-        
-
-        if (transform.eulerAngles.x > 45 && transform.eulerAngles.x < 180)
-        {
-            rb.AddTorque(-transform.right * transform.eulerAngles.x * pitchCorrectionForce);
-        }
-        else if (transform.eulerAngles.x > 180 && transform.eulerAngles.x < 315)
-        {
-            rb.AddTorque(transform.right * (180 - (transform.eulerAngles.x - 180)) * pitchCorrectionForce);
-        }
-
-        if (transform.eulerAngles.z > 45 && transform.eulerAngles.z < 180)
-        {
-            rb.AddTorque(-transform.forward * transform.eulerAngles.z * rollCorrectionForce);
-        }
-        else if(transform.eulerAngles.z > 180 && transform.eulerAngles.z < 315)
-        {
-            rb.AddTorque(transform.forward * (180 - (transform.eulerAngles.z - 180)) * rollCorrectionForce);
-        }
     }
 
     private void vehicleMove()
