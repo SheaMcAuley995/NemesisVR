@@ -4,9 +4,17 @@ using UnityEngine;
 
 public class ReleaseBallSpell : SpellAbstract {
 
-    private float lifetime = 10.0f;
+    public float lifetime = 10.0f;
     public float releaseShootForce = 10000.0f;
     public float randomDirectionMult;
+    public float pushLength = 1.0f;
+    public float pushForce = 100.0f;
+
+    public Renderer rend;
+
+    private Rigidbody target = null;
+
+
 
     public override void Shoot()
     {
@@ -20,10 +28,21 @@ public class ReleaseBallSpell : SpellAbstract {
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.tag == enemyTeamTag)
+        if(other.tag == enemyTeamTag && target == null)
         {
             other.transform.GetComponentInChildren<GrabBall>().ShootBall(releaseShootForce, Vector3.up + Random.onUnitSphere * randomDirectionMult);
-            Remove();
+            target = other.GetComponent<Rigidbody>();
+            rend.enabled = false;
+            CancelInvoke();
+            Invoke("Remove", pushLength);
+        }
+    }
+
+    private void Update()
+    {
+        if (target != null)
+        {
+            target.AddForce(-transform.up * pushForce);
         }
     }
 

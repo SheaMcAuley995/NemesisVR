@@ -94,7 +94,7 @@ namespace Valve.VR.InteractionSystem
                     script.enemyTeamTag = enemyTeamTag;
                     script.allyTeamTag = allyTeamTag;
                     script.Shoot();
-                    spell.GetComponent<Rigidbody>().AddForce(spellEffectObj.forward * spellShootForce);
+                    spell.GetComponent<Rigidbody>().AddForce(-spellEffectObj.up * spellShootForce);
                     spellPrefab = null;
                     Destroy(spellEffectObj.gameObject);
                     spellEffectObj = null;
