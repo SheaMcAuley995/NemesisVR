@@ -197,6 +197,24 @@ public class AiController : MonoBehaviour
         sensorStartingpos += transform.up * frontSensorpos.y;
         float avoidMultiplier = 0;
         bool isAvoiding = false;
+        //back center
+        if (avoidMultiplier == 0)
+        {
+            if (Physics.Raycast(sensorStartingpos, -transform.forward, out hit, sensorLength, obstacle))
+            {
+                if (!hit.collider.CompareTag("Ground"))
+                {
+                    Debug.DrawLine(sensorStartingpos, hit.point);
+                    isAvoiding = true;
+
+                        Debug.Log(1 - (Vector3.Distance(transform.position, hit.point) / sensorLength));
+                        vert += (Vector3.Distance(transform.position, hit.point) / sensorLength);
+                        //vert += -2f;
+                        avoidMultiplier += 1;
+                }
+                Debug.DrawLine(sensorStartingpos, hit.point,Color.yellow);
+            }
+        }
         //front center
         if (avoidMultiplier == 0)
         {
@@ -206,25 +224,15 @@ public class AiController : MonoBehaviour
                 {
                     Debug.DrawLine(sensorStartingpos, hit.point);
                     isAvoiding = true;
-                    if(hit.normal.x < 0)
-                    {
+
                         Debug.Log(1 - (Vector3.Distance(transform.position, hit.point) / sensorLength));
                         vert -= 1 - (Vector3.Distance(transform.position, hit.point)/sensorLength);
-                        //vert += -2f;
                         avoidMultiplier += 1;
-                    }
-                    else
-                    {
-                        Debug.Log(1 - (Vector3.Distance(transform.position, hit.point) / sensorLength));
-                        vert -= 1 - (Vector3.Distance(transform.position, hit.point) / sensorLength);
-                        avoidMultiplier += -1;
-                    }
-                  
-                    //if(Vector3.Distance(transform.position,))
                 }
                 Debug.DrawLine(sensorStartingpos, hit.point);
             }
         }
+
 
 
         //front right
@@ -253,11 +261,12 @@ public class AiController : MonoBehaviour
             Debug.DrawLine(sensorStartingpos, hit.point);
         }
 
-        if (Physics.Raycast(sensorStartingpos, Quaternion.AngleAxis(45, transform.up) * transform.forward, out hit, sensorLength, obstacle))
+        if (Physics.Raycast(sensorStartingpos, Quaternion.AngleAxis(65, transform.up) * transform.forward, out hit, sensorLength, obstacle))
         {
-            vert += Mathf.Lerp(vert, 1, 0.5f * Time.deltaTime);
+            avoidMultiplier = Mathf.Lerp(avoidMultiplier, 1, 0.1f * Time.deltaTime);
+            vert += avoidMultiplier /2;
             horz -= horz;
-            Debug.DrawLine(sensorStartingpos, hit.point,Color.green);
+            Debug.DrawLine(sensorStartingpos, hit.point, Color.green);
         }
 
         //front left
@@ -286,9 +295,10 @@ public class AiController : MonoBehaviour
             Debug.DrawLine(sensorStartingpos, hit.point);
         }
 
-        if (Physics.Raycast(sensorStartingpos, Quaternion.AngleAxis(-45, transform.up) * transform.forward, out hit, sensorLength, obstacle))
+        if (Physics.Raycast(sensorStartingpos, Quaternion.AngleAxis(-65, transform.up) * transform.forward, out hit, sensorLength, obstacle))
         {
-            vert += Mathf.Lerp(vert,1,0.5f * Time.deltaTime);
+            avoidMultiplier = Mathf.Lerp(avoidMultiplier, 1, 0.1f * Time.deltaTime);
+            vert += avoidMultiplier/2;
             horz -= horz;
             Debug.DrawLine(sensorStartingpos, hit.point,Color.green);
         }
