@@ -463,6 +463,7 @@ MonoBehaviour:
   spellShootDebounce: 1
   grabBallScript: {fileID: 0}
   vc: {fileID: 0}
+  rb: {fileID: 54194148662667758}
   beetleHead: {fileID: 0}
   headPitchMult: 100
   headYawMult: 100

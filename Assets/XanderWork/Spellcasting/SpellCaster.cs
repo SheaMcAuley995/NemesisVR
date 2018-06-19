@@ -15,6 +15,7 @@ namespace Valve.VR.InteractionSystem
         public bool spellShootDebounce = true;
         public GrabBall grabBallScript;
         public VehicleController vc;
+        public Rigidbody rb;
 
         [Header("Aiming")]
         public Transform beetleHead;
@@ -48,6 +49,7 @@ namespace Valve.VR.InteractionSystem
 
         private void Update()
         {
+            rb.velocity = Vector3.zero;
             if (grabBallScript.holdingBall && hand.GetStandardInteractionButton()
                 && aimer == null && ControlZone.Instance.controlHand != hand
                 && ControlZone.Instance.controlHand != null)

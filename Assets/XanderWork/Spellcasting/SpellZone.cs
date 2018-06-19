@@ -6,6 +6,7 @@ using UnityEngine;
 
 namespace Valve.VR.InteractionSystem
 {
+    [RequireComponent(typeof(Interactable))]
     public class SpellZone : MonoBehaviour
     {
 
@@ -53,22 +54,21 @@ namespace Valve.VR.InteractionSystem
             spellCooldownTime = spellPrefab.GetComponent<SpellAbstract>().cooldownTime;
         }
 
-        private void OnTriggerEnter(Collider other)
+        private void OnHandHoverBegin(Hand hand)
         {
-            if(!grabBallScript.holdingBall && spellHeat <= 0)
+            if (!grabBallScript.holdingBall && spellHeat <= 0)
             {
                 renderer.material = touchingMat;
-                handsIn.Add(other.transform.parent.parent.GetComponent<Hand>());
-                handHeads.Add(other.transform.GetComponent<SpellCaster>());
+                handsIn.Add(hand);
+                handHeads.Add(hand.transform.GetComponentInChildren<SpellCaster>());
             }
         }
-
-        private void OnTriggerExit(Collider other)
+        private void OnHandHoverEnd(Hand hand)
         {
-            if(!grabBallScript.holdingBall && spellHeat <= 0)
+            if (!grabBallScript.holdingBall && spellHeat <= 0)
             {
-                handsIn.Remove(other.transform.parent.parent.GetComponent<Hand>());
-                handHeads.Remove(other.transform.GetComponent<SpellCaster>());
+                handsIn.Remove(hand);
+                handHeads.Remove(hand.transform.GetComponentInChildren<SpellCaster>());
                 if (handsIn.Count == 0)
                 {
                     renderer.material = normalMat;
@@ -110,9 +110,6 @@ namespace Valve.VR.InteractionSystem
                     handHeads[i].spellEffectObj = spellEffect.transform;
                     handHeads[i].spellPrefab = spellPrefab;
                     handHeads[i].spellShootDebounce = true;
-                    //handsIn.RemoveAt(i);
-                    //handHeads.RemoveAt(i);
-                    //--i;
                 }
             }
         }
