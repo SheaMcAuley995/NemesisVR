@@ -60,7 +60,7 @@ namespace Valve.VR.InteractionSystem
                 && h.transform.Find("GafRod").Find("Rod_Shaft").GetComponent<SpellCaster>().spellEffectObj == null)
                 {
                     controlHand = h;
-                    transform.position = h.transform.position;
+                    //transform.position = h.transform.position;
                     controlPoint.position = transform.position;
                     renderer.enabled = true;
                 }
