@@ -114,4 +114,9 @@ public class HoverBall : MonoBehaviour {
            
          * */
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        transform.Rotate(Vector3.up * 180);
+    }
 }
