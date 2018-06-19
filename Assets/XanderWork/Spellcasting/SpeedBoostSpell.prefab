@@ -111,6 +111,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 839bd3d247d08ed4b867fda67c89ff15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cooldownTime: 5
   enemyTeamTag: 
   allyTeamTag: 
   rend: {fileID: 23724403074697954}

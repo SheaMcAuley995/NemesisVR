@@ -98,6 +98,8 @@ namespace Valve.VR.InteractionSystem
                     spellPrefab = null;
                     Destroy(spellEffectObj.gameObject);
                     spellEffectObj = null;
+
+                    SpellZone.Instance.OnSpellCast();
                 }
                 spellShootDebounce = false;
             }

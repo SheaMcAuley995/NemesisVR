@@ -4,6 +4,8 @@ using UnityEngine;
 
 public abstract class SpellAbstract : MonoBehaviour {
 
+    public float cooldownTime;
+
     public string enemyTeamTag;
     public string allyTeamTag;
 
