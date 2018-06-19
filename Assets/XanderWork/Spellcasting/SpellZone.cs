@@ -56,36 +56,40 @@ namespace Valve.VR.InteractionSystem
 
         private void OnHandHoverBegin(Hand hand)
         {
+            handsIn.Add(hand);
+            handHeads.Add(hand.transform.GetComponentInChildren<SpellCaster>());
             if (!grabBallScript.holdingBall && spellHeat <= 0)
             {
                 renderer.material = touchingMat;
-                handsIn.Add(hand);
-                handHeads.Add(hand.transform.GetComponentInChildren<SpellCaster>());
             }
         }
         private void OnHandHoverEnd(Hand hand)
         {
-            if (!grabBallScript.holdingBall && spellHeat <= 0)
+            handsIn.Remove(hand);
+            handHeads.Remove(hand.transform.GetComponentInChildren<SpellCaster>());
+            if (handsIn.Count == 0 && !grabBallScript.holdingBall && spellHeat <= 0)
             {
-                handsIn.Remove(hand);
-                handHeads.Remove(hand.transform.GetComponentInChildren<SpellCaster>());
-                if (handsIn.Count == 0)
-                {
-                    renderer.material = normalMat;
-                }
+                renderer.material = normalMat;
             }
         }
 
         public void OnGrabBall()
         {
-            handsIn.Clear();
-            handHeads.Clear();
+            //handsIn.Clear();
+            //handHeads.Clear();
             renderer.material = cooldownMat;
         }
 
         public void OnReleaseBall()
         {
-            renderer.material = normalMat;
+            if (handsIn.Count == 0)
+            {
+                renderer.material = normalMat;
+            }
+            else
+            {
+                renderer.material = touchingMat;
+            }
         }
 
         private void Update()
@@ -95,14 +99,22 @@ namespace Valve.VR.InteractionSystem
                 spellHeat -= Time.deltaTime;
                 if(spellHeat <= 0 && !grabBallScript.holdingBall)
                 {
-                    renderer.material = normalMat;
+                    if(handsIn.Count == 0)
+                    {
+                        renderer.material = normalMat;
+                    }
+                    else
+                    {
+                        renderer.material = touchingMat;
+                    }
                 }
             }
 
             for(int i = 0; i < handsIn.Count; ++i)
             {
                 Hand hand = handsIn[i];
-                if(hand.GetStandardInteractionButtonDown() && handHeads[i].spellEffectObj == null && spellHeat <= 0)
+                if(!grabBallScript.holdingBall && hand.GetStandardInteractionButtonDown()
+                 && handHeads[i].spellEffectObj == null && spellHeat <= 0)
                 {
                     GameObject spellEffect = Instantiate(staffSpellEffectPrefab);
                     spellEffect.transform.position = handHeads[i].transform.position;
@@ -121,8 +133,8 @@ namespace Valve.VR.InteractionSystem
 
         public void OnSpellCast()
         {
-            handsIn.Clear();
-            handHeads.Clear();
+            //handsIn.Clear();
+            //handHeads.Clear();
             renderer.material = cooldownMat;
             spellHeat = spellCooldownTime;
         }
