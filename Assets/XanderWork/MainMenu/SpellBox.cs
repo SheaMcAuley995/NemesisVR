@@ -16,7 +16,8 @@ namespace Valve.VR.InteractionSystem
         public Renderer renderer;
         public Material normalMat;
         public Material touchingMat;
-        public Material holdingMat;
+        public ParticleSystem selectEffect;
+        public MenuSpellEffect menuSpellEffect;
 
         private int handsIn = 0;
 
@@ -25,6 +26,9 @@ namespace Valve.VR.InteractionSystem
         private void Start()
         {
             renderer.material = normalMat;
+
+            //Both spell boxes will do this, making the starting spell effectively random.
+            //SetSpell();
         }
 
         private void OnHandHoverBegin(Hand hand)
@@ -46,10 +50,15 @@ namespace Valve.VR.InteractionSystem
         {
             if (hand.GetStandardInteractionButtonDown())
             {
-                renderer.material = holdingMat;
-                SceneBridge.Instance.spellPrefab = spellPrefab;
-                SceneBridge.Instance.staffSpellEffectPrefab = staffSpellEffectPrefab;
+                SetSpell();
             }
+        }
+
+        private void SetSpell()
+        {
+            SceneBridge.Instance.spellPrefab = spellPrefab;
+            SceneBridge.Instance.staffSpellEffectPrefab = staffSpellEffectPrefab;
+            menuSpellEffect.SetSpell(selectEffect);
         }
 
     }
