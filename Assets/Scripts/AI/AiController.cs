@@ -208,8 +208,8 @@ public class AiController : MonoBehaviour
                     isAvoiding = true;
 
                         Debug.Log(1 - (Vector3.Distance(transform.position, hit.point) / sensorLength));
-                        vert += (Vector3.Distance(transform.position, hit.point) / sensorLength);
-                        //vert += -2f;
+                        //vert += (Vector3.Distance(transform.position, hit.point) / sensorLength);
+                        vert += 2f;
                         avoidMultiplier += 1;
                 }
                 Debug.DrawLine(sensorStartingpos, hit.point,Color.yellow);
@@ -226,7 +226,7 @@ public class AiController : MonoBehaviour
                     isAvoiding = true;
 
                         Debug.Log(1 - (Vector3.Distance(transform.position, hit.point) / sensorLength));
-                        vert -= 1 - (Vector3.Distance(transform.position, hit.point)/sensorLength);
+                        vert -= 2 - (Vector3.Distance(transform.position, hit.point)/sensorLength);
                         avoidMultiplier += 1;
                 }
                 Debug.DrawLine(sensorStartingpos, hit.point);
@@ -264,7 +264,7 @@ public class AiController : MonoBehaviour
         if (Physics.Raycast(sensorStartingpos, Quaternion.AngleAxis(65, transform.up) * transform.forward, out hit, sensorLength, obstacle))
         {
             avoidMultiplier = Mathf.Lerp(avoidMultiplier, 1, 0.1f * Time.deltaTime);
-            vert += avoidMultiplier /2;
+            vert += Vector3.Distance(transform.position,hit.point) / 3;
             horz -= horz;
             Debug.DrawLine(sensorStartingpos, hit.point, Color.green);
         }
@@ -298,7 +298,7 @@ public class AiController : MonoBehaviour
         if (Physics.Raycast(sensorStartingpos, Quaternion.AngleAxis(-65, transform.up) * transform.forward, out hit, sensorLength, obstacle))
         {
             avoidMultiplier = Mathf.Lerp(avoidMultiplier, 1, 0.1f * Time.deltaTime);
-            vert += avoidMultiplier/2;
+            vert += Vector3.Distance(transform.position, hit.point) / 3;
             horz -= horz;
             Debug.DrawLine(sensorStartingpos, hit.point,Color.green);
         }
