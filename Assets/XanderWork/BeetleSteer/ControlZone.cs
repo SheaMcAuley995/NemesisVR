@@ -33,6 +33,10 @@ namespace Valve.VR.InteractionSystem
 
         public Hand controlHand { get; private set; }
 
+        public delegate void OnControlChange();
+        public OnControlChange onControlStart;
+        public OnControlChange onControlEnd;
+
         private Vector3 controlPointTarget;
 
 
@@ -60,6 +64,10 @@ namespace Valve.VR.InteractionSystem
                 && h.transform.Find("GafRod").Find("Rod_Shaft").GetComponent<SpellCaster>().spellEffectObj == null)
                 {
                     controlHand = h;
+                    if(onControlStart != null)
+                    {
+                        onControlStart();
+                    }
                     //transform.position = h.transform.position;
                     controlPoint.position = transform.position;
                     renderer.enabled = true;
@@ -67,6 +75,10 @@ namespace Valve.VR.InteractionSystem
                 else if(!h.GetStandardInteractionButton() && controlHand == h)
                 {
                     controlHand = null;
+                    if(onControlEnd != null)
+                    {
+                        onControlEnd();
+                    }
                     renderer.enabled = false;
                     vehicle.acceleration = baseForwardAccel;
                     vehicle.turnSpeed = 0;

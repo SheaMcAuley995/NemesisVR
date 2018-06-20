@@ -28,6 +28,8 @@ namespace Valve.VR.InteractionSystem
 
         private Vector3 aimStartPos = Vector3.zero;
 
+        public bool IsAiming { get { return aimer == this; } }
+
 
 
         private void Start()
