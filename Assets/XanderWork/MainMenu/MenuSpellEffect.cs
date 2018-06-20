@@ -8,7 +8,7 @@ public class MenuSpellEffect : MonoBehaviour {
 
 
 
-    private void Start()
+    private void Awake()
     {
         foreach (ParticleSystem ps in spellEffects)
         {
@@ -23,6 +23,7 @@ public class MenuSpellEffect : MonoBehaviour {
             if(ps != particle)
             {
                 ps.Stop();
+                ps.Clear();
             }
             else
             {

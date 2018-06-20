@@ -28,7 +28,7 @@ namespace Valve.VR.InteractionSystem
             renderer.material = normalMat;
 
             //Both spell boxes will do this, making the starting spell effectively random.
-            //SetSpell();
+            SetSpell();
         }
 
         private void OnHandHoverBegin(Hand hand)
