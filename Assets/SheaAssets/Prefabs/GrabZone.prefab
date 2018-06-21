@@ -64,3 +64,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6cd677f8ba4cc044bfd48eb56fa09b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ballHoldPos: {fileID: 0}
