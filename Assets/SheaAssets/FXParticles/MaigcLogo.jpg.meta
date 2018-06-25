@@ -1,9 +1,9 @@
 fileFormatVersion: 2
-guid: a216a02579015be4baa254164363f214
+guid: 9fdee19302cb4e34482a5e2a4af14c52
 TextureImporter:
   fileIDToRecycleName: {}
   externalObjects: {}
-  serializedVersion: 5
+  serializedVersion: 4
   mipmaps:
     mipMapMode: 0
     enableMipMap: 1
@@ -43,21 +43,18 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spriteGenerateFallbackPhysicsShape: 1
+  spritePixelsToUnits: 100
   alphaUsage: 1
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
   textureType: 0
   textureShape: 1
-  singleChannelComponent: 0
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
   platformSettings:
-  - serializedVersion: 2
-    buildTarget: DefaultTexturePlatform
+  - buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -67,8 +64,7 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
-  - serializedVersion: 2
-    buildTarget: Standalone
+  - buildTarget: Standalone
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -83,12 +79,6 @@ TextureImporter:
     sprites: []
     outline: []
     physicsShape: []
-    bones: []
-    spriteID: 
-    vertices: []
-    indices: 
-    edges: []
-    weights: []
   spritePackingTag: 
   userData: 
   assetBundleName: 
