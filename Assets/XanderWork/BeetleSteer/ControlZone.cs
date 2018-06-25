@@ -26,6 +26,8 @@ namespace Valve.VR.InteractionSystem
 
         public SpellZone spellZone;
 
+        public ParticleSystem[] speedParticles;
+
         [Header("PROTOTYPING")]
         public Renderer renderer;
         public Material normalMat;

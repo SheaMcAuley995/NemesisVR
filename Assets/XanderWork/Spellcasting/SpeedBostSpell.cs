@@ -29,6 +29,10 @@ public class SpeedBostSpell : SpellAbstract {
         if (other.tag == allyTeamTag && target == null)
         {
             target = other.GetComponent<Rigidbody>();
+            foreach(ParticleSystem p in Valve.VR.InteractionSystem.ControlZone.Instance.speedParticles)
+            {
+                p.Play();
+            }
             rend.enabled = false;
             CancelInvoke();
             Invoke("Remove", boostLength);
