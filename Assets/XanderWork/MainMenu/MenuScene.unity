@@ -1282,9 +1282,9 @@ TextMesh:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 475093732}
-  m_Text: 'Pull trigger to
+  m_Text: 'Pull trigger
 
-    select Release Spell'
+    Release Spell'
   m_OffsetZ: 0
   m_CharacterSize: 0.05
   m_LineSpacing: 1
@@ -1509,11 +1509,11 @@ TextMesh:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 583556059}
-  m_Text: 'Pull trigger to select
+  m_Text: 'Pull trigger
 
     Sun Team
 
-    and start game'
+    start game'
   m_OffsetZ: 0
   m_CharacterSize: 0.05
   m_LineSpacing: 1
@@ -2695,11 +2695,11 @@ TextMesh:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 836078065}
-  m_Text: 'Pull trigger to select
+  m_Text: 'Pull trigger
 
     Moon Team
 
-    and start game'
+    start game'
   m_OffsetZ: 0
   m_CharacterSize: 0.05
   m_LineSpacing: 1
@@ -3582,11 +3582,11 @@ TextMesh:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1254625646}
-  m_Text: 'Pull trigger to select
+  m_Text: 'Pull trigger
 
     Moon Team
 
-    and start game'
+    start game'
   m_OffsetZ: 0
   m_CharacterSize: 0.05
   m_LineSpacing: 1
@@ -3871,11 +3871,11 @@ TextMesh:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1319011047}
-  m_Text: 'Pull trigger to select
+  m_Text: 'Pull trigger
 
     Sun Team
 
-    and start game'
+    start game'
   m_OffsetZ: 0
   m_CharacterSize: 0.05
   m_LineSpacing: 1
@@ -4010,9 +4010,9 @@ TextMesh:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1326616792}
-  m_Text: 'Pull trigger to
+  m_Text: 'Pull trigger
 
-    select Release Spell'
+    Release Spell'
   m_OffsetZ: 0
   m_CharacterSize: 0.05
   m_LineSpacing: 1
@@ -4546,9 +4546,9 @@ TextMesh:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1415005977}
-  m_Text: 'Pull trigger to
+  m_Text: 'Pull trigger
 
-    select Speed Boost'
+    Speed Boost'
   m_OffsetZ: 0
   m_CharacterSize: 0.05
   m_LineSpacing: 1
@@ -4805,9 +4805,9 @@ TextMesh:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1537259010}
-  m_Text: 'Pull trigger to
+  m_Text: 'Pull trigger
 
-    select Speed Boost'
+    Speed Boost'
   m_OffsetZ: 0
   m_CharacterSize: 0.05
   m_LineSpacing: 1
