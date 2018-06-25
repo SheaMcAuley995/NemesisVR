@@ -6861,11 +6861,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d16f5863fd585a04d99b0b77da4387b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 552953439}
-  speed: 0
-  freezeY: 0
-  freezeX: 1
-  freezeZ: 0
 --- !u!1 &482757540
 GameObject:
   m_ObjectHideFlags: 0
@@ -7858,11 +7853,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d1e50abf06856d5428b6c9320fb43619, type: 2}
   m_IsPrefabParent: 0
---- !u!4 &552953439 stripped
-Transform:
-  m_PrefabParentObject: {fileID: 4185503741645740, guid: d1e50abf06856d5428b6c9320fb43619,
-    type: 2}
-  m_PrefabInternal: {fileID: 552953438}
 --- !u!1 &563805286
 GameObject:
   m_ObjectHideFlags: 0
@@ -19083,7 +19073,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1663110262
 Transform:
   m_ObjectHideFlags: 0
@@ -22723,8 +22713,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d16f5863fd585a04d99b0b77da4387b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
-  speed: 0
-  freezeY: 0
-  freezeX: 0
-  freezeZ: 0

@@ -28,13 +28,13 @@ namespace Valve.VR.InteractionSystem
 
         private void Start()
         {
-            renderer.material = normalMat;
+            //renderer.material = normalMat;
             startingGame = false;
         }
 
         private void OnHandHoverBegin(Hand hand)
         {
-            renderer.material = touchingMat;
+            //renderer.material = touchingMat;
             ++handsIn;
             handsInList.Add(hand);
         }
@@ -45,7 +45,7 @@ namespace Valve.VR.InteractionSystem
             handsInList.Remove(hand);
             if(handsIn == 0)
             {
-                renderer.material = normalMat;
+                //renderer.material = normalMat;
             }
         }
 
@@ -54,7 +54,7 @@ namespace Valve.VR.InteractionSystem
             if (hand.GetStandardInteractionButtonDown() && !startingGame)
             {
                 startingGame = true;
-                renderer.material = holdingMat;
+                //renderer.material = holdingMat;
                 SceneBridge.Instance.playerTeam = team;
                 SteamVR_Fade.Start(Color.black, fadeToBlackDuration);
                 Invoke("GoToMenu", fadeToBlackDuration);
