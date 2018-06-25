@@ -5,7 +5,8 @@ using UnityEngine;
 
 namespace Valve.VR.InteractionSystem
 {
-    public class HandTooltips : MonoBehaviour {
+    public class HandTooltips : MonoBehaviour
+    {
 
         [Header("Tooltips")]
         public GameObject holdTrigger;
@@ -18,17 +19,7 @@ namespace Valve.VR.InteractionSystem
         public SpellCaster spellCaster;
         public GrabBall grabBall;
 
-
         
-        
-
-        //private void Start()
-        //{
-        //    SetTooltip();
-        //    
-        //    ControlZone.Instance.onControlStart += SetTooltip;
-        //    ControlZone.Instance.onControlEnd += SetTooltip;
-        //}
 
         private void Update()
         {

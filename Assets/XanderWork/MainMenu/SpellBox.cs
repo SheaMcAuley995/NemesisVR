@@ -20,6 +20,7 @@ namespace Valve.VR.InteractionSystem
         public MenuSpellEffect menuSpellEffect;
 
         private int handsIn = 0;
+        private List<Hand> handsInList = new List<Hand>();
 
 
 
@@ -35,11 +36,13 @@ namespace Valve.VR.InteractionSystem
         {
             renderer.material = touchingMat;
             ++handsIn;
+            handsInList.Add(hand);
         }
 
         private void OnHandHoverEnd(Hand hand)
         {
             --handsIn;
+            handsInList.Remove(hand);
             if (handsIn == 0)
             {
                 renderer.material = normalMat;
@@ -59,6 +62,11 @@ namespace Valve.VR.InteractionSystem
             SceneBridge.Instance.spellPrefab = spellPrefab;
             SceneBridge.Instance.staffSpellEffectPrefab = staffSpellEffectPrefab;
             menuSpellEffect.SetSpell(selectEffect);
+        }
+
+        public bool IsHandIn(Hand hand)
+        {
+            return handsInList.Contains(hand);
         }
 
     }

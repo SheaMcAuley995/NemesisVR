@@ -22,6 +22,7 @@ namespace Valve.VR.InteractionSystem
 
         private int handsIn = 0;
         private static bool startingGame = false;
+        private List<Hand> handsInList = new List<Hand>();
 
 
 
@@ -35,11 +36,13 @@ namespace Valve.VR.InteractionSystem
         {
             renderer.material = touchingMat;
             ++handsIn;
+            handsInList.Add(hand);
         }
 
         private void OnHandHoverEnd(Hand hand)
         {
             --handsIn;
+            handsInList.Remove(hand);
             if(handsIn == 0)
             {
                 renderer.material = normalMat;
@@ -61,6 +64,11 @@ namespace Valve.VR.InteractionSystem
         private void GoToMenu()
         {
             SceneManager.LoadSceneAsync(gameSceneName);
+        }
+
+        public bool IsHandIn(Hand hand)
+        {
+            return handsInList.Contains(hand);
         }
 
     }
