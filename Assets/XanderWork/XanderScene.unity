@@ -7784,6 +7784,11 @@ Prefab:
       propertyPath: passiveMoveForce
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 199429054929626086, guid: d1e50abf06856d5428b6c9320fb43619,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a645cb05c8c374f4d8379faa54a51547, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d1e50abf06856d5428b6c9320fb43619, type: 2}
   m_IsPrefabParent: 0
