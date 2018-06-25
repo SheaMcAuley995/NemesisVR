@@ -131,6 +131,11 @@ namespace Valve.VR.InteractionSystem
             return handsIn.Contains(hand);
         }
 
+        public bool IsInCooldown()
+        {
+            return spellHeat > 0;
+        }
+
         public void OnSpellCast()
         {
             //handsIn.Clear();

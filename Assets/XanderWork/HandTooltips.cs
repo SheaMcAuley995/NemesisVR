@@ -19,8 +19,7 @@ namespace Valve.VR.InteractionSystem
         public GrabBall grabBall;
 
 
-
-
+        
         
 
         //private void Start()
@@ -42,7 +41,7 @@ namespace Valve.VR.InteractionSystem
             steering.SetActive(false);
             pullTrigger.SetActive(false);
             aimShoot.SetActive(false);
-            
+
             if (spellCaster.spellEffectObj != null)
             {
                 pullTrigger.SetActive(true);
@@ -51,9 +50,13 @@ namespace Valve.VR.InteractionSystem
             {
                 steering.SetActive(true);
             }
-            else if(spellCaster.IsAiming)
+            else if (spellCaster.IsAiming)
             {
                 aimShoot.SetActive(true);
+            }
+            else if (!grabBall.holdingBall && SpellZone.Instance.IsHandIn(hand) && !SpellZone.Instance.IsInCooldown())
+            {
+                pullTrigger.SetActive(true);
             }
             else if((ControlZone.Instance.controlHand != null && grabBall.holdingBall)
                  || ControlZone.Instance.controlHand == null)
