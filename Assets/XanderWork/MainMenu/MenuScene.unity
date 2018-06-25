@@ -1529,6 +1529,116 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 507724345}
   m_Mesh: {fileID: 4300004, guid: 88987a9980bc5504fbeb87cb04be1e5e, type: 3}
+--- !u!1001 &513394624
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 400000, guid: 7a9964291f3ca6c49b52fea0bb3d9eda, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.685
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 7a9964291f3ca6c49b52fea0bb3d9eda, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.211
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 7a9964291f3ca6c49b52fea0bb3d9eda, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.015
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 7a9964291f3ca6c49b52fea0bb3d9eda, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 7a9964291f3ca6c49b52fea0bb3d9eda, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 7a9964291f3ca6c49b52fea0bb3d9eda, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 7a9964291f3ca6c49b52fea0bb3d9eda, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 7a9964291f3ca6c49b52fea0bb3d9eda, type: 3}
+      propertyPath: m_RootOrder
+      value: 24
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 7a9964291f3ca6c49b52fea0bb3d9eda, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: ec2b211ee426bf242b2360f92dd2e06f, type: 2}
+    - target: {fileID: 400000, guid: 7a9964291f3ca6c49b52fea0bb3d9eda, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 7a9964291f3ca6c49b52fea0bb3d9eda, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 7a9964291f3ca6c49b52fea0bb3d9eda, type: 3}
+      propertyPath: m_Name
+      value: MoonRod
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 7a9964291f3ca6c49b52fea0bb3d9eda, type: 3}
+  m_IsPrefabParent: 0
+--- !u!1 &513394625 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 100000, guid: 7a9964291f3ca6c49b52fea0bb3d9eda, type: 3}
+  m_PrefabInternal: {fileID: 513394624}
+--- !u!23 &513394626 stripped
+MeshRenderer:
+  m_PrefabParentObject: {fileID: 2300000, guid: 7a9964291f3ca6c49b52fea0bb3d9eda,
+    type: 3}
+  m_PrefabInternal: {fileID: 513394624}
+--- !u!114 &513394627
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 513394625}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d965e5d3e0dd6948becf80defa0c32a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameSceneName: XanderScene
+  renderer: {fileID: 513394626}
+  normalMat: {fileID: 2100000, guid: cd3d651df74362e49a2f2e12bf4078ce, type: 2}
+  touchingMat: {fileID: 2100000, guid: 8ac5356a7e16c6c42abf2545a8cd9bcf, type: 2}
+  holdingMat: {fileID: 2100000, guid: d7326c6ee8201b248be72275dc62d212, type: 2}
+  fadeToBlackDuration: 5
+  team: 0
+--- !u!114 &513394628
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 513394625}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b93b6a877adcbf94c89a9d6e0c0e844d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!64 &513394629
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 513394625}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 1
+  m_CookingOptions: 14
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 4300000, guid: 7a9964291f3ca6c49b52fea0bb3d9eda, type: 3}
 --- !u!1 &528505041
 GameObject:
   m_ObjectHideFlags: 0
@@ -6003,124 +6113,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 743664668}
   m_Mesh: {fileID: 4300020, guid: 88987a9980bc5504fbeb87cb04be1e5e, type: 3}
---- !u!1001 &798221219
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 400000, guid: a0f2b03f38453d448899f65bde4457f6, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.685
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: a0f2b03f38453d448899f65bde4457f6, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1.271
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: a0f2b03f38453d448899f65bde4457f6, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -0.015
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: a0f2b03f38453d448899f65bde4457f6, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: a0f2b03f38453d448899f65bde4457f6, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: a0f2b03f38453d448899f65bde4457f6, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: a0f2b03f38453d448899f65bde4457f6, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: a0f2b03f38453d448899f65bde4457f6, type: 3}
-      propertyPath: m_RootOrder
-      value: 24
-      objectReference: {fileID: 0}
-    - target: {fileID: 2300004, guid: a0f2b03f38453d448899f65bde4457f6, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: ec2b211ee426bf242b2360f92dd2e06f, type: 2}
-    - target: {fileID: 2300000, guid: a0f2b03f38453d448899f65bde4457f6, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: ec2b211ee426bf242b2360f92dd2e06f, type: 2}
-    - target: {fileID: 400000, guid: a0f2b03f38453d448899f65bde4457f6, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: -90
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: a0f2b03f38453d448899f65bde4457f6, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: -90
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: a0f2b03f38453d448899f65bde4457f6, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: a0f2b03f38453d448899f65bde4457f6, type: 3}
-      propertyPath: m_Name
-      value: MoonRod
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: a0f2b03f38453d448899f65bde4457f6, type: 3}
-  m_IsPrefabParent: 0
---- !u!1 &798221220 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 100008, guid: a0f2b03f38453d448899f65bde4457f6, type: 3}
-  m_PrefabInternal: {fileID: 798221219}
---- !u!23 &798221221 stripped
-MeshRenderer:
-  m_PrefabParentObject: {fileID: 2300004, guid: a0f2b03f38453d448899f65bde4457f6,
-    type: 3}
-  m_PrefabInternal: {fileID: 798221219}
---- !u!114 &798221222
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 798221220}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7d965e5d3e0dd6948becf80defa0c32a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameSceneName: XanderScene
-  renderer: {fileID: 798221221}
-  normalMat: {fileID: 2100000, guid: cd3d651df74362e49a2f2e12bf4078ce, type: 2}
-  touchingMat: {fileID: 2100000, guid: 8ac5356a7e16c6c42abf2545a8cd9bcf, type: 2}
-  holdingMat: {fileID: 2100000, guid: d7326c6ee8201b248be72275dc62d212, type: 2}
-  fadeToBlackDuration: 5
-  team: 0
---- !u!114 &798221223
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 798221220}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b93b6a877adcbf94c89a9d6e0c0e844d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!64 &798221224
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 798221220}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 1
-  m_CookingOptions: 14
-  m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300000, guid: a0f2b03f38453d448899f65bde4457f6, type: 3}
 --- !u!1001 &803818087
 Prefab:
   m_ObjectHideFlags: 0
@@ -7151,7 +7143,7 @@ MonoBehaviour:
   speedBoost: {fileID: 101246440}
   releaseBall: {fileID: 645136968}
   sun: {fileID: 102200067}
-  moon: {fileID: 798221222}
+  moon: {fileID: 513394627}
 --- !u!1 &1254625646
 GameObject:
   m_ObjectHideFlags: 0
@@ -7803,7 +7795,7 @@ MonoBehaviour:
   speedBoost: {fileID: 101246440}
   releaseBall: {fileID: 645136968}
   sun: {fileID: 102200067}
-  moon: {fileID: 798221222}
+  moon: {fileID: 513394627}
 --- !u!1 &1379280600
 GameObject:
   m_ObjectHideFlags: 0

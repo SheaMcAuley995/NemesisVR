@@ -22,6 +22,7 @@ namespace Valve.VR.InteractionSystem
         public float headPitchMult;
         public float headYawMult;
         public float headRollMult;
+        public ParticleSystem aimParticles;
 
         private string enemyTeamTag;
         private string allyTeamTag;
@@ -59,6 +60,7 @@ namespace Valve.VR.InteractionSystem
                 vc.handleHeadRotation = false;
                 aimStartPos = vc.transform.InverseTransformPoint(hand.transform.position);
                 aimer = this;
+                aimParticles.Play();
             }
 
             if (aimer == this)
@@ -68,6 +70,7 @@ namespace Valve.VR.InteractionSystem
                     vc.handleHeadRotation = true;
                     grabBallScript.ShootBall(ControlZone.Instance.ballShootForce);
                     aimer = null;
+                    aimParticles.Stop();
                 }
 
                 if (!vc.handleHeadRotation)
