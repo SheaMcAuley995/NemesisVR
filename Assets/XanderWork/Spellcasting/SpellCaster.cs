@@ -125,6 +125,7 @@ namespace Valve.VR.InteractionSystem
         {
             vc.handleHeadRotation = true;
             aimer = null;
+            aimParticles.Stop();
         }
 
     }
