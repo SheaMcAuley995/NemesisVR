@@ -5,8 +5,11 @@ using UnityEngine;
 public class AiController : MonoBehaviour
 {
 
+    AiHover hover;
 
     public Transform[] thrusters;
+    public float hoverDistance;
+    public float hoverStrength;
 
     public TeamManager.TeamBall myTeam;
 //    List
@@ -17,8 +20,7 @@ public class AiController : MonoBehaviour
     public float turnRotationAngle;
     public float turnRotationSeekSpeed;
 
-    public float hoverDistance;
-    public float hoverStrength;
+
 
     private float rotationVelocity;
   //  private float groundAngelVelocity;
@@ -123,11 +125,11 @@ public class AiController : MonoBehaviour
     }
 
 
-    private void vehicleHover()
+    public void vehicleHover()
     {
         RaycastHit hit;
 
-        foreach(Transform thruster in thrusters)
+        foreach (Transform thruster in thrusters)
         {
             Vector3 downwardForce;
             float distancePercentage;
@@ -135,16 +137,10 @@ public class AiController : MonoBehaviour
             if (Physics.Raycast(thruster.position, -Vector3.up, out hit, hoverDistance))
             {
                 Debug.DrawLine(thruster.position, hit.point);
-                rb.drag = normDrag;
                 distancePercentage = 1 - (hit.distance / hoverDistance);
                 downwardForce = (transform.up * hoverStrength * distancePercentage) * Time.deltaTime;
                 rb.AddForceAtPosition(downwardForce, thruster.position);
             }
-            //else
-            //{
-            //    downwardForce = (-transform.up * hoverStrength)/2 * Time.deltaTime;
-            //    rb.AddForce(downwardForce);
-            //}
         }
 
     }
