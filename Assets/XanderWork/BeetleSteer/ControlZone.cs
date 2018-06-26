@@ -27,6 +27,7 @@ namespace Valve.VR.InteractionSystem
         public SpellZone spellZone;
 
         public ParticleSystem[] speedParticles;
+        public AudioSource speedSound;
 
         [Header("PROTOTYPING")]
         public Renderer renderer;

@@ -70,14 +70,16 @@ public class ScoreManager : MonoBehaviour {
         }
     }
 
-    public void CheckGameOver()
+    public bool CheckGameOver()
     {
         if(!gameOver && scoreSun >= scoreToWin || scoreMoon >= scoreToWin)
         {
             gameOver = true;
             SteamVR_Fade.Start(Color.black, fadeToBlackDuration);
             Invoke("GoToMenu", fadeToBlackDuration);
+            return true;
         }
+        return false;
     }
 
     private void GoToMenu()

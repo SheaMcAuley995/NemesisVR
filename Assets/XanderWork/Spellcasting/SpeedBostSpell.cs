@@ -29,6 +29,7 @@ public class SpeedBostSpell : SpellAbstract {
         if (other.tag == allyTeamTag && target == null)
         {
             target = other.GetComponent<Rigidbody>();
+            Valve.VR.InteractionSystem.ControlZone.Instance.speedSound.PlayOneShot(Valve.VR.InteractionSystem.ControlZone.Instance.speedSound.clip);
             foreach(ParticleSystem p in Valve.VR.InteractionSystem.ControlZone.Instance.speedParticles)
             {
                 p.Play();

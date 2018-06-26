@@ -7,13 +7,15 @@ using UnityEngine;
 public class GoalTrigger : MonoBehaviour {
 
     public int scorePerGoal = 1;
+    public float postMoveSpeed;
 
     public Transform sunPost;
     public Transform moonPost;
     public Transform sunPostEnd;
     public Transform moonPostEnd;
-
-    public float postMoveSpeed;
+    public AudioSource sunPostAudio;
+    public AudioSource moonPostAudio;
+    public AudioSource postStopAudio;
 
     private Vector3 sunPostMoveTo;
     private Vector3 moonPostMoveTo;
@@ -45,7 +47,11 @@ public class GoalTrigger : MonoBehaviour {
             sunPost.position += (sunPostMoveTo - sunPost.position).normalized * postMoveSpeed * Time.deltaTime;
             if(!(Vector3.Distance(sunPost.position, sunPostMoveTo) > postMoveSpeed))
             {
-                ScoreManager.Instance.CheckGameOver();
+                sunPostAudio.Stop();
+                if(!ScoreManager.Instance.CheckGameOver())
+                {
+                    postStopAudio.Play();
+                }
             }
         }
         if (Vector3.Distance(moonPost.position, moonPostMoveTo) > postMoveSpeed)
@@ -53,7 +59,11 @@ public class GoalTrigger : MonoBehaviour {
             moonPost.position += (moonPostMoveTo - moonPost.position).normalized * postMoveSpeed * Time.deltaTime;
             if(!(Vector3.Distance(moonPost.position, moonPostMoveTo) > postMoveSpeed))
             {
-                ScoreManager.Instance.CheckGameOver();
+                moonPostAudio.Stop();
+                if (!ScoreManager.Instance.CheckGameOver())
+                {
+                    postStopAudio.Play();
+                }
             }
         }
     }
@@ -78,6 +88,7 @@ public class GoalTrigger : MonoBehaviour {
             if (ScoreManager.Instance.ScoreSun < ScoreManager.Instance.scoreToWin)
             {
                 sunPostMoveTo += sunPostMoveIncrement;
+                sunPostAudio.Play();
             }
             ScoreManager.Instance.AddScoreSun(scorePerGoal);
         }
@@ -91,6 +102,7 @@ public class GoalTrigger : MonoBehaviour {
             if (ScoreManager.Instance.ScoreMoon < ScoreManager.Instance.scoreToWin)
             {
                 moonPostMoveTo += moonPostMoveIncrement;
+                moonPostAudio.Play();
             }
             ScoreManager.Instance.AddScoreMoon(scorePerGoal);
         }
