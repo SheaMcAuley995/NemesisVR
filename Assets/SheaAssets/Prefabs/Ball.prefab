@@ -86,8 +86,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1832952674816736}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.6490622, y: 1.7125664, z: -1.2464685}
+  m_LocalRotation: {x: -0.027570728, y: 0.8845606, z: -0.052717574, w: -0.46261576}
+  m_LocalPosition: {x: 121.01616, y: 3.2845635, z: 113.01516}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4988526480419454}
@@ -203,7 +203,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hoverDistance: 4
-  hoverStrength: 1000
+  hoverStrength: 2000
   groundLayerMask:
     serializedVersion: 2
     m_Bits: 256
@@ -213,7 +213,7 @@ MonoBehaviour:
   resetPos: {fileID: 0}
   spawnRadiusMin: 70
   spawnRadiusMax: 150
-  passiveMoveForce: 0
+  passiveMoveForce: 3
   rb: {fileID: 54362209936840304}
 --- !u!135 &135230009605316104
 SphereCollider:
@@ -222,7 +222,7 @@ SphereCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1832952674816736}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
@@ -287,7 +287,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -1648342177
+  randomSeed: 246854609
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -3648,7 +3648,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 2062769575
+  randomSeed: 1690611280
   InitialModule:
     serializedVersion: 3
     enabled: 1
