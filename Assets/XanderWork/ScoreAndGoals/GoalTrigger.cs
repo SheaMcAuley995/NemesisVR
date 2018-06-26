@@ -13,9 +13,15 @@ public class GoalTrigger : MonoBehaviour {
     public Transform moonPost;
     public Transform sunPostEnd;
     public Transform moonPostEnd;
+
+    [Header("Audio")]
     public AudioSource sunPostAudio;
     public AudioSource moonPostAudio;
-    public AudioSource postStopAudio;
+    public AudioSource goalAudio;
+    public AudioClip scoreClip;
+    public float scoreClipVolume;
+    public AudioClip postStopClip;
+    public float postStopClipVolume;
 
     private Vector3 sunPostMoveTo;
     private Vector3 moonPostMoveTo;
@@ -48,10 +54,7 @@ public class GoalTrigger : MonoBehaviour {
             if(!(Vector3.Distance(sunPost.position, sunPostMoveTo) > postMoveSpeed))
             {
                 sunPostAudio.Stop();
-                if(!ScoreManager.Instance.CheckGameOver())
-                {
-                    postStopAudio.Play();
-                }
+                goalAudio.PlayOneShot(postStopClip, postStopClipVolume);
             }
         }
         if (Vector3.Distance(moonPost.position, moonPostMoveTo) > postMoveSpeed)
@@ -60,10 +63,7 @@ public class GoalTrigger : MonoBehaviour {
             if(!(Vector3.Distance(moonPost.position, moonPostMoveTo) > postMoveSpeed))
             {
                 moonPostAudio.Stop();
-                if (!ScoreManager.Instance.CheckGameOver())
-                {
-                    postStopAudio.Play();
-                }
+                goalAudio.PlayOneShot(postStopClip, postStopClipVolume);
             }
         }
     }
@@ -89,6 +89,7 @@ public class GoalTrigger : MonoBehaviour {
             {
                 sunPostMoveTo += sunPostMoveIncrement;
                 sunPostAudio.Play();
+                goalAudio.PlayOneShot(scoreClip, scoreClipVolume);
             }
             ScoreManager.Instance.AddScoreSun(scorePerGoal);
         }
@@ -103,6 +104,7 @@ public class GoalTrigger : MonoBehaviour {
             {
                 moonPostMoveTo += moonPostMoveIncrement;
                 moonPostAudio.Play();
+                goalAudio.PlayOneShot(scoreClip, scoreClipVolume);
             }
             ScoreManager.Instance.AddScoreMoon(scorePerGoal);
         }

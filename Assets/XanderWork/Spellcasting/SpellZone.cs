@@ -13,6 +13,7 @@ namespace Valve.VR.InteractionSystem
         public GameObject spellPrefab;
         public GameObject staffSpellEffectPrefab;
         public GrabBall grabBallScript;
+        public AudioSource audioSource;
 
         [Header("PROTOTYPING")]
         public Renderer renderer;
@@ -116,6 +117,7 @@ namespace Valve.VR.InteractionSystem
                 if(!grabBallScript.holdingBall && hand.GetStandardInteractionButtonDown()
                  && handHeads[i].spellEffectObj == null && spellHeat <= 0)
                 {
+                    audioSource.PlayOneShot(audioSource.clip);
                     GameObject spellEffect = Instantiate(staffSpellEffectPrefab);
                     spellEffect.transform.position = handHeads[i].transform.position;
                     spellEffect.transform.rotation = handHeads[i].transform.rotation;
