@@ -5,8 +5,6 @@ using UnityEngine;
 public class AiController : MonoBehaviour
 {
 
-    AiHover hover;
-
     public Transform[] thrusters;
     public float hoverDistance;
     public float hoverStrength;
@@ -56,6 +54,8 @@ public class AiController : MonoBehaviour
     private float normDrag;
     public float ballDrag;
 
+    private bool obsticleDetected = false; 
+
     void Start()
     {
         
@@ -73,12 +73,12 @@ public class AiController : MonoBehaviour
     private void Update()
     {
 
-        if (!GrabBall.currentBallHolder == this.grabBall)
+        if (!GrabBall.currentBallHolder == this.grabBall && !obsticleDetected)
         {
             target = HoverBall.Instance.gameObject;
             rb.drag = normDrag; 
         }
-        if (GrabBall.currentBallHolder == this.grabBall)
+        if (GrabBall.currentBallHolder == this.grabBall && !obsticleDetected)
         {
             rb.drag = ballDrag;
             target = myGoal;
@@ -205,7 +205,7 @@ public class AiController : MonoBehaviour
 
                         Debug.Log(1 - (Vector3.Distance(transform.position, hit.point) / sensorLength));
                         //vert += (Vector3.Distance(transform.position, hit.point) / sensorLength);
-                        vert += 2f;
+                        vert *= -1;
                         avoidMultiplier += 1;
                 }
                 Debug.DrawLine(sensorStartingpos, hit.point,Color.yellow);
@@ -214,7 +214,7 @@ public class AiController : MonoBehaviour
         //front center
         if (avoidMultiplier == 0)
         {
-            if (Physics.Raycast(sensorStartingpos, transform.forward, out hit, sensorLength + 3, obstacle))
+            if (Physics.Raycast(sensorStartingpos, transform.forward, out hit, sensorLength, obstacle))
             {
                 if (!hit.collider.CompareTag("Ground"))
                 {
@@ -222,7 +222,7 @@ public class AiController : MonoBehaviour
                     isAvoiding = true;
 
                         Debug.Log(1 - (Vector3.Distance(transform.position, hit.point) / sensorLength));
-                        vert -= 2 - (Vector3.Distance(transform.position, hit.point)/sensorLength);
+                        vert -= 1 - (Vector3.Distance(transform.position, hit.point)/sensorLength);
                         avoidMultiplier += 1;
                 }
                 Debug.DrawLine(sensorStartingpos, hit.point);
@@ -257,7 +257,7 @@ public class AiController : MonoBehaviour
             Debug.DrawLine(sensorStartingpos, hit.point);
         }
 
-        if (Physics.Raycast(sensorStartingpos, Quaternion.AngleAxis(65, transform.up) * transform.forward, out hit, sensorLength, obstacle))
+        if (Physics.Raycast(sensorStartingpos, Quaternion.AngleAxis(45, transform.up) * transform.forward, out hit, sensorLength-1, obstacle))
         {
             avoidMultiplier = Mathf.Lerp(avoidMultiplier, 1, 0.1f * Time.deltaTime);
             vert += Vector3.Distance(transform.position,hit.point) / 3;
@@ -291,7 +291,7 @@ public class AiController : MonoBehaviour
             Debug.DrawLine(sensorStartingpos, hit.point);
         }
 
-        if (Physics.Raycast(sensorStartingpos, Quaternion.AngleAxis(-65, transform.up) * transform.forward, out hit, sensorLength, obstacle))
+        if (Physics.Raycast(sensorStartingpos, Quaternion.AngleAxis(-45, transform.up) * transform.forward, out hit, sensorLength-1, obstacle))
         {
             avoidMultiplier = Mathf.Lerp(avoidMultiplier, 1, 0.1f * Time.deltaTime);
             vert += Vector3.Distance(transform.position, hit.point) / 3;
@@ -304,6 +304,14 @@ public class AiController : MonoBehaviour
             //vert += avoidMultiplier;
         }
         
+        if(isAvoiding)
+        {
+            obsticleDetected = true;
+        }
+        else
+        {
+            obsticleDetected = false;
+        }
             vehicleMove();
     }
 }
