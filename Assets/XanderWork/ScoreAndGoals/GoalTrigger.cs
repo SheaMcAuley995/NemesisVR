@@ -55,6 +55,7 @@ public class GoalTrigger : MonoBehaviour {
             {
                 sunPostAudio.Stop();
                 goalAudio.PlayOneShot(postStopClip, postStopClipVolume);
+                ScoreManager.Instance.CheckGameOver();
             }
         }
         if (Vector3.Distance(moonPost.position, moonPostMoveTo) > postMoveSpeed)
@@ -64,6 +65,7 @@ public class GoalTrigger : MonoBehaviour {
             {
                 moonPostAudio.Stop();
                 goalAudio.PlayOneShot(postStopClip, postStopClipVolume);
+                ScoreManager.Instance.CheckGameOver();
             }
         }
     }
