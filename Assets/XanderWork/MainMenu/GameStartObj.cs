@@ -20,16 +20,33 @@ namespace Valve.VR.InteractionSystem
         public float fadeToBlackDuration;
         public TeamManager.TeamBall team;
 
+        public AudioSource musicPlayer;
+        private bool fading = false;
+        private float musicStartVolume;
+
         private int handsIn = 0;
         private static bool startingGame = false;
         private List<Hand> handsInList = new List<Hand>();
 
 
 
+        private void Awake()
+        {
+            musicStartVolume = musicPlayer.volume;
+        }
+
         private void Start()
         {
             //renderer.material = normalMat;
             startingGame = false;
+        }
+
+        private void Update()
+        {
+            if(fading)
+            {
+                musicPlayer.volume -= (musicStartVolume / fadeToBlackDuration) * Time.deltaTime;
+            }
         }
 
         private void OnHandHoverBegin(Hand hand)
@@ -56,6 +73,7 @@ namespace Valve.VR.InteractionSystem
                 startingGame = true;
                 //renderer.material = holdingMat;
                 SceneBridge.Instance.playerTeam = team;
+                fading = true;
                 SteamVR_Fade.Start(Color.black, fadeToBlackDuration);
                 Invoke("GoToMenu", fadeToBlackDuration);
             }

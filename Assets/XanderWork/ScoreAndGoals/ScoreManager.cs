@@ -41,6 +41,10 @@ public class ScoreManager : MonoBehaviour {
     public float fadeToBlackDuration;
     public string menuSceneName;
 
+    public AudioSource musicPlayer;
+    private bool fading = false;
+    private float musicStartVolume;
+
     private bool gameOver = false;
 
 
@@ -50,6 +54,15 @@ public class ScoreManager : MonoBehaviour {
     private void Awake()
     {
         instance = this;
+        musicStartVolume = musicPlayer.volume;
+    }
+
+    private void Update()
+    {
+        if (fading)
+        {
+            musicPlayer.volume -= (musicStartVolume / fadeToBlackDuration) * Time.deltaTime;
+        }
     }
 
     public void AddScoreSun(int amt)
@@ -76,6 +89,7 @@ public class ScoreManager : MonoBehaviour {
         {
             gameOver = true;
             SteamVR_Fade.Start(Color.black, fadeToBlackDuration);
+            fading = true;
             Invoke("GoToMenu", fadeToBlackDuration);
             return true;
         }
