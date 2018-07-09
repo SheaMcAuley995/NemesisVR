@@ -468,6 +468,7 @@ MonoBehaviour:
   headPitchMult: 100
   headYawMult: 100
   headRollMult: 100
+  aimParticles: {fileID: 0}
 --- !u!114 &114892405005760542
 MonoBehaviour:
   m_ObjectHideFlags: 1

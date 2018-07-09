@@ -278,10 +278,12 @@ MonoBehaviour:
   spellShootDebounce: 1
   grabBallScript: {fileID: 0}
   vc: {fileID: 0}
+  rb: {fileID: 0}
   beetleHead: {fileID: 0}
   headPitchMult: 100
   headYawMult: 100
   headRollMult: 100
+  aimParticles: {fileID: 0}
 --- !u!114 &114710641940334774
 MonoBehaviour:
   m_ObjectHideFlags: 1
