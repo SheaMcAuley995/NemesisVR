@@ -1619,7 +1619,7 @@ TextMesh:
   m_GameObject: {fileID: 475093732}
   m_Text: 'Pull trigger
 
-    Select Spell
+    Select Spell:
 
     Release Ball'
   m_OffsetZ: 0
@@ -8283,7 +8283,7 @@ TextMesh:
   m_GameObject: {fileID: 1326616792}
   m_Text: 'Pull trigger
 
-    Select Spell
+    Select Spell:
 
     Release Ball'
   m_OffsetZ: 0
@@ -8871,7 +8871,7 @@ TextMesh:
   m_GameObject: {fileID: 1415005977}
   m_Text: 'Pull trigger
 
-    Select Spell
+    Select Spell:
 
     Speed Boost'
   m_OffsetZ: 0
@@ -9136,7 +9136,7 @@ TextMesh:
   m_GameObject: {fileID: 1537259010}
   m_Text: 'Pull trigger
 
-    Select Spell
+    Select Spell:
 
     Speed Boost'
   m_OffsetZ: 0
