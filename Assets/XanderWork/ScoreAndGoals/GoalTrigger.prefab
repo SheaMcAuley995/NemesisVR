@@ -244,7 +244,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 38918cd30f1c8ae4e95c7efd7c6c8465, type: 2}
+  - {fileID: 2100000, guid: 406981998f1234442a4f2eb50cfe07e1, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -320,11 +320,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scorePerGoal: 1
+  postMoveSpeed: 1
   sunPost: {fileID: 0}
   moonPost: {fileID: 0}
   sunPostEnd: {fileID: 0}
   moonPostEnd: {fileID: 0}
-  postMoveSpeed: 1
+  sunPostAudio: {fileID: 0}
+  moonPostAudio: {fileID: 0}
+  goalAudio: {fileID: 0}
+  scoreClip: {fileID: 0}
+  scoreClipVolume: 0
+  postStopClip: {fileID: 0}
+  postStopClipVolume: 0
 --- !u!135 &135194846574686688
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -397,7 +404,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 1135230108
+  randomSeed: 105890500
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -3758,7 +3765,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 1343912740
+  randomSeed: 599690783
   InitialModule:
     serializedVersion: 3
     enabled: 1
