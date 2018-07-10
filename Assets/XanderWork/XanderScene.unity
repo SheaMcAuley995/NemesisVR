@@ -574,9 +574,37 @@ Prefab:
       propertyPath: resetPos
       value: 
       objectReference: {fileID: 369340725}
+    - target: {fileID: 4790077897173664, guid: d1e50abf06856d5428b6c9320fb43619, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 199605874320429676, guid: d1e50abf06856d5428b6c9320fb43619,
+        type: 2}
+      propertyPath: m_Pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4190604963681120, guid: d1e50abf06856d5428b6c9320fb43619, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198885996736696732, guid: d1e50abf06856d5428b6c9320fb43619,
+        type: 2}
+      propertyPath: randomSeed
+      value: -361824834
+      objectReference: {fileID: 0}
+    - target: {fileID: 198885996736696732, guid: d1e50abf06856d5428b6c9320fb43619,
+        type: 2}
+      propertyPath: InitialModule.startSizeY.scalar
+      value: 100
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d1e50abf06856d5428b6c9320fb43619, type: 2}
   m_IsPrefabParent: 0
+--- !u!4 &32325582 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4790077897173664, guid: d1e50abf06856d5428b6c9320fb43619,
+    type: 2}
+  m_PrefabInternal: {fileID: 32325581}
 --- !u!1 &34900627
 GameObject:
   m_ObjectHideFlags: 0
@@ -39391,7 +39419,7 @@ MonoBehaviour:
   ballHoldPos: {fileID: 502585803}
   doesMoveBeacon: 1
   goal: {fileID: 994112129}
-  beacon: {fileID: 0}
+  beacon: {fileID: 32325582}
 --- !u!65 &2014791201
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -18,7 +18,17 @@ public class GrabBall : MonoBehaviour {
     public OnGrabBall onGrabBall;
     public OnGrabBall onReleaseBall;
 
+    private Vector3 beaconLocalPos;
 
+
+
+    private void Awake()
+    {
+        if (doesMoveBeacon)
+        {
+            onReleaseBall = MoveBeaconToBall;
+        }
+    }
 
     private void Start()
     {
@@ -27,7 +37,7 @@ public class GrabBall : MonoBehaviour {
 
         if(doesMoveBeacon)
         {
-            onReleaseBall += MoveBeaconToBall;
+            beaconLocalPos = beacon.localPosition;
         }
     }
 
@@ -37,15 +47,11 @@ public class GrabBall : MonoBehaviour {
         {
             HoverBall.Instance.HoverToPos = ballHoldPos;
             holdingBall = true;
-            if(onGrabBall != null)
-            {
-                onGrabBall();
-            }
 
             if(doesMoveBeacon)
             {
                 beacon.parent = goal;
-                beacon.position = goal.position;
+                beacon.localPosition = beaconLocalPos;
             }
 
             if(currentBallHolder != null && currentBallHolder != this)
@@ -53,6 +59,11 @@ public class GrabBall : MonoBehaviour {
                 currentBallHolder.OnBallStolen();
             }
             currentBallHolder = this;
+
+            if (onGrabBall != null)
+            {
+                onGrabBall();
+            }
         }
     }
 
@@ -68,7 +79,7 @@ public class GrabBall : MonoBehaviour {
     private void MoveBeaconToBall()
     {
         beacon.parent = HoverBall.Instance.transform;
-        beacon.position = HoverBall.Instance.transform.position;
+        beacon.localPosition = beaconLocalPos;
     }
 
     public void ShootBall(float force)
@@ -93,12 +104,12 @@ public class GrabBall : MonoBehaviour {
             HoverBall.Instance.HoverToPos = null;
             HoverBall.Instance.rb.AddForce(dir * force);
 
+            currentBallHolder = null;
+
             if (onReleaseBall != null)
             {
                 onReleaseBall();
             }
-
-            currentBallHolder = null;
         }
     }
 
