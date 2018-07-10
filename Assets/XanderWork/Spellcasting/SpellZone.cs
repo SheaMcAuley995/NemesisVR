@@ -14,6 +14,8 @@ namespace Valve.VR.InteractionSystem
         public GameObject staffSpellEffectPrefab;
         public GrabBall grabBallScript;
         public AudioSource audioSource;
+        public ParticleSystem speedBoostField;
+        public ParticleSystem releaseBallField;
 
         [Header("PROTOTYPING")]
         public Renderer renderer;
@@ -25,6 +27,7 @@ namespace Valve.VR.InteractionSystem
         private List<SpellCaster> handHeads = new List<SpellCaster>();
         private float spellHeat = 0;
         private float spellCooldownTime;
+        private ParticleSystem magicField = null;
 
         public static SpellZone Instance { get; private set; }
 
@@ -46,6 +49,16 @@ namespace Valve.VR.InteractionSystem
             if (SceneBridge.Instance.spellPrefab != null)
             {
                 spellPrefab = SceneBridge.Instance.spellPrefab;
+                if(spellPrefab.GetComponent<ReleaseBallSpell>())
+                {
+                    magicField = releaseBallField;
+                    magicField.gameObject.SetActive(true);
+                }
+                else if(spellPrefab.GetComponent<SpeedBostSpell>())
+                {
+                    magicField = speedBoostField;
+                    magicField.gameObject.SetActive(true);
+                }
             }
             if(SceneBridge.Instance.staffSpellEffectPrefab != null)
             {
@@ -71,6 +84,7 @@ namespace Valve.VR.InteractionSystem
             if (handsIn.Count == 0 && !grabBallScript.holdingBall && spellHeat <= 0)
             {
                 renderer.material = normalMat;
+                magicField.gameObject.SetActive(true);
             }
         }
 
@@ -79,6 +93,7 @@ namespace Valve.VR.InteractionSystem
             //handsIn.Clear();
             //handHeads.Clear();
             renderer.material = cooldownMat;
+            magicField.gameObject.SetActive(false);
         }
 
         public void OnReleaseBall()
@@ -91,6 +106,7 @@ namespace Valve.VR.InteractionSystem
             {
                 renderer.material = touchingMat;
             }
+            magicField.gameObject.SetActive(true);
         }
 
         private void Update()
@@ -108,6 +124,7 @@ namespace Valve.VR.InteractionSystem
                     {
                         renderer.material = touchingMat;
                     }
+                    magicField.gameObject.SetActive(true);
                 }
             }
 
@@ -143,6 +160,7 @@ namespace Valve.VR.InteractionSystem
             //handsIn.Clear();
             //handHeads.Clear();
             renderer.material = cooldownMat;
+            magicField.gameObject.SetActive(false);
             spellHeat = spellCooldownTime;
         }
 
