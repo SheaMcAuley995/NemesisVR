@@ -10,6 +10,10 @@ public class GrabBall : MonoBehaviour {
     TeamManager tm;
     public bool holdingBall { get; private set; }
 
+    public bool doesMoveBeacon;
+    public Transform goal;
+    public Transform beacon;
+
     public delegate void OnGrabBall();
     public OnGrabBall onGrabBall;
     public OnGrabBall onReleaseBall;
@@ -20,6 +24,11 @@ public class GrabBall : MonoBehaviour {
     {
         currentBallHolder = null;
         holdingBall = false;
+
+        if(doesMoveBeacon)
+        {
+            onReleaseBall += MoveBeaconToBall;
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -31,6 +40,12 @@ public class GrabBall : MonoBehaviour {
             if(onGrabBall != null)
             {
                 onGrabBall();
+            }
+
+            if(doesMoveBeacon)
+            {
+                beacon.parent = goal;
+                beacon.position = goal.position;
             }
 
             if(currentBallHolder != null && currentBallHolder != this)
@@ -48,6 +63,12 @@ public class GrabBall : MonoBehaviour {
         {
             onReleaseBall();
         }
+    }
+
+    private void MoveBeaconToBall()
+    {
+        beacon.parent = HoverBall.Instance.transform;
+        beacon.position = HoverBall.Instance.transform.position;
     }
 
     public void ShootBall(float force)
