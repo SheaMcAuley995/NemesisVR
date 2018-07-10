@@ -1,9 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
+[SelectionBase]
 public class AiController : MonoBehaviour
 {
+    private NavMeshPath path;
+    //Stack<Transform> navPoints;
 
     public Transform[] thrusters;
     public float hoverDistance;
@@ -35,7 +39,7 @@ public class AiController : MonoBehaviour
     public float shootForce;
 
     public GameObject target;
-    Vector3 desiredDir;
+
     Rigidbody rb; 
     public GrabBall grabBall;
     public GameObject myGoal;
@@ -54,11 +58,12 @@ public class AiController : MonoBehaviour
     private float normDrag;
     public float ballDrag;
 
-    private bool obsticleDetected = false; 
+    private bool obsticleDetected = false;
+
 
     void Start()
     {
-        
+        path = new NavMeshPath();
         target = HoverBall.Instance.gameObject;
         rb = GetComponent<Rigidbody>();
         normDrag = rb.drag;
@@ -72,9 +77,10 @@ public class AiController : MonoBehaviour
 
     private void Update()
     {
-
+        
         if (!GrabBall.currentBallHolder == this.grabBall && !obsticleDetected)
         {
+            
             target = HoverBall.Instance.gameObject;
             rb.drag = normDrag; 
         }
@@ -109,8 +115,17 @@ public class AiController : MonoBehaviour
             beetleHead.LookAt(target.transform.position);
         }
 
+        NavMeshHit navMeshHitA;
+        NavMeshHit navMeshHitB;
+        NavMesh.SamplePosition(transform.position, out navMeshHitA, float.PositiveInfinity, NavMesh.AllAreas);
+        NavMesh.SamplePosition(target.transform.position, out navMeshHitB, float.PositiveInfinity, NavMesh.AllAreas);
+        bool result = NavMesh.CalculatePath(navMeshHitA.position, navMeshHitB.position, NavMesh.AllAreas, path);
 
-
+        //Debug.Assert(result, "pls");
+        for (int i = 0; i < path.corners.Length -1; i++)
+        {
+            Debug.DrawLine(path.corners[i], path.corners[i + 1], Color.red);
+        }
 
     }
 
@@ -163,26 +178,43 @@ public class AiController : MonoBehaviour
 
     private void vehicleSteer()
     {
+
         InverseTransform = transform.InverseTransformPoint(target.transform.position);
         newSteer = InverseTransform.x / InverseTransform.magnitude + 0.02f;
         newFwd = InverseTransform.z / InverseTransform.magnitude;
+
+        if (path.corners.Length > 0)
+        {
+            Vector3 dumb = path.corners[1];
+            Vector3 assistInverse = transform.InverseTransformPoint(dumb);
+            float assistFwd = assistInverse.z / assistInverse.magnitude + 0.02f;
+            float assistSteer = assistInverse.x / assistInverse.magnitude;
+
+            // newFwd /= 2;
+            // newSteer /= 2;
+            newFwd = assistFwd;
+            newSteer = assistSteer;
+        }
+
         horz = newSteer;
-        if(newSteer > 0)
+        if (newSteer > 0)
         {
             vert = newFwd - newSteer;
         }
-        if(newSteer < 0)
+        if (newSteer < 0)
         {
             vert = newFwd + newSteer;
         }
         if (Vector3.Distance(transform.position, target.transform.position) < 70 && Vector3.Distance(transform.position, target.transform.position) > 10)
         {
-           horz *= 0 + Vector3.Distance(transform.position, target.transform.position)/10;
+            horz *= 0 + Vector3.Distance(transform.position, target.transform.position) / 10;
         }
-        else if(Vector3.Distance(transform.position, target.transform.position) < 10)
+        else if (Vector3.Distance(transform.position, target.transform.position) < 10)
         {
             horz *= 5;
         }
+
+
     }
 
     private void vehicleSensor()
@@ -203,7 +235,7 @@ public class AiController : MonoBehaviour
                     Debug.DrawLine(sensorStartingpos, hit.point);
                     isAvoiding = true;
 
-                        Debug.Log(1 - (Vector3.Distance(transform.position, hit.point) / sensorLength));
+                       // Debug.Log(1 - (Vector3.Distance(transform.position, hit.point) / sensorLength));
                         //vert += (Vector3.Distance(transform.position, hit.point) / sensorLength);
                         vert *= -1;
                         avoidMultiplier += 1;
@@ -221,7 +253,7 @@ public class AiController : MonoBehaviour
                     Debug.DrawLine(sensorStartingpos, hit.point);
                     isAvoiding = true;
 
-                        Debug.Log(1 - (Vector3.Distance(transform.position, hit.point) / sensorLength));
+                       // Debug.Log(1 - (Vector3.Distance(transform.position, hit.point) / sensorLength));
                         vert -= 1 - (Vector3.Distance(transform.position, hit.point)/sensorLength);
                         avoidMultiplier += 1;
                 }
@@ -257,13 +289,13 @@ public class AiController : MonoBehaviour
             Debug.DrawLine(sensorStartingpos, hit.point);
         }
 
-        if (Physics.Raycast(sensorStartingpos, Quaternion.AngleAxis(45, transform.up) * transform.forward, out hit, sensorLength-1, obstacle))
-        {
-            avoidMultiplier = Mathf.Lerp(avoidMultiplier, 1, 0.1f * Time.deltaTime);
-            vert += Vector3.Distance(transform.position,hit.point) / 3;
-            horz -= horz;
-            Debug.DrawLine(sensorStartingpos, hit.point, Color.green);
-        }
+        //if (Physics.Raycast(sensorStartingpos, Quaternion.AngleAxis(45, transform.up) * transform.forward, out hit, sensorLength-1, obstacle))
+        //{
+            //avoidMultiplier = Mathf.Lerp(avoidMultiplier, 1, 0.1f * Time.deltaTime);
+            //vert += Vector3.Distance(transform.position,hit.point) / 3;
+            //horz -= horz;
+            //Debug.DrawLine(sensorStartingpos, hit.point, Color.green);
+        //}
 
         //front left
         sensorStartingpos -= transform.right * FrontsideSensorPos * 2;
@@ -291,13 +323,13 @@ public class AiController : MonoBehaviour
             Debug.DrawLine(sensorStartingpos, hit.point);
         }
 
-        if (Physics.Raycast(sensorStartingpos, Quaternion.AngleAxis(-45, transform.up) * transform.forward, out hit, sensorLength-1, obstacle))
-        {
-            avoidMultiplier = Mathf.Lerp(avoidMultiplier, 1, 0.1f * Time.deltaTime);
-            vert += Vector3.Distance(transform.position, hit.point) / 3;
-            horz -= horz;
-            Debug.DrawLine(sensorStartingpos, hit.point,Color.green);
-        }
+        //if (Physics.Raycast(sensorStartingpos, Quaternion.AngleAxis(-45, transform.up) * transform.forward, out hit, sensorLength-1, obstacle))
+        //{
+        //    avoidMultiplier = Mathf.Lerp(avoidMultiplier, 1, 0.1f * Time.deltaTime);
+        //    vert += Vector3.Distance(transform.position, hit.point) / 3;
+        //    horz -= horz;
+        //    Debug.DrawLine(sensorStartingpos, hit.point,Color.green);
+        //}
         if (isAvoiding)
         {
             horz += avoidMultiplier;
@@ -313,6 +345,39 @@ public class AiController : MonoBehaviour
             obsticleDetected = false;
         }
             vehicleMove();
+
+
+
+        if (horz > 1)
+        {
+            horz = 1;
+        }
+
+        if (vert > 1)
+        {
+            vert = 1;
+        }
+
+        if (horz < -1)
+        {
+            horz = -1;
+        }
+        if(vert < -1)
+        {
+            vert = -1;
+        }
+    }
+
+    private void OnDrawGizmos()
+    {
+        if (!Application.isPlaying) { return; }
+        Gizmos.color = Color.red;
+
+       // Debug.Log("NODES" + path.corners.Length);
+        foreach (var node in path.corners)
+        {
+            Gizmos.DrawSphere(node, 1);
+        }
     }
 }
 
