@@ -38,12 +38,12 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18346408, g: 0.22904176, b: 0.3058696, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 11
-  m_GIWorkflowMode: 0
+  m_GIWorkflowMode: 1
   m_GISettings:
     serializedVersion: 2
     m_BounceScale: 1
@@ -98,21 +98,21 @@ NavMeshSettings:
   m_BuildSettings:
     serializedVersion: 2
     agentTypeID: 0
-    agentRadius: 0.5
-    agentHeight: 2
-    agentSlope: 45
-    agentClimb: 0.4
+    agentRadius: 4.5
+    agentHeight: 3
+    agentSlope: 60
+    agentClimb: 4
     ledgeDropHeight: 0
     maxJumpAcrossDistance: 0
     minRegionArea: 2
-    manualCellSize: 0
-    cellSize: 0.16666667
+    manualCellSize: 1
+    cellSize: 0.05
     manualTileSize: 0
     tileSize: 256
     accuratePlacement: 0
     debug:
       m_Flags: 0
-  m_NavMeshData: {fileID: 0}
+  m_NavMeshData: {fileID: 23800000, guid: 4dcfb086e571e1d439d93800a7d2ed20, type: 2}
 --- !u!1 &3489301
 GameObject:
   m_ObjectHideFlags: 0
@@ -17331,7 +17331,7 @@ MonoBehaviour:
   ballHoldPos: {fileID: 1385158188}
   doesMoveBeacon: 1
   goal: {fileID: 1141445455}
-  beacon: {fileID: 1808467860}
+  beacon: {fileID: 0}
 --- !u!65 &381710538
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -18704,6 +18704,8 @@ MonoBehaviour:
     type: 2}
   grabBallScript: {fileID: 277863829}
   audioSource: {fileID: 0}
+  speedBoostField: {fileID: 0}
+  releaseBallField: {fileID: 0}
   renderer: {fileID: 538568353}
   normalMat: {fileID: 2100000, guid: ce81b6db142cc2f47bd986baa854aedb, type: 2}
   touchingMat: {fileID: 2100000, guid: 2a7017db938cacc42b2f959347447f03, type: 2}
@@ -19087,6 +19089,10 @@ Prefab:
     - target: {fileID: 100000, guid: d4d46f6a98868f94f847b1b0325369b8, type: 3}
       propertyPath: m_Layer
       value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: d4d46f6a98868f94f847b1b0325369b8, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d4d46f6a98868f94f847b1b0325369b8, type: 3}
@@ -19695,9 +19701,33 @@ MonoBehaviour:
   m_GameObject: {fileID: 604480371}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d16f5863fd585a04d99b0b77da4387b7, type: 3}
+  m_Script: {fileID: 11500000, guid: 3ffbb256b29f1de499f2942333aa94ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  target: {fileID: 712674329}
+  speed: 15
+  freezeY: 0
+  freezeX: 0
+  freezeZ: 0
+--- !u!1 &604480373 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 100016, guid: 2af92af4c25b49c46aa66b2da4a306e5, type: 3}
+  m_PrefabInternal: {fileID: 604480369}
+--- !u!208 &604480374
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 604480373}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &606912614
 GameObject:
   m_ObjectHideFlags: 0
@@ -23277,6 +23307,10 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: c7a37b585cbc5304eb246084145f7cd3, type: 2}
+    - target: {fileID: 100000, guid: a68ec188d60f8e64c9459f457b84ab31, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a68ec188d60f8e64c9459f457b84ab31, type: 3}
   m_IsPrefabParent: 0
@@ -23923,6 +23957,7 @@ GameObject:
   - component: {fileID: 947063088}
   - component: {fileID: 947063087}
   - component: {fileID: 947063086}
+  - component: {fileID: 947063089}
   m_Layer: 12
   m_Name: SunPostObj
   m_TagString: Untagged
@@ -23997,6 +24032,21 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 947063084}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!208 &947063089
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 947063084}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &953456470
 GameObject:
   m_ObjectHideFlags: 0
@@ -25612,6 +25662,10 @@ Prefab:
       propertyPath: m_Layer
       value: 12
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: d4d46f6a98868f94f847b1b0325369b8, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d4d46f6a98868f94f847b1b0325369b8, type: 3}
   m_IsPrefabParent: 0
@@ -27161,6 +27215,21 @@ MeshCollider:
   m_CookingOptions: 14
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: f1b6a137f10cc3d45855c435a628f22f, type: 3}
+--- !u!208 &1233954956
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1233954954}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 254.58101, y: 127.29101, z: 254.58101}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 188, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &1241085491
 GameObject:
   m_ObjectHideFlags: 0
@@ -34977,6 +35046,10 @@ Prefab:
       propertyPath: m_Layer
       value: 12
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: d4d46f6a98868f94f847b1b0325369b8, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d4d46f6a98868f94f847b1b0325369b8, type: 3}
   m_IsPrefabParent: 0
@@ -36623,11 +36696,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d1e50abf06856d5428b6c9320fb43619, type: 2}
   m_IsPrefabParent: 0
---- !u!4 &1808467860 stripped
-Transform:
-  m_PrefabParentObject: {fileID: 4832152233650736, guid: d1e50abf06856d5428b6c9320fb43619,
-    type: 2}
-  m_PrefabInternal: {fileID: 1808467859}
 --- !u!1 &1808467861 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1832952674816736, guid: d1e50abf06856d5428b6c9320fb43619,
@@ -36787,6 +36855,10 @@ Prefab:
     - target: {fileID: 100000, guid: 5030fbec7510dac42bd3f146924fdc12, type: 3}
       propertyPath: m_Layer
       value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 5030fbec7510dac42bd3f146924fdc12, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5030fbec7510dac42bd3f146924fdc12, type: 3}
@@ -37458,6 +37530,7 @@ GameObject:
   - component: {fileID: 1890048796}
   - component: {fileID: 1890048795}
   - component: {fileID: 1890048794}
+  - component: {fileID: 1890048797}
   m_Layer: 12
   m_Name: MoonPostObj
   m_TagString: Untagged
@@ -37532,6 +37605,21 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1890048792}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!208 &1890048797
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1890048792}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &1897082177
 GameObject:
   m_ObjectHideFlags: 0
@@ -37756,6 +37844,48 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   force: 20
+--- !u!1 &1929909393
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1929909395}
+  - component: {fileID: 1929909394}
+  m_Layer: 0
+  m_Name: EyeFollowTarget
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1929909394
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1929909393}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fcd21c3c63e3a748b9c3b65576a2034, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 712674329}
+  speed: 0.125
+--- !u!4 &1929909395
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1929909393}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 19.976194, y: 37.163013, z: 108.0035}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 33
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1936542886
 GameObject:
   m_ObjectHideFlags: 0
@@ -37965,6 +38095,10 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: c7a37b585cbc5304eb246084145f7cd3, type: 2}
+    - target: {fileID: 100000, guid: c557769d55d578741b1c01c2a8ae7713, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c557769d55d578741b1c01c2a8ae7713, type: 3}
   m_IsPrefabParent: 0
@@ -40207,6 +40341,8 @@ MonoBehaviour:
     type: 2}
   grabBallScript: {fileID: 381710537}
   audioSource: {fileID: 2134977444}
+  speedBoostField: {fileID: 0}
+  releaseBallField: {fileID: 0}
   renderer: {fileID: 2134977446}
   normalMat: {fileID: 2100000, guid: ce81b6db142cc2f47bd986baa854aedb, type: 2}
   touchingMat: {fileID: 2100000, guid: 2a7017db938cacc42b2f959347447f03, type: 2}
