@@ -71,9 +71,11 @@ namespace Valve.VR.InteractionSystem
                     {
                         onControlStart();
                     }
-                    //transform.position = h.transform.position;
+
+                    h.transform.Find("ControlParticles").GetComponent<ParticleSystem>().Play();
+
                     controlPoint.position = transform.position;
-                    renderer.enabled = true;
+                    //renderer.enabled = true;
                 }
                 else if(!h.GetStandardInteractionButton() && controlHand == h)
                 {
@@ -82,6 +84,9 @@ namespace Valve.VR.InteractionSystem
                     {
                         onControlEnd();
                     }
+
+                    h.transform.Find("ControlParticles").GetComponent<ParticleSystem>().Stop();
+
                     renderer.enabled = false;
                     vehicle.acceleration = baseForwardAccel;
                     vehicle.turnSpeed = 0;
