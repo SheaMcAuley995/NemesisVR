@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18346408, g: 0.22904176, b: 0.3058696, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -18704,6 +18704,8 @@ MonoBehaviour:
     type: 2}
   grabBallScript: {fileID: 277863829}
   audioSource: {fileID: 0}
+  speedBoostField: {fileID: 0}
+  releaseBallField: {fileID: 0}
   renderer: {fileID: 538568353}
   normalMat: {fileID: 2100000, guid: ce81b6db142cc2f47bd986baa854aedb, type: 2}
   touchingMat: {fileID: 2100000, guid: 2a7017db938cacc42b2f959347447f03, type: 2}
@@ -19699,9 +19701,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 604480371}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d16f5863fd585a04d99b0b77da4387b7, type: 3}
+  m_Script: {fileID: 11500000, guid: 3ffbb256b29f1de499f2942333aa94ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  target: {fileID: 712674329}
+  speed: 15
+  freezeY: 0
+  freezeX: 0
+  freezeZ: 0
 --- !u!1 &604480373 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 100016, guid: 2af92af4c25b49c46aa66b2da4a306e5, type: 3}
@@ -37837,6 +37844,48 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   force: 20
+--- !u!1 &1929909393
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1929909395}
+  - component: {fileID: 1929909394}
+  m_Layer: 0
+  m_Name: EyeFollowTarget
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1929909394
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1929909393}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fcd21c3c63e3a748b9c3b65576a2034, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 712674329}
+  speed: 0.125
+--- !u!4 &1929909395
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1929909393}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 19.976194, y: 37.163013, z: 108.0035}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 33
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1936542886
 GameObject:
   m_ObjectHideFlags: 0
@@ -40292,6 +40341,8 @@ MonoBehaviour:
     type: 2}
   grabBallScript: {fileID: 381710537}
   audioSource: {fileID: 2134977444}
+  speedBoostField: {fileID: 0}
+  releaseBallField: {fileID: 0}
   renderer: {fileID: 2134977446}
   normalMat: {fileID: 2100000, guid: ce81b6db142cc2f47bd986baa854aedb, type: 2}
   touchingMat: {fileID: 2100000, guid: 2a7017db938cacc42b2f959347447f03, type: 2}
