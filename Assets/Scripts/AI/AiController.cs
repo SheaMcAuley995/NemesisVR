@@ -120,7 +120,7 @@ public class AiController : MonoBehaviour
         NavMesh.SamplePosition(transform.position, out navMeshHitA, float.PositiveInfinity, NavMesh.AllAreas);
         NavMesh.SamplePosition(target.transform.position, out navMeshHitB, float.PositiveInfinity, NavMesh.AllAreas);
         bool result = NavMesh.CalculatePath(navMeshHitA.position, navMeshHitB.position, NavMesh.AllAreas, path);
-
+        
         //Debug.Assert(result, "pls");
         for (int i = 0; i < path.corners.Length -1; i++)
         {
@@ -180,16 +180,21 @@ public class AiController : MonoBehaviour
     {
 
         InverseTransform = transform.InverseTransformPoint(target.transform.position);
-        newSteer = InverseTransform.x / InverseTransform.magnitude + 0.02f;
-        newFwd = InverseTransform.z / InverseTransform.magnitude;
+        newSteer = InverseTransform.x / InverseTransform.magnitude + 0.035f;
+        newFwd = InverseTransform.z / InverseTransform.magnitude + 0.02f;
 
         if (path.corners.Length > 0)
         {
             Vector3 dumb = path.corners[1];
             Vector3 assistInverse = transform.InverseTransformPoint(dumb);
-            float assistFwd = assistInverse.z / assistInverse.magnitude + 0.02f;
-            float assistSteer = assistInverse.x / assistInverse.magnitude;
-
+            float assistFwd = assistInverse.z / assistInverse.magnitude + 0.035f;
+            float assistSteer = assistInverse.x / assistInverse.magnitude + 0.02f;
+            if(Vector3.Distance(transform.position, dumb) < 10)
+            {
+                vert += 0.5f;
+                Debug.Log("BOOOOST");
+            }
+            Debug.Log(Vector3.Distance(transform.position, dumb));
             // newFwd /= 2;
             // newSteer /= 2;
             newFwd = assistFwd;
@@ -226,23 +231,23 @@ public class AiController : MonoBehaviour
         float avoidMultiplier = 0;
         bool isAvoiding = false;
         //back center
-        if (avoidMultiplier == 0)
-        {
-            if (Physics.Raycast(sensorStartingpos, -transform.forward, out hit, sensorLength, obstacle))
-            {
-                if (!hit.collider.CompareTag("Ground"))
-                {
-                    Debug.DrawLine(sensorStartingpos, hit.point);
-                    isAvoiding = true;
+        //if (avoidMultiplier == 0)
+        //{
+        //    if (Physics.Raycast(sensorStartingpos, -transform.forward, out hit, sensorLength, obstacle))
+        //    {
+        //        if (!hit.collider.CompareTag("Ground"))
+        //        {
+        //            Debug.DrawLine(sensorStartingpos, hit.point);
+        //            isAvoiding = true;
 
-                       // Debug.Log(1 - (Vector3.Distance(transform.position, hit.point) / sensorLength));
-                        //vert += (Vector3.Distance(transform.position, hit.point) / sensorLength);
-                        vert *= -1;
-                        avoidMultiplier += 1;
-                }
-                Debug.DrawLine(sensorStartingpos, hit.point,Color.yellow);
-            }
-        }
+        //               // Debug.Log(1 - (Vector3.Distance(transform.position, hit.point) / sensorLength));
+        //                //vert += (Vector3.Distance(transform.position, hit.point) / sensorLength);
+        //                vert *= -1;
+        //                avoidMultiplier += 1;
+        //        }
+        //        Debug.DrawLine(sensorStartingpos, hit.point,Color.yellow);
+        //    }
+        //}
         //front center
         if (avoidMultiplier == 0)
         {
