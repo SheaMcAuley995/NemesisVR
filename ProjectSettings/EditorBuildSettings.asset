@@ -11,3 +11,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/XanderWork/XanderScene.unity
     guid: 4fb4d72fb0bf24d45b2c9b5b1a43729f
+  - enabled: 1
+    path: Assets/XanderWork/Hell/Hell.unity
+    guid: 59af57d885fc9354f994227a04f00401
