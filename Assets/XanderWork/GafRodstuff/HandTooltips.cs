@@ -43,14 +43,13 @@ namespace Valve.VR.InteractionSystem
             }
             else if (spellCaster.IsAiming)
             {
-                aimShoot.SetActive(true);
+                pullTrigger.SetActive(true);
             }
-            else if (!grabBall.holdingBall && SpellZone.Instance.IsHandIn(hand) && !SpellZone.Instance.IsInCooldown())
+            else if (SpellZone.Instance.IsHandIn(hand) && !SpellZone.Instance.IsInCooldown())
             {
                 pullTrigger.SetActive(true);
             }
-            else if((ControlZone.Instance.controlHand != null && grabBall.holdingBall)
-                 || ControlZone.Instance.controlHand == null)
+            else if(ControlZone.Instance.controlHand == null && !grabBall.holdingBall)
             {
                 holdTrigger.SetActive(true);
             }

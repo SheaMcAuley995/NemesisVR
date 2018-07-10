@@ -6,7 +6,7 @@ namespace Valve.VR.InteractionSystem
 {
     public class SpellCaster : MonoBehaviour {
 
-        private static SpellCaster aimer = null;
+        public static SpellCaster aimer = null;
 
         public float spellShootForce;
         public Hand hand;
@@ -53,19 +53,26 @@ namespace Valve.VR.InteractionSystem
         private void Update()
         {
             rb.velocity = Vector3.zero;
-            if (grabBallScript.holdingBall && hand.GetStandardInteractionButton()
-                && aimer == null && ControlZone.Instance.controlHand != hand
-                && ControlZone.Instance.controlHand != null)
-            {
-                vc.handleHeadRotation = false;
-                aimStartPos = vc.transform.InverseTransformPoint(hand.transform.position);
-                aimer = this;
-                aimParticles.Play();
-            }
+            //if (grabBallScript.holdingBall && hand.GetStandardInteractionButton()
+            //    && aimer == null && ControlZone.Instance.controlHand != hand
+            //    && ControlZone.Instance.controlHand != null)
+            //{
+            //    vc.handleHeadRotation = false;
+            //    aimStartPos = vc.transform.InverseTransformPoint(hand.transform.position);
+            //    aimer = this;
+            //    aimParticles.Play();
+            //}
 
             if (aimer == this)
             {
-                if (grabBallScript.holdingBall && hand.GetStandardInteractionButtonUp())
+                if(!aimParticles.isPlaying)
+                {
+                    vc.handleHeadRotation = false;
+                    aimStartPos = vc.transform.InverseTransformPoint(hand.transform.position);
+                    aimParticles.Play();
+                }
+
+                if (grabBallScript.holdingBall && hand.GetStandardInteractionButtonDown())
                 {
                     vc.handleHeadRotation = true;
                     grabBallScript.ShootBall(ControlZone.Instance.ballShootForce);

@@ -16,6 +16,7 @@ namespace Valve.VR.InteractionSystem
         public AudioSource audioSource;
         public ParticleSystem speedBoostField;
         public ParticleSystem releaseBallField;
+        public ParticleSystem shootBallField;
 
         [Header("PROTOTYPING")]
         public Renderer renderer;
@@ -85,6 +86,7 @@ namespace Valve.VR.InteractionSystem
             {
                 renderer.material = normalMat;
                 magicField.gameObject.SetActive(true);
+                shootBallField.gameObject.SetActive(false);
             }
         }
 
@@ -94,6 +96,7 @@ namespace Valve.VR.InteractionSystem
             //handHeads.Clear();
             renderer.material = cooldownMat;
             magicField.gameObject.SetActive(false);
+            shootBallField.gameObject.SetActive(true);
         }
 
         public void OnReleaseBall()
@@ -107,6 +110,7 @@ namespace Valve.VR.InteractionSystem
                 renderer.material = touchingMat;
             }
             magicField.gameObject.SetActive(true);
+            shootBallField.gameObject.SetActive(false);
         }
 
         private void Update()
@@ -125,6 +129,7 @@ namespace Valve.VR.InteractionSystem
                         renderer.material = touchingMat;
                     }
                     magicField.gameObject.SetActive(true);
+                    shootBallField.gameObject.SetActive(false);
                 }
             }
 
@@ -141,6 +146,11 @@ namespace Valve.VR.InteractionSystem
                     handHeads[i].spellEffectObj = spellEffect.transform;
                     handHeads[i].spellPrefab = spellPrefab;
                     handHeads[i].spellShootDebounce = true;
+                }
+                else if(grabBallScript.holdingBall && hand.GetStandardInteractionButtonDown()
+                    && SpellCaster.aimer == null)
+                {
+                    SpellCaster.aimer = hand.GetComponentInChildren<SpellCaster>();
                 }
             }
         }
