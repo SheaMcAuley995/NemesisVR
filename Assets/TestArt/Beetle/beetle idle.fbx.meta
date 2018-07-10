@@ -1,0 +1,245 @@
+fileFormatVersion: 2
+guid: 4700218c1a38c4e4bb795df704c5feb8
+timeCreated: 1529512333
+licenseType: Free
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: antane1
+    100002: antane2
+    100004: antena_L
+    100006: antena_R
+    100008: //RootNode
+    100010: beetle_rig
+    100012: body
+    100014: exterior_shell1
+    100016: exteriorshell2
+    100018: exteriorshell_L
+    100020: exteriorshell_R
+    100022: eyeleft2
+    100024: eyeleft3
+    100026: fronteyeleft
+    100028: fronteyeleft1
+    100030: frontleg_1_L
+    100032: frontleg_1_R
+    100034: frontleg_2_L
+    100036: frontleg_2_R
+    100038: frontlegsegmentleft39239
+    100040: frontlegsegmentleft39240
+    100042: frontlegsegmentleft39241
+    100044: frontlegsegmentleft39242
+    100046: head
+    100048: head 1
+    100050: headplate
+    100052: interior_wings_L
+    100054: interior_wings_R
+    100056: legrearright2
+    100058: legrearright3
+    100060: Middle_Leg_1_L
+    100062: Middle_Leg_2_L
+    100064: Middle_Reg_1_R
+    100066: Middle_Reg_2_R
+    100068: middlesegmentlegright2
+    100070: middlesegmentlegright39238
+    100072: middlesegmentlegright39239
+    100074: middlesegmentlegright39240
+    100076: Pincer_L
+    100078: Pincer_R
+    100080: pincerr
+    100082: pincerr1
+    100084: rear_leg_L
+    100086: rear_leg_R
+    100088: root
+    100090: saddle1
+    100092: spine_1
+    100094: spine_2
+    100096: tail
+    100098: wing_L
+    100100: wing_R
+    400000: antane1
+    400002: antane2
+    400004: antena_L
+    400006: antena_R
+    400008: //RootNode
+    400010: beetle_rig
+    400012: body
+    400014: exterior_shell1
+    400016: exteriorshell2
+    400018: exteriorshell_L
+    400020: exteriorshell_R
+    400022: eyeleft2
+    400024: eyeleft3
+    400026: fronteyeleft
+    400028: fronteyeleft1
+    400030: frontleg_1_L
+    400032: frontleg_1_R
+    400034: frontleg_2_L
+    400036: frontleg_2_R
+    400038: frontlegsegmentleft39239
+    400040: frontlegsegmentleft39240
+    400042: frontlegsegmentleft39241
+    400044: frontlegsegmentleft39242
+    400046: head
+    400048: head 1
+    400050: headplate
+    400052: interior_wings_L
+    400054: interior_wings_R
+    400056: legrearright2
+    400058: legrearright3
+    400060: Middle_Leg_1_L
+    400062: Middle_Leg_2_L
+    400064: Middle_Reg_1_R
+    400066: Middle_Reg_2_R
+    400068: middlesegmentlegright2
+    400070: middlesegmentlegright39238
+    400072: middlesegmentlegright39239
+    400074: middlesegmentlegright39240
+    400076: Pincer_L
+    400078: Pincer_R
+    400080: pincerr
+    400082: pincerr1
+    400084: rear_leg_L
+    400086: rear_leg_R
+    400088: root
+    400090: saddle1
+    400092: spine_1
+    400094: spine_2
+    400096: tail
+    400098: wing_L
+    400100: wing_R
+    2100000: Beetle_Texture
+    2100002: lambert2
+    4300000: frontlegsegmentleft39240
+    4300002: head
+    4300004: middlesegmentlegright2
+    4300006: antane2
+    4300008: exteriorshell2
+    4300010: exterior_shell1
+    4300012: antane1
+    4300014: pincerr1
+    4300016: eyeleft3
+    4300018: eyeleft2
+    4300020: saddle1
+    4300022: fronteyeleft
+    4300024: body
+    4300026: pincerr
+    4300028: wing_L
+    4300030: wing_R
+    4300032: middlesegmentlegright39240
+    4300034: headplate
+    4300036: middlesegmentlegright39238
+    4300038: frontlegsegmentleft39239
+    4300040: legrearright2
+    4300042: fronteyeleft1
+    4300044: frontlegsegmentleft39241
+    4300046: middlesegmentlegright39239
+    4300048: frontlegsegmentleft39242
+    4300050: legrearright3
+    7400000: Take 001
+    9500000: //RootNode
+    13700000: antane1
+    13700002: antane2
+    13700004: body
+    13700006: exterior_shell1
+    13700008: exteriorshell2
+    13700010: eyeleft2
+    13700012: eyeleft3
+    13700014: fronteyeleft
+    13700016: fronteyeleft1
+    13700018: frontlegsegmentleft39239
+    13700020: frontlegsegmentleft39240
+    13700022: frontlegsegmentleft39241
+    13700024: frontlegsegmentleft39242
+    13700026: head
+    13700028: headplate
+    13700030: legrearright2
+    13700032: legrearright3
+    13700034: middlesegmentlegright2
+    13700036: middlesegmentlegright39238
+    13700038: middlesegmentlegright39239
+    13700040: middlesegmentlegright39240
+    13700042: pincerr
+    13700044: pincerr1
+    13700046: saddle1
+    13700048: wing_L
+    13700050: wing_R
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
