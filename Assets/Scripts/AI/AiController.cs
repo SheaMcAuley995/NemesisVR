@@ -121,7 +121,7 @@ public class AiController : MonoBehaviour
         NavMesh.SamplePosition(target.transform.position, out navMeshHitB, float.PositiveInfinity, NavMesh.AllAreas);
         bool result = NavMesh.CalculatePath(navMeshHitA.position, navMeshHitB.position, NavMesh.AllAreas, path);
 
-        Debug.Assert(result, "pls");
+        //Debug.Assert(result, "pls");
         for (int i = 0; i < path.corners.Length -1; i++)
         {
             Debug.DrawLine(path.corners[i], path.corners[i + 1], Color.red);
@@ -235,7 +235,7 @@ public class AiController : MonoBehaviour
                     Debug.DrawLine(sensorStartingpos, hit.point);
                     isAvoiding = true;
 
-                        Debug.Log(1 - (Vector3.Distance(transform.position, hit.point) / sensorLength));
+                       // Debug.Log(1 - (Vector3.Distance(transform.position, hit.point) / sensorLength));
                         //vert += (Vector3.Distance(transform.position, hit.point) / sensorLength);
                         vert *= -1;
                         avoidMultiplier += 1;
@@ -253,7 +253,7 @@ public class AiController : MonoBehaviour
                     Debug.DrawLine(sensorStartingpos, hit.point);
                     isAvoiding = true;
 
-                        Debug.Log(1 - (Vector3.Distance(transform.position, hit.point) / sensorLength));
+                       // Debug.Log(1 - (Vector3.Distance(transform.position, hit.point) / sensorLength));
                         vert -= 1 - (Vector3.Distance(transform.position, hit.point)/sensorLength);
                         avoidMultiplier += 1;
                 }
@@ -373,7 +373,7 @@ public class AiController : MonoBehaviour
         if (!Application.isPlaying) { return; }
         Gizmos.color = Color.red;
 
-        Debug.Log("NODES" + path.corners.Length);
+       // Debug.Log("NODES" + path.corners.Length);
         foreach (var node in path.corners)
         {
             Gizmos.DrawSphere(node, 1);
